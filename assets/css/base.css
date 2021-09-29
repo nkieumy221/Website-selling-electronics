@@ -1,8 +1,8 @@
 :root {
     --white-color: #fff;
     --black-color: #211F20;
-    --text-color: #333;
-    --primary-color: #F15E00;
+    --text-color: #474c51;
+    --primary-color: #CD1818;
     --boder-color : #dbdbdb;
     --star-gold-color : #ffce3d;
     --header-height: 120px;
@@ -221,7 +221,7 @@ html {
 
 .header-intro {
     height: var(--header-height);
-    background-color: var(--black-color) ;
+    background-color: var(--primary-color) ;
 }
 
 .header .navbar {
@@ -581,6 +581,19 @@ html {
     display: flex;
 }
 
+.banner_slide-title-name {
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--text-color);
+    line-height: 2.4rem;
+}
+
+.banner_slide-title-name--active, 
+.banner_slide-title-name:hover {
+    font-weight: 700;
+    border-bottom: 3px solid var(--primary-color);
+}
+
 .header__notify-item:hover {
     background-color: rgb(236, 236, 236);
 }
@@ -790,7 +803,7 @@ html {
 }
 
 .header__logo-img {
-    width: 80px;
+    width: 100px;
     margin-left: 40px;
 }
 
