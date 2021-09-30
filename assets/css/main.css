@@ -1,6 +1,9 @@
 /* App container */
 .app__container {
-    background: url("../img/bg_main.png")  0 0 / cover no-repeat;
+    background-color: #F1B193;
+    background-image: url("../img/bg_main.png");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /* Banner sale */
@@ -22,12 +25,16 @@
 }
 
 .banner_adv {
-    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
 }
 
 .banner_slide-list-title {
     list-style: none;
     display: flex;
+    padding: 5px;
+
 }
 
 .banner_slide {
@@ -35,20 +42,26 @@
 }
 
 .banner_infor {
-    margin-left: -3px ;
+    padding: 5px 0 5px 5px; 
 }
 
-.banner_slide-img {
+.banner_slide-img img {
     border-radius: 5px;
+    margin: 5px 0 0 5px;    
 }
 
 .banner_infor-highlight {
 
 }
 
+.banner_infor-img img {
+    border-radius: 5px;
+}
+
 .banner_infor-highlight-title {
     display: flex;
     justify-content: space-between;
+    width: 95%;
 }
 
 .banner_infor-highlight-title--name {
@@ -253,4 +266,36 @@
 .program_sale-time {
     padding-top: 32px;
     font-size: 2rem;
+}
+
+.program_sale__content {
+    display: flex;
+    justify-content:center;
+    width: 80%;
+}
+
+.sale__content-item {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgb(155 154 154);
+}
+
+.sale__content-img img{
+
+}
+
+.sale__content-tile {
+
+}
+
+.sale__content-name {
+
+}
+
+.sale__content-reduce {
+
+}
+
+.sale__content-price {
+
 }
