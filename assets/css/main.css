@@ -269,33 +269,58 @@
 }
 
 .program_sale__content {
-    display: flex;
-    justify-content:center;
-    width: 80%;
+    margin-left: 70px;
+    margin-right: 70px;
+
 }
 
 .sale__content-item {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 1px 5px rgb(155 154 154);
+    padding: 20px 10px;
 }
 
 .sale__content-img img{
-
+    display: flex;
+    justify-content: center;
 }
 
 .sale__content-tile {
-
+    text-align: center;
+    color: var(--text-color);
 }
 
 .sale__content-name {
-
+    font-weight: 500;
+    font-size: 2.5rem;    
+    line-height: 3rem;
+    margin: 0;
+    padding-top: 16px;
 }
 
 .sale__content-reduce {
-
+    padding-top: 16px;    
+    font-size: 2.4rem;
+    line-height: 3rem;
+    margin: 0;
 }
 
 .sale__content-price {
 
+    color: var(--primary-color);
+    font-size: 3rem;
+    font-weight: 600;
+    
+}
+
+.program_sale__reduce {
+    display: flex;
+    justify-content: center;
+}
+
+.program_sale_banner {
+    display: flex;
+    justify-content: center;
+    background: url("../img/banner-gift.png") center no-repeat;
 }

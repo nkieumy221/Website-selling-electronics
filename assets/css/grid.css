@@ -13,6 +13,10 @@
     margin-top: 32px;
 }   
 
+.mt-16 {
+    margin-top: 16px;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
