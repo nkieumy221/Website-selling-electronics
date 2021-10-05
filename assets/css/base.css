@@ -386,7 +386,6 @@ html {
 
 .header_menu-list-part {
     padding: 20px;
-    
 }
 
 .header_menu-title {
@@ -403,17 +402,19 @@ html {
 .header_menu-list-item {
     list-style: none;
     padding: 0;
+    margin-top: 10px;
 }
 
 .header_menu-item {
-    font-size: 1.4rem;
-    line-height: 3rem;
+    
     
 }
 
 .header_menu-item-link {
     text-decoration: none;
     color: var(--text-color);
+    font-size: 1.4rem;
+    line-height: 3.4rem;
 }
 
 .header_menu-item-img img{
