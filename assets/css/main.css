@@ -200,6 +200,7 @@
 .sale__item {
     padding-top: 5px;
     padding-bottom: 20px;
+    
 }
 
 .sale__item-link {
@@ -209,6 +210,7 @@
     border: 1px solid #dee2e6;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px;   
     padding: 12px;
+    height: 480px;
 }
 
 .sale__item-link:hover {
@@ -241,6 +243,7 @@
 .sale__item-name {
     margin-top: 5px;
     font-size: 1.6rem;
+    line-height: 2rem;
     font-weight: bold;
     color: var(--text-color);
 }

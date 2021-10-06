@@ -282,12 +282,13 @@
                         $sql = "SELECT * FROM danhmuclon";
                         
                         $ketqua = mysqli_query($conn,$sql);
+
                         while($row = mysqli_fetch_assoc($ketqua))
                         {
-                            $sql2 = "SELECT * FROM danhmuccon WHERE IDDanhMuc = " .$row['ID'] . ""; 
-                            $query = mysqli_query($conn,$sql2);
+                            $sqlDMCon = "SELECT * FROM danhmuccon WHERE IDDanhMuc = " .$row['ID'] . ""; 
+                            $query = mysqli_query($conn,$sqlDMCon);
                             $danhmuccon = mysqli_fetch_assoc($query)
-                            
+                        
                     ?> 
                         <li class="header__sort-item">
                             <a href="" class="header__sort-link">
@@ -316,24 +317,22 @@
                                             <div class="header_menu-list-part">
                                                 <h5 class="header_menu-title">Sản phẩm mới</h5>
                                                 <ul class="menu-list__new-product">
+                                                    <?php
+                                                        $sqlHangHoa = "SELECT * FROM hanghoa WHERE IDDanhMucLon = " .$row['ID'] . " LIMIT 2"; 
+                                                        $connectHanghoa = mysqli_query($conn,$sqlHangHoa);
+                                                        while($row = mysqli_fetch_assoc($connectHanghoa))
+                                                        {
+                                                    ?> 
                                                     <li class="menu_item-new">
                                                         <a href="" class="menu_item-new-link">
-                                                            <img src="./assets/img/samsunga52.jpg" alt="" class="menu_item-new-img">
+                                                            <img src="<?= $row['HinhAnh'] ?>" alt="" class="menu_item-new-img">
                                                             <div class="menu_item-new-infor">
-                                                                <p class="menu_item-new-name">Samsung Galaxy A22 5G</p>
-                                                                <p class="menu_item-new-price">5.899.000 ₫</p>
+                                                                <p class="menu_item-new-name"><?= $row['TenSanPham'] ?></p>
+                                                                <p class="menu_item-new-price"><?= number_format($row['GiaGoc']) ?> đ</p>
                                                             </div> 
                                                         </a>
                                                     </li>
-                                                    <li class="menu_item-new">
-                                                        <a href="" class="menu_item-new-link">
-                                                            <img src="./assets/img/xiaomiden.jpg" alt="" class="menu_item-new-img">
-                                                            <div class="menu_item-new-infor">
-                                                                <p class="menu_item-new-name">Xiaomi POCO X3 Pro NFC 8GB-256GB</p>
-                                                                <p class="menu_item-new-price">7.190.000 ₫</p>
-                                                            </div> 
-                                                        </a>
-                                                    </li>
+                                                    <?php }?>
                                                 </ul>
                                             </div>
                                         </div>

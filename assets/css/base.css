@@ -394,7 +394,7 @@ html {
     max-height: 4rem;
     overflow: hidden;
     font-weight: 500;
-    color: var(--text-color);
+    color: var(--black-color);
     margin: 0;
     text-transform: uppercase;
 }
@@ -429,7 +429,7 @@ html {
 }
 
 .menu_item-new {
-   margin-bottom: 10px;
+   margin-top: 10px;
 }
 
 .menu_item-new-link {

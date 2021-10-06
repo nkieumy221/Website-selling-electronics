@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/base.css?ver=<?php echo rand(111,999)?>">
     <link rel="stylesheet" href="./assets/css/grid.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
@@ -246,23 +246,51 @@
                         KHUYẾN MÃI HOT
                     </h2>
                     <div class="sale__list row">
+                        <?php
+                            $conn = mysqli_connect("localhost","root","","electronicshop");
+                            $sqlKM = "SELECT * FROM hanghoa LIMIT 4";
+                            
+                            $resultKM = mysqli_query($conn,$sqlKM);
+
+                            while($row = mysqli_fetch_assoc($resultKM))
+                            {
+                            
+                        ?>
                         <div class="col c-3 sale__item">
                             <a href="" class="sale__item-link">
-                                <div class="sale__item-img sale__item-img--bg">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
+                                <div class="sale__item-img">
+                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
                                 <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
+                                    <?= $row['TenSanPham'] ?>
                                 </div>
                                 <div class="sale__item-price">
                                     <div class="sale__item-price-sale">
-                                        31.990.000 ₫
+                                        <?= number_format($row['GiaKM']) ?> đ
                                     </div>
                                     <div class="sale__item-price-origin">
-                                        41.990.000 ₫
+                                        <?= number_format($row['GiaGoc']) ?> đ
                                     </div>
                                 </div>
                                 <div class="sale__item-config mt-16">
+                                    <div class="sale__item-infor">
+                                        <div class="item-infor__detail">
+                                            <i class="fal fa-archive"></i>
+                                            <?= $row['CPU'] ?>
+                                        </div>
+                                        <div class="item-infor__detail">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <?= $row['ManHinh'] ?>
+                                        </div>
+                                        <div class="item-infor__detail">
+                                            <i class="fas fa-microchip"></i>
+                                            <?= $row['RAM'] ?>
+                                        </div>
+                                        <div class="item-infor__detail">
+                                            <i class="far fa-hdd"></i>
+                                            <?= $row['BoNho'] ?>
+                                        </div>
+                                    </div>
                                     <div class="sale__item-pay mt-16">
                                         <img src="./assets/img/vnpay400.jpeg" alt="">
                                         Giảm thêm 5% tối đa 700.000đ
@@ -275,93 +303,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img sale__item-img--bg">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img sale__item-img--bg">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img sale__item-img--bg">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-name ">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -460,102 +402,49 @@
                         ĐIỆN THOẠI GIẢM ĐẾN 30%++
                     </h2>
                     <div class="sale__list row">
-                        <div class="col c-3 sale__item ">
-                            <a href="" class="sale__item-link ">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price mt-16">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        <?php
+                            $conn = mysqli_connect("localhost","root","","electronicshop");
+                            $sqlKM = "SELECT * FROM hanghoa WHERE IDDanhMucLon = 1 LIMIT 8";
+                            
+                            $resultKM = mysqli_query($conn,$sqlKM);
+
+                            while($row = mysqli_fetch_assoc($resultKM))
+                            {
+                            
+                        ?>
                         <div class="col c-3 sale__item">
                             <a href="" class="sale__item-link">
                                 <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
+                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
                                 <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
+                                    <?= $row['TenSanPham'] ?>
                                 </div>
                                 <div class="sale__item-price">
                                     <div class="sale__item-price-sale">
-                                        31.990.000 ₫
+                                        <?= number_format($row['GiaKM']) ?> đ
                                     </div>
                                     <div class="sale__item-price-origin">
-                                        41.990.000 ₫
+                                        <?= number_format($row['GiaGoc']) ?> đ
                                     </div>
                                 </div>
                                 <div class="sale__item-config mt-16">
                                     <div class="sale__item-infor">
                                         <div class="item-infor__detail">
                                             <i class="fal fa-archive"></i>
-                                            A14 Bionic
+                                            <?= $row['CPU'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="fas fa-mobile-alt"></i>
-                                            6.1"
+                                            <?= $row['ManHinh'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="fas fa-microchip"></i>
-                                            4 GB
+                                            <?= $row['RAM'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="far fa-hdd"></i>
-                                            64 GB
+                                            <?= $row['BoNho'] ?>
                                         </div>
                                     </div>
                                     <div class="sale__item-pay mt-16">
@@ -570,337 +459,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -910,102 +469,49 @@
                         LAPTOP GIẢM ĐẾN 15%++
                     </h2>
                     <div class="sale__list row">
-                        <div class="col c-3 sale__item ">
-                            <a href="" class="sale__item-link ">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price mt-16">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        <?php
+                            $conn = mysqli_connect("localhost","root","","electronicshop");
+                            $sqlKM = "SELECT * FROM hanghoa WHERE IDDanhMucLon = 2 LIMIT 8";
+                            
+                            $resultKM = mysqli_query($conn,$sqlKM);
+
+                            while($row = mysqli_fetch_assoc($resultKM))
+                            {
+                            
+                        ?>
                         <div class="col c-3 sale__item">
                             <a href="" class="sale__item-link">
                                 <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
+                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
                                 <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
+                                    <?= $row['TenSanPham'] ?>
                                 </div>
                                 <div class="sale__item-price">
                                     <div class="sale__item-price-sale">
-                                        31.990.000 ₫
+                                        <?= number_format($row['GiaKM']) ?> đ
                                     </div>
                                     <div class="sale__item-price-origin">
-                                        41.990.000 ₫
+                                        <?= number_format($row['GiaGoc']) ?> đ
                                     </div>
                                 </div>
                                 <div class="sale__item-config mt-16">
                                     <div class="sale__item-infor">
                                         <div class="item-infor__detail">
                                             <i class="fal fa-archive"></i>
-                                            A14 Bionic
+                                            <?= $row['CPU'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="fas fa-mobile-alt"></i>
-                                            6.1"
+                                            <?= $row['ManHinh'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="fas fa-microchip"></i>
-                                            4 GB
+                                            <?= $row['RAM'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="far fa-hdd"></i>
-                                            64 GB
+                                            <?= $row['BoNho'] ?>
                                         </div>
                                     </div>
                                     <div class="sale__item-pay mt-16">
@@ -1020,337 +526,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -1360,47 +536,49 @@
                         TABLET GIẢM ĐẾN 10%++
                     </h2>
                     <div class="sale__list row">
-                        <div class="col c-3 sale__item ">
-                            <a href="" class="sale__item-link ">
+                        <?php
+                            $conn = mysqli_connect("localhost","root","","electronicshop");
+                            $sqlKM = "SELECT * FROM hanghoa WHERE IDDanhMucLon = 3 LIMIT 8";
+                            
+                            $resultKM = mysqli_query($conn,$sqlKM);
+
+                            while($row = mysqli_fetch_assoc($resultKM))
+                            {
+                            
+                        ?>
+                        <div class="col c-3 sale__item">
+                            <a href="" class="sale__item-link">
                                 <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
+                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
                                 <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
+                                    <?= $row['TenSanPham'] ?>
                                 </div>
-                                <div class="sale__item-price mt-16">
+                                <div class="sale__item-price">
                                     <div class="sale__item-price-sale">
-                                        31.990.000 ₫
+                                        <?= number_format($row['GiaKM']) ?> đ
                                     </div>
                                     <div class="sale__item-price-origin">
-                                        41.990.000 ₫
+                                        <?= number_format($row['GiaGoc']) ?> đ
                                     </div>
                                 </div>
                                 <div class="sale__item-config mt-16">
                                     <div class="sale__item-infor">
                                         <div class="item-infor__detail">
                                             <i class="fal fa-archive"></i>
-                                            A14 Bionic
+                                            <?= $row['CPU'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="fas fa-mobile-alt"></i>
-                                            6.1"
+                                            <?= $row['ManHinh'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="fas fa-microchip"></i>
-                                            4 GB
+                                            <?= $row['RAM'] ?>
                                         </div>
                                         <div class="item-infor__detail">
                                             <i class="far fa-hdd"></i>
-                                            64 GB
+                                            <?= $row['BoNho'] ?>
                                         </div>
                                     </div>
                                     <div class="sale__item-pay mt-16">
@@ -1415,171 +593,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="./assets/img/samsungsale.jpg" alt="" >
-                                </div>
-                                <div class="sale__item-favourite">
-                                    <i class="fas fa-check"></i>
-                                    Yêu thích
-                                </div>
-                                <div class="sale__item-sale-off">
-                                    <span class="sale__item-sale-off-percent">10%</span>
-                                    <span class="sale__item-sale-off-label">GIẢM</span>
-                                </div>
-                                <div class="sale__item-name">
-                                    Samsung Galaxy Z Fold3 5G 256GB
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        31.990.000 ₫
-                                    </div>
-                                    <div class="sale__item-price-origin">
-                                        41.990.000 ₫
-                                    </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            A14 Bionic
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            6.1"
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            4 GB
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            64 GB
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
-                                    </div>
-                                </div>
-                                <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        MUA NGAY
-                                    </div>
-                                </div>
-                            </a>
-                        </div>               
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -1734,101 +748,7 @@
                 </div>
             </div>
         </div>
-
-        <footer class="footer">
-            <div class="grid wide footer__content">
-                <div class="row">
-                    <div class="col l-2-4 m-4 c-6">
-                        <h3 class="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
-                        <ul class="footer__list">
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Trung Tâm Trợ Giúp</a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Shopee Blog</a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Shopee Mall</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="col l-2-4 m-4 c-6">
-                        <h3 class="footer__heading">VỀ SHOPEE</h3>
-                        <ul class="footer__list">
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Giới Thiệu Về Shopee Việt Nam</a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Tuyển Dụng</a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Điều Khoản Shopee</a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Chính Sách Bảo Mật</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col l-2-4 m-4 c-6">
-                        <h3 class="footer__heading">Danh mục sản phẩm</h3>
-                        <ul class="footer__list">
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Làm Đẹp</a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Công Nghệ</a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">Gia đình</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col l-2-4 m-4 c-6">
-                        <h3 class="footer__heading">THEO DÕI CHÚNG TÔI</h3>
-                        <ul class="footer__list">
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">
-                                    <i class="footer-item__icon fab fa-facebook"></i>
-                                    Facebook
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">
-                                    <i class="footer-item__icon fab fa-instagram"></i>
-                                    Instagram
-                                </a>
-                            </li>
-                            <li class="footer-item">
-                                <a href="" class="footer-item__link">
-                                    <i class="footer-item__icon fab fa-linkedin"></i>
-                                    Linkedin
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col l-2-4 m-8 c-12">
-                        <h3 class="footer__heading">TẢI ỨNG DỤNG SHOPEE NGAY THÔI</h3>
-                        <div class="footer__download">
-                            <img src="/assets/img/QR_code.png" class="footer__download-qr" alt="">
-                            <div class="footer__download-apps">
-                                <a href="" class="footer__download-apps-link">                                
-                                    <img src="/assets/img/app_store.png" alt="App store" class="footer__download-img">
-                                </a>
-                                <a href="" class="footer__download-apps-link">                                
-                                    <img src="/assets/img/gg_play.png" alt="Google" class="footer__download-img">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <div class="grid wide">
-                    <p class="footer__text">© 2021 - Bản quyền thuộc về Công ty TNHH See</p>
-                </div>
-            </div>
-        </footer>
+        <?php include('footer.php'); ?>
     </div>
 
     <!-- Modal -->
