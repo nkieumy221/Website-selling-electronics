@@ -210,7 +210,7 @@
     border: 1px solid #dee2e6;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px;   
     padding: 12px;
-    height: 480px;
+    height: 520px;
 }
 
 .sale__item-link:hover {
@@ -218,11 +218,14 @@
     z-index: 1;
     border-radius: 5px;
     transition: all .1s;   
+
 }
 
 .sale__item-link:hover .sale__item-img {
     transform: scale(1.2);
 }
+
+/*   */
 
 .sale__item-img {
     display: flex;
@@ -300,8 +303,7 @@
 }
 
 .sale__item-btn {
-    display: none;
-    justify-content:center
+    display: block;
 }
 
 /* favorite and sale label */

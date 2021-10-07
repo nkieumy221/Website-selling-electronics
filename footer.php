@@ -6,9 +6,6 @@
                 <h3 class="footer__heading">CHĂM SÓC KHÁCH HÀNG</h3>
                 <ul class="footer__list">
                     <li class="footer-item">
-                        <a href="" class="footer-item__link">Giới thiệu về công ty</a>
-                    </li>
-                    <li class="footer-item">
                         <a href="" class="footer-item__link">Trung Tâm Trợ Giúp</a>
                     </li>
                     <li class="footer-item">
@@ -18,15 +15,21 @@
                         <a href="" class="footer-item__link">Kiểm tra hóa đơn điện tử</a>
                     </li>
                     <li class="footer-item">
+                        <a href="" class="footer-item__link">Chính sách bảo mật</a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="" class="footer-item__link">Quy chế hoạt động</a>
+                    </li>
+                    <li class="footer-item">
                         <a href="" class="footer-item__link">Tra cứu thông tin bảo hành</a>
                     </li>
                 </ul>
             </div>
             <div class="col l-2-4 m-4 c-6">
-                <h3 class="footer__heading">VỀ SHOPEE</h3>
+                <h3 class="footer__heading">VỀ CHÚNG TÔI</h3>
                 <ul class="footer__list">
                     <li class="footer-item">
-                        <a href="" class="footer-item__link">Giới Thiệu Về Shopee Việt Nam</a>
+                        <a href="" class="footer-item__link">Giới thiệu về công ty</a>
                     </li>
                     <li class="footer-item">
                         <a href="" class="footer-item__link">Tuyển Dụng</a>
@@ -35,7 +38,7 @@
                         <a href="" class="footer-item__link">Điều Khoản </a>
                     </li>
                     <li class="footer-item">
-                        <a href="" class="footer-item__link">Chính Sách Bảo Mật</a>
+                        <a href="" class="footer-item__link">Tin khuyến mãi </a>
                     </li>
                     <li class="footer-item">
                         <a href="" class="footer-item__link">Tin khuyến mãi</a>
@@ -55,13 +58,22 @@
                 <h3 class="footer__heading">Danh mục sản phẩm</h3>
                 <ul class="footer__list">
                     <li class="footer-item">
-                        <a href="" class="footer-item__link">Làm Đẹp</a>
+                        <a href="" class="footer-item__link">Laptop</a>
                     </li>
                     <li class="footer-item">
-                        <a href="" class="footer-item__link">Công Nghệ</a>
+                        <a href="" class="footer-item__link">Điện thoại</a>
                     </li>
                     <li class="footer-item">
-                        <a href="" class="footer-item__link">Gia đình</a>
+                        <a href="" class="footer-item__link">Tablet</a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="" class="footer-item__link">Phụ kiện</a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="" class="footer-item__link">Đồng hồ</a>
+                    </li>
+                    <li class="footer-item">
+                        <a href="" class="footer-item__link">Khuyến mãi</a>
                     </li>
                 </ul>
             </div>
@@ -89,15 +101,15 @@
                 </ul>
             </div>
             <div class="col l-2-4 m-8 c-12">
-                <h3 class="footer__heading">TẢI ỨNG DỤNG SHOPEE NGAY THÔI</h3>
+                <h3 class="footer__heading">TẢI ỨNG DỤNG NGAY THÔI</h3>
                 <div class="footer__download">
-                    <img src="/assets/img/QR_code.png" class="footer__download-qr" alt="">
+                    <img src="./assets/img/QR_code.png" class="footer__download-qr" alt="">
                     <div class="footer__download-apps">
                         <a href="" class="footer__download-apps-link">                                
-                            <img src="/assets/img/app_store.png" alt="App store" class="footer__download-img">
+                            <img src="./assets/img/app_store.png" alt="App store" class="footer__download-img">
                         </a>
                         <a href="" class="footer__download-apps-link">                                
-                            <img src="/assets/img/gg_play.png" alt="Google" class="footer__download-img">
+                            <img src="./assets/img/gg_play.png" alt="Google" class="footer__download-img">
                         </a>
                     </div>
                 </div>

@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./assets/css/base.css?ver=<?php echo rand(111,999)?>">
+    <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/grid.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <meta http-equiv="refresh" content="5"> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
     <div class="main">
-        <?php include('header.php'); ?>
+        <?php
+            
+            include('header.php'); 
+        ?>
         <div class="app__container">
             <div class="grid wide">
                 <div class="row">
@@ -69,7 +73,7 @@
                             </ul>
 
                             <script>
-                                var slideIndex = 1;
+                                var slideIndex = 0;
                                 showSlides(slideIndex);
                                 
                                 function plusSlides(n) {
@@ -89,12 +93,14 @@
                                   for (i = 0; i < slides.length; i++) {
                                       slides[i].style.display = "none";  
                                   }
+                                  slideIndex++;
+                                  if (slideIndex > slides.length) {slideIndex = 1}   
                                   for (i = 0; i < dots.length; i++) {
                                       dots[i].className = dots[i].className.replace(" banner_slide-title-name--active", "");
                                   }
                                   slides[slideIndex-1].style.display = "block";  
                                   dots[slideIndex-1].className += " banner_slide-title-name--active";
-                                  
+                                  setTimeout(showSlides, 2000);
                                 }
                             </script>
                         </div>
@@ -300,6 +306,9 @@
                                     <div class="btn btn--primary">
                                         MUA NGAY
                                     </div>
+                                    <div class="btn btn--warning">
+                                        GIỎ HÀNG
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -338,13 +347,13 @@
                             <div class=" col c-3">
                                 <div class="sale__content-item">
                                     <div class="sale__content-img">
-                                        <img src="./assets/img/p-s1.png" alt="">
+                                        <img src="./assets/img/desktop-html-img03.jpg" alt="">
                                     </div>
                                     <div class="sale__content-tile">
-                                        <p class="sale__content-name">APPLE</p>
+                                        <p class="sale__content-name">ĐIỆN THOẠI</p>
                                         <p class="sale__content-reduce">
                                             GIẢM ĐẾN
-                                            <span class="sale__content-price"> 20%++</span>
+                                            <span class="sale__content-price"> 30%++</span>
                                         </p>
                                     </div>
                                 </div>
@@ -352,13 +361,13 @@
                             <div class=" col c-3">
                                 <div class="sale__content-item">
                                     <div class="sale__content-img">
-                                        <img src="./assets/img/p-s1.png" alt="">
+                                        <img src="./assets/img/desktop-html-img02.jpg" alt="">
                                     </div>
                                     <div class="sale__content-tile">
-                                        <p class="sale__content-name">APPLE</p>
+                                        <p class="sale__content-name">LAPTOP</p>
                                         <p class="sale__content-reduce">
                                             GIẢM ĐẾN
-                                            <span class="sale__content-price"> 20%++</span>
+                                            <span class="sale__content-price"> 15%++</span>
                                         </p>
                                     </div>
                                 </div>
@@ -366,13 +375,13 @@
                             <div class=" col c-3">
                                 <div class="sale__content-item">
                                     <div class="sale__content-img">
-                                        <img src="./assets/img/p-s1.png" alt="">
+                                        <img src="./assets/img/desktop-html-img01.png" alt="">
                                     </div>
                                     <div class="sale__content-tile">
-                                        <p class="sale__content-name">APPLE</p>
+                                        <p class="sale__content-name">PHỤ KIỆN</p>
                                         <p class="sale__content-reduce">
                                             GIẢM ĐẾN
-                                            <span class="sale__content-price"> 20%++</span>
+                                            <span class="sale__content-price"> 50%++</span>
                                         </p>
                                     </div>
                                 </div>
@@ -456,6 +465,9 @@
                                     <div class="btn btn--primary">
                                         MUA NGAY
                                     </div>
+                                    <div class="btn btn--warning">
+                                        GIỎ HÀNG
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -523,6 +535,9 @@
                                     <div class="btn btn--primary">
                                         MUA NGAY
                                     </div>
+                                    <div class="btn btn--warning">
+                                        GIỎ HÀNG
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -547,7 +562,7 @@
                             
                         ?>
                         <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
+                            <a href='Chitietsanpham.php?id=<?= $row['ID'] ?>' class="sale__item-link">
                                 <div class="sale__item-img">
                                     <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
@@ -589,6 +604,9 @@
                                 <div class="sale__item-btn mt-16">
                                     <div class="btn btn--primary">
                                         MUA NGAY
+                                    </div>
+                                    <div class="btn btn--warning">
+                                        <!-- <a href="addcart.php?item=<?= $row['ID'] ?>" class="btn btn--warning text-white"> -->GIỎ HÀNG<!-- </a> -->
                                     </div>
                                 </div>
                             </a>
