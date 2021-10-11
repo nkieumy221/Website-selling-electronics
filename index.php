@@ -770,16 +770,16 @@
     </div>
 
     <!-- Modal -->
-    <!-- <div class="modal">
+    <div class="modal">
         <div class="modal__overlay"></div>
-        <div class="model__body"> -->
+        <div class="model__body">
 
             <!-- Resgiter form -->
-            <!-- <div class="auth-form">
+            <div id="resgiter-form" class="auth-form">
                 <div class="auth-form__container">
                     <div class="auth-form__header">
-                        <h3 class="auth-form__heading">Đăng kí</h3>
-                        <span class="auth-form__switch-btn">Đăng nhập</span>
+                        <h3 id="btn-register" class="auth-form__heading">Đăng kí</h3>
+                        <span id="btn-login" class="auth-form__switch-btn">Đăng nhập</span>
                     </div>
                     <div class="auth-form__form">
                         <div class="auth-form__group">
@@ -818,10 +818,10 @@
                     </a>
                 </div>
 
-            </div> -->
+            </div>
 
             <!-- Login form -->
-            <!-- <div class="auth-form">
+            <div id="login-form" class="auth-form">
                 <div class="auth-form__container">
                     <div class="auth-form__header">
                         <h3 class="auth-form__heading">Đăng nhập</h3>
@@ -861,8 +861,24 @@
                     </a>
                 </div>
 
-            </div> -->
-       <!--  </div>
-    </div> -->
+            </div>
+
+            <script>
+                var btnRegister = document.getElementById("btn-register")
+                btnRegister.onclick = function () {
+                    document.querySelector(".modal").style.display = 'flex';
+                    document.querySelector("#resgiter-form").style.display = 'block';
+                };
+                
+
+                var btnLogin = document.getElementById("btn-login")
+                btnLogin.onclick = function () {
+                    document.querySelector(".modal").style.display = 'flex';
+                    document.querySelector("#login-form").style.display = 'block';
+                };
+    
+            </script>
+        </div>
+    </div>
 </body>
 </html>
