@@ -281,29 +281,241 @@
 
         <div class="app__container">
             <div class="grid wide">
+                <!-- Direction -->
+                <div class="row sm-gutter app__header">
+                    <span class="title-direct"><a href="index.html">Trang chủ</a></span>
+                    <span class="title-page"> / Điện thoại</span>
+                </div>
+                <!-- Slide banner -->
+                <div class="local">
+                    <div class="row">                
+                        <div class="banner_slide col c-12">
+                            <div class="banner_slide-img">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/1/637686909938218976_F-C1_1200x300.png" alt="banner1" class="mySlides">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/24/637680387364945356_F-C1_1200x300.png" alt="banner1" class="mySlides">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/4/637689670035281931_F-C1_1200x300.png" alt="banner1" class="mySlides">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/15/637698551289929221_F-C1_1200x300.png" alt="banner1" class="mySlides">
+                                <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/15/637698556740753264_F-C1_1200x300.png" alt="banner1" class="mySlides">
+
+                                <div class="local-slide__left " onclick="plusSlides(-1)"><!-- local-slide__none-direct -->
+                                    <i class="local-slide__left-icon fas fa-chevron-left"></i>
+                                </div>
+                                <div class="local-slide__right " onclick="plusSlides(1)">
+                                    <i class="local-slide__left-icon fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                            <ul class="banner_slide-list-title">
+                                <li class="banner_slide-title-name banner_slide-title-name--active"></li>
+                                <li class="banner_slide-title-name "></li>
+                                <li class="banner_slide-title-name"></li>
+                                <li class="banner_slide-title-name"></li>
+                                <li class="banner_slide-title-name"></li>
+                            </ul>
+
+                            <script>
+                                var slideIndex = 0;
+                                showSlides(slideIndex);
+                                
+                                function plusSlides(n) {
+                                  showSlides(slideIndex += n);
+                                }
+                                
+                                function currentSlide(n) {
+                                  showSlides(slideIndex = n);
+                                }
+                                
+                                function showSlides(n) {
+                                  var i;
+                                  var slides = document.getElementsByClassName("mySlides");
+                                  var dots = document.getElementsByClassName("banner_slide-title-name");
+                                  if (n > slides.length) {slideIndex = 1}    
+                                  if (n < 1) {slideIndex = slides.length}
+                                  for (i = 0; i < slides.length; i++) {
+                                      slides[i].style.display = "none";  
+                                  }
+                                  slideIndex++;
+                                  if (slideIndex > slides.length) {slideIndex = 1}   
+                                  for (i = 0; i < dots.length; i++) {
+                                      dots[i].className = dots[i].className.replace(" banner_slide-title-name--active", "");
+                                  }
+                                  slides[slideIndex-1].style.display = "block";  
+                                  dots[slideIndex-1].className += " banner_slide-title-name--active";
+                                  setTimeout(showSlides, 2000);
+                                }
+                            </script>
+                        </div>
+
+                    </div>
+                </div>
                 <div class="row sm-gutter app__content">
                     <div class="col l-3 m-0 c-0">
                         <nav class="category">
-                            <h3 class="category__heading">
-                                <i class="category__heading-icon fas fa-list"></i>
-                                Danh mục
-                            </h3>
-                            <ul class="category-list">
-                                <li class="category-item category-item--active">
-                                    <a href="" class="category-item__link">Trang điểm mặt</a>
-                                </li>
-                                <li class="category-item">
-                                    <a href="" class="category-item__link">Trang điểm môi</a>
-                                </li>
-                                <li class="category-item">
-                                    <a href="" class="category-item__link">Trang điểm mắt</a>
-                                </li>
-                            </ul>
+                            <div class="category_menu">
+                                <h3 class="category__heading">
+                                    Hãng sản xuất
+                                </h3>
+                                <ul class="category-list row">
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Tất cả</span>
+                                    </li>
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Apple</span>
+                                    </li>
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">SamSung</span>
+                                    </li>
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">SamSung</span>
+                                    </li>
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">SamSung</span>
+                                    </li>
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">SamSung</span>
+                                    </li>
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">SamSung</span>
+                                    </li>
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">SamSung</span>
+                                    </li>
+                                    <li class="category-item l-6">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">SamSung</span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="category_menu">
+                                <h3 class="category__heading">
+                                    Mức giá
+                                </h3>
+                                <ul class="category-list row">
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Tất cả</span>
+                                    </li>
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Dưới 2 triệu</span>
+                                    </li>
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Từ 2 - 4 triệu</span>
+                                    </li>
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Từ 4 - 7 triệu</span>
+                                    </li>
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Từ 7 - 13 triệu</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="category_menu">
+                                <h3 class="category__heading">
+                                    Mức giá
+                                </h3>
+                                <ul class="category-list row">
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Tất cả</span>
+                                    </li>
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Dưới 2 triệu</span>
+                                    </li>
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Từ 2 - 4 triệu</span>
+                                    </li>
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Từ 4 - 7 triệu</span>
+                                    </li>
+                                    <li class="category-item l-12">
+                                        <input type="checkbox" class="category-item__check">
+                                        <span class="category-item__name">Từ 7 - 13 triệu</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </nav>
                     </div>
                     <div class="col l-9 m-12 c-12">
+                        <!-- Category img's item -->
+                        <div class="category-img">
+                            <div class="category-img__name">
+                                <h1>Điện thoại <span>(321 sản phẩm)</span></h1>
+                            </div>
+                            <ul class="category-img__list">                
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
+                                    </a>
+                                </li>
+                                <li class="category-img__item">
+                                    <a href="" class="category-img__link">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
+                                    </a>
+                                </li>
+                            </ul> 
+                        </div>
                         <!-- Home filter -->
-                        <div class="home-filter hide-on-mobile-tablet">
+                        <div class="home-filter hide-on-mobile-tablet mt-16">
                             <span class="home-filter__label">Sắp xếp theo</span>
                             <button class="home-filter__btn btn">Phố biến</button>
                             <button class="home-filter__btn btn btn--primary">Mới nhất</button>
@@ -335,7 +547,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- Mobile category -->
                         <nav class="mobile-category">
                             <ul class="mobile-category__list">
                                 <li class="mobile-category__item">
@@ -366,404 +578,213 @@
                             </ul>
                         </nav>
                         <!-- Home product -->
-                        <div class="home-product">
-                            <div class="grid wide">
-                                <div class="row sm-gutter">
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/338cb9516034fd895d46e1afe6d4f5db_tn);"></div>
-                                            <h4 class="home-product-item__name">Headphone Bluetooth tai nghe tai thỏ (Shoppe mình mới mở Follow mình nhé)</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">350.000đ</span>
-                                                <span class="home-product-item__price-curent">199.000đ</span>
-                                            </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
-                                            </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
-                                            </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                         <div class="sale__list row mt-16">
+                       
+                            <div class="col c-4 sale__item">
+                                <a href="" class="sale__item-link">
+                                    <div class="sale__item-img">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg" alt="" >
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/4f197c4c3e0038d2aa9b4be80738b8d8_tn);"></div>
-                                            <h4 class="home-product-item__name">Bánh Đài Loan mix các loại bánh ngọt</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">5.000đ</span>
-                                                <span class="home-product-item__price-curent">1.000đ</span>
-                                            </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">8.548 đã bán</span>
-                                            </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Đài Loan</span>
-                                                <span class="home-product-item__origin-name">Hồ Chí Minh</span>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
-                                            </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">50%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                    <div class="sale__item-name">
+                                        iPhone 13 Pro Max 128GB
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/f5b2bce24e15f4a82d8bb48e2cc97560);"></div>
-                                            <h4 class="home-product-item__name">Máy cạo râu khô và ướt Philipin S545339 - Sạc nhanh - Hàng chính hãng</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">2.567.000đ</span>
-                                                <span class="home-product-item__price-curent">2.215.000đ</span>
-                                            </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
-                                            </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
-                                            </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            33.990.000 ₫
+                                        </div>
+                                        <div class="sale__item-price-origin">
+                                            35.000.500đ
+                                        </div>
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/93aaec6f65969d992a165532b4b31f85);"></div>
-                                            <h4 class="home-product-item__name">Headphone Bluetooth tai nghe tai thỏ (Shoppe mình mới mở Follow mình nhé)</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">350.000đ</span>
-                                                <span class="home-product-item__price-curent">199.000đ</span>
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                A15 Bionic
                                             </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                6.7"
                                             </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                6 GB
                                             </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                128 GB
                                             </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpeg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/ee3711a7c5ad6cbba195fa00ec39fe0b);"></div>
-                                            <h4 class="home-product-item__name">Headphone Bluetooth tai nghe tai thỏ (Shoppe mình mới mở Follow mình nhé)</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">350.000đ</span>
-                                                <span class="home-product-item__price-curent">199.000đ</span>
-                                            </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
-                                            </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
-                                            </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                    <div class="sale__item-btn mt-16">
+                                        <div class="btn btn--primary">
+                                            MUA NGAY
+                                        </div>
+                                        <div class="btn btn--warning">
+                                            GIỎ HÀNG
+                                        </div>
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/b293aafcb465223fe4483601862eb101);"></div>
-                                            <h4 class="home-product-item__name">Headphone Bluetooth tai nghe tai thỏ (Shoppe mình mới mở Follow mình nhé)</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">350.000đ</span>
-                                                <span class="home-product-item__price-curent">199.000đ</span>
-                                            </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
-                                            </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
-                                            </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                </a>
+                            </div>
+                            <div class="col c-4 sale__item">
+                                <a href="" class="sale__item-link">
+                                    <div class="sale__item-img">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg" alt="" >
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/874ec20325154aa794dd0670a7bf24b6);"></div>
-                                            <h4 class="home-product-item__name">Headphone Bluetooth tai nghe tai thỏ (Shoppe mình mới mở Follow mình nhé)</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">350.000đ</span>
-                                                <span class="home-product-item__price-curent">199.000đ</span>
-                                            </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
-                                            </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
-                                            </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                    <div class="sale__item-name">
+                                        iPhone 13 Pro Max 128GB
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/2bc183e937f245a14eb3a7f854dd192a);"></div>
-                                            <h4 class="home-product-item__name">Headphone Bluetooth tai nghe tai thỏ (Shoppe mình mới mở Follow mình nhé)</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">350.000đ</span>
-                                                <span class="home-product-item__price-curent">199.000đ</span>
-                                            </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
-                                            </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
-                                            </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            33.990.000 ₫
+                                        </div>
+                                        <div class="sale__item-price-origin">
+                                            35.000.500đ
+                                        </div>
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/2f0c928e1b9d797478b7fbe0abad91ee);"></div>
-                                            <h4 class="home-product-item__name">Headphone Bluetooth tai nghe tai thỏ (Shoppe mình mới mở Follow mình nhé)</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">350.000đ</span>
-                                                <span class="home-product-item__price-curent">199.000đ</span>
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                A15 Bionic
                                             </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                6.7"
                                             </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                6 GB
                                             </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                128 GB
                                             </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpeg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
                                     </div>
-                                    <div class="col l-4 m-4 c-6">
-                                        <!-- Product item -->
-                                        <a class="home-product-item" href="">
-                                            <div class="home-product-item__img" style="background-image: url(https://cf.shopee.vn/file/6da93ea0c449c8a6cd07ef485a9241bc);"></div>
-                                            <h4 class="home-product-item__name">Headphone Bluetooth tai nghe tai thỏ (Shoppe mình mới mở Follow mình nhé)</h4>
-                                            <div class="home-product-item__price">
-                                                <span class="home-product-item__price-old">350.000đ</span>
-                                                <span class="home-product-item__price-curent">199.000đ</span>
-                                            </div>
-                                            <div class="home-product-item__action">
-                                                <span class="home-product-item__like home-product-item__like--liked">
-                                                    <i class="home-product-item__like-icon-empty far fa-heart"></i>
-                                                    <i class="home-product-item__like-icon-fill fas fa-heart"></i>
-                                                </span>
-                                                <div class="home-product-item__rating">
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="home-product-item__rating--gold fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="home-product-item__sold">88 đã bán</span>
-                                            </div>
-                                            <div class="home-product-item__origin">
-                                                <span class="home-product-item__brand">Whoo</span>
-                                                <span class="home-product-item__origin-name">Trung Quốc</span>
-                                            </div>
-
-                                            <div class="home-product-item__favourite">
-                                                <i class="fas fa-check"></i>
-                                                Yêu thích
-                                            </div>
-                                            <div class="home-product-item__sale-off">
-                                                <span class="home-product-item__sale-off-percent">10%</span>
-                                                <span class="home-product-item__sale-off-label">GIẢM</span>
-                                        
-                                            </div>
-                                        </a>
+                                    <div class="sale__item-btn mt-16">
+                                        <div class="btn btn--primary">
+                                            MUA NGAY
+                                        </div>
+                                        <div class="btn btn--warning">
+                                            GIỎ HÀNG
+                                        </div>
                                     </div>
-
-                                </div>
+                                </a>
+                            </div>
+                            <div class="col c-4 sale__item">
+                                <a href="" class="sale__item-link">
+                                    <div class="sale__item-img">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg" alt="" >
+                                    </div>
+                                    <div class="sale__item-name">
+                                        iPhone 13 Pro Max 128GBiPhone 13 Pro Max 128GBiPhone 13 Pro Max 128GB
+                                    </div>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            33.990.000 ₫
+                                        </div>
+                                        <div class="sale__item-price-origin">
+                                            35.000.500đ
+                                        </div>
+                                    </div>
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                A15 Bionic
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                6.7"
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                6 GB
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                128 GB
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                A15 Bionic
+                                            </div>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpeg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
+                                    </div>
+                                    <div class="sale__item-btn mt-16">
+                                        <div class="btn btn--primary">
+                                            MUA NGAY
+                                        </div>
+                                        <div class="btn btn--warning">
+                                            GIỎ HÀNG
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col c-4 sale__item">
+                                <a href="" class="sale__item-link">
+                                    <div class="sale__item-img">
+                                        <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg" alt="" >
+                                    </div>
+                                    <div class="sale__item-name">
+                                        iPhone 13 Pro Max 128GB
+                                    </div>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            33.990.000 ₫
+                                        </div>
+                                        <div class="sale__item-price-origin">
+                                            35.000.500đ
+                                        </div>
+                                    </div>
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                A15 Bionic
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                6.7"
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                6 GB
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                128 GB
+                                            </div>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpeg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
+                                    </div>
+                                    <div class="sale__item-btn mt-16">
+                                        <div class="btn btn--primary">
+                                            MUA NGAY
+                                        </div>
+                                        <div class="btn btn--warning">
+                                            GIỎ HÀNG
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-
                          <!-- Pagination -->
                         <ul class="pagination">
                             <li class="pagination-item">
@@ -912,101 +933,5 @@
             </div>
         </footer>
     </div>
-
-    <!-- Modal -->
-    <!-- <div class="modal">
-        <div class="modal__overlay"></div>
-        <div class="model__body"> -->
-
-            <!-- Resgiter form -->
-            <!-- <div class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <h3 class="auth-form__heading">Đăng kí</h3>
-                        <span class="auth-form__switch-btn">Đăng nhập</span>
-                    </div>
-                    <div class="auth-form__form">
-                        <div class="auth-form__group">
-                            <input type="text" class="auth-form-input" placeholder="Email của bạn">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Mật khẩu">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Nhập lại mật khẩu">
-                        </div>
-                    </div>
-
-                    <div class="auth-form__aside">
-                        <p class="auth-form__policy-text">
-                            Bằng việc đăng kí, bạn đã đồng ý với các điều khoản Shop về
-                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ </a> &
-                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
-                        </p>
-                    </div>
-
-                    <div class="auth-form__controls">
-                        <button class="btn auth-form__control-back btn--normal">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG KÝ</button>
-                    </div>    
-                </div>
-
-                <div class="auth-form__socicals">
-                    <a href="" class="auth-form__socical-facebook btn btn--size-s btn--with-icon ">
-                        <i class="fab fa-facebook-square  auth-form__socical-icon"></i>
-                        <span class="auth-form__socical-title">Kết nối với facebook</span>
-                    </a>
-                    <a href="" class="auth-form__socical-google btn btn--size-s btn--with-icon">
-                        <i class="fab fa-google auth-form__socical-icon"></i>
-                        <span class="auth-form__socical-title">Kết nối với Google</span>
-                    </a>
-                </div>
-
-            </div> -->
-
-            <!-- Login form -->
-            <!-- <div class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <h3 class="auth-form__heading">Đăng nhập</h3>
-                        <span class="auth-form__switch-btn">Đăng kí</span>
-                    </div>
-                    <div class="auth-form__form">
-                        <div class="auth-form__group">
-                            <input type="text" class="auth-form-input" placeholder="Email của bạn">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Mật khẩu">
-                        </div>
-                    </div>
-
-                    <div class="auth-form__aside">
-                        <div class="auth-form__help">
-                            <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
-                            <span class="auth-form__help-separate"></span>
-                            <a href="" class="auth-form__help-link ">Cần trợ giúp ?</a>
-                        </div>
-                    </div>
-
-                    <div class="auth-form__controls">
-                        <button class="btn auth-form__control-back btn--normal">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG NHẬP</button>
-                    </div>    
-                </div>
-
-                <div class="auth-form__socicals">
-                    <a href="" class="auth-form__socical-facebook btn btn--size-s btn--with-icon ">
-                        <i class="fab fa-facebook-square  auth-form__socical-icon"></i>
-                        <span class="auth-form__socical-title">Kết nối với facebook</span>
-                    </a>
-                    <a href="" class="auth-form__socical-google btn btn--size-s btn--with-icon">
-                        <i class="fab fa-google auth-form__socical-icon"></i>
-                        <span class="auth-form__socical-title">Kết nối với Google</span>
-                    </a>
-                </div>
-
-            </div> -->
-       <!--  </div>
-    </div> -->
 </body>
 </html>

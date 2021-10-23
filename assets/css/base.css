@@ -61,7 +61,7 @@ html {
     right: 0;
     left: 0;
     bottom: 0;
-   
+    z-index: 2;
     animation: fadeIn linear 0.1s;
     display: none;
 }
@@ -71,6 +71,7 @@ html {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
 }
 
 .model__body{
@@ -78,7 +79,7 @@ html {
     --growth-to : 1;
     margin: auto;
     position: relative;
-    z-index: 1;
+    z-index: 5;
     border-radius: 5px;
     animation: growth linear 0.1s;
 }

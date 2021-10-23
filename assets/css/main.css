@@ -255,7 +255,7 @@
     -webkit-line-clamp: 2;
     text-overflow: ellipsis;
     overflow: hidden;
-
+    height: 36px;
 }
 
 .sale__item-price {
@@ -310,6 +310,10 @@
 }
 
 .sale__item-btn {
+    display: none;
+}
+
+.sale__item-link:hover .sale__item-btn {
     display: block;
 }
 

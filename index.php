@@ -19,7 +19,6 @@
 <body>
     <div class="main">
         <?php
-            
             include('header.php'); 
         ?>
         <div class="app__container">
@@ -769,116 +768,6 @@
         <?php include('footer.php'); ?>
     </div>
 
-    <!-- Modal -->
-    <div class="modal">
-        <div class="modal__overlay"></div>
-        <div class="model__body">
-
-            <!-- Resgiter form -->
-            <div id="resgiter-form" class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <h3 id="btn-register" class="auth-form__heading">Đăng kí</h3>
-                        <span id="btn-login" class="auth-form__switch-btn">Đăng nhập</span>
-                    </div>
-                    <div class="auth-form__form">
-                        <div class="auth-form__group">
-                            <input type="text" class="auth-form-input" placeholder="Email của bạn">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Mật khẩu">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Nhập lại mật khẩu">
-                        </div>
-                    </div>
-
-                    <div class="auth-form__aside">
-                        <p class="auth-form__policy-text">
-                            Bằng việc đăng kí, bạn đã đồng ý với các điều khoản Shop về
-                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ </a> &
-                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
-                        </p>
-                    </div>
-
-                    <div class="auth-form__controls">
-                        <button class="btn auth-form__control-back btn--normal">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG KÝ</button>
-                    </div>    
-                </div>
-
-                <div class="auth-form__socicals">
-                    <a href="" class="auth-form__socical-facebook btn btn--size-s btn--with-icon ">
-                        <i class="fab fa-facebook-square  auth-form__socical-icon"></i>
-                        <span class="auth-form__socical-title">Kết nối với facebook</span>
-                    </a>
-                    <a href="" class="auth-form__socical-google btn btn--size-s btn--with-icon">
-                        <i class="fab fa-google auth-form__socical-icon"></i>
-                        <span class="auth-form__socical-title">Kết nối với Google</span>
-                    </a>
-                </div>
-
-            </div>
-
-            <!-- Login form -->
-            <div id="login-form" class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <h3 class="auth-form__heading">Đăng nhập</h3>
-                        <span class="auth-form__switch-btn">Đăng kí</span>
-                    </div>
-                    <div class="auth-form__form">
-                        <div class="auth-form__group">
-                            <input type="text" class="auth-form-input" placeholder="Email của bạn">
-                        </div>
-                        <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Mật khẩu">
-                        </div>
-                    </div>
-
-                    <div class="auth-form__aside">
-                        <div class="auth-form__help">
-                            <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
-                            <span class="auth-form__help-separate"></span>
-                            <a href="" class="auth-form__help-link ">Cần trợ giúp ?</a>
-                        </div>
-                    </div>
-
-                    <div class="auth-form__controls">
-                        <button class="btn auth-form__control-back btn--normal">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG NHẬP</button>
-                    </div>    
-                </div>
-
-                <div class="auth-form__socicals">
-                    <a href="" class="auth-form__socical-facebook btn btn--size-s btn--with-icon ">
-                        <i class="fab fa-facebook-square  auth-form__socical-icon"></i>
-                        <span class="auth-form__socical-title">Kết nối với facebook</span>
-                    </a>
-                    <a href="" class="auth-form__socical-google btn btn--size-s btn--with-icon">
-                        <i class="fab fa-google auth-form__socical-icon"></i>
-                        <span class="auth-form__socical-title">Kết nối với Google</span>
-                    </a>
-                </div>
-
-            </div>
-
-            <script>
-                var btnRegister = document.getElementById("btn-register")
-                btnRegister.onclick = function () {
-                    document.querySelector(".modal").style.display = 'flex';
-                    document.querySelector("#resgiter-form").style.display = 'block';
-                };
-                
-
-                var btnLogin = document.getElementById("btn-login")
-                btnLogin.onclick = function () {
-                    document.querySelector(".modal").style.display = 'flex';
-                    document.querySelector("#login-form").style.display = 'block';
-                };
     
-            </script>
-        </div>
-    </div>
 </body>
 </html>
