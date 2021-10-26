@@ -106,7 +106,7 @@
 .product__sale-link {
     margin-left: 5px;
     text-decoration: none;
-    color: #0168fa;
+    color :var(--link-color);
 }
 
 .product__intro-footer {
@@ -254,6 +254,7 @@
 .product__description-header {
     text-align: center;
     color: black;
+
 }
 
 .product__description-content img{
@@ -275,6 +276,9 @@
 
 .product__recomment-title {
     color : black;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
 }
 
 .product__recomment-list {
@@ -363,4 +367,71 @@
 .rate__process-quatity {
     font-size: 1.3rem;
     color: #99a2aa;
+}
+
+/* Comment */
+.form-cmt {
+    display: flex;
+    position: relative;
+}
+
+.cmt-input {
+    flex: 1;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.cmt-btn {
+    margin-top: 22px;
+    position:absolute;
+    right: 20px;
+}
+
+/* User comment */
+
+.user-cmt__form {
+    display: flex;
+}
+
+.user-cmt__img {
+    background-color: #ccc;
+    border-radius: 50%;
+    width: 80px;
+    margin-right: 16px;
+}
+
+.name-text {
+    font-weight: 500;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+.user-cmt__time {
+    color: rgb(184, 183, 183);
+    font-size:1.3rem;
+}
+
+.reply-btn {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 1.2rem;
+}
+
+.reply-form {
+    margin-left: 100px;
+    margin-top: 20px;
+    border-left: 3px solid #ccc;
+    padding-left: 10px;
+}
+
+.admin-tag {
+    background-color: var(--primary-color);
+    font-size: 1rem;
+    color: white;
+    padding: 2px 5px;
+    margin: 0 2px;
+    border-radius: 3px;
 }

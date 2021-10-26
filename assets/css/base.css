@@ -6,6 +6,7 @@
     --boder-color : #dbdbdb;
     --star-gold-color : #ffce3d;
     --header-height: 120px;
+    --link-color: #0168fa;
     --navbar-height: 34px;
     --header-with-search-height : calc(var(--header-height) - var(--navbar-height));
     --header-sort-bar-header :46px;
