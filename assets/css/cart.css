@@ -1,0 +1,42 @@
+.app__container {
+    background-color: #ccc;
+    overflow: hidden;
+}
+/* Category header */
+.products__list {
+    width: 100%;
+}
+.category__header {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.6rem;
+    
+}
+.category__header-name {
+    padding: 16px 0;
+}
+
+.product__infor {
+
+}
+
+.product__img {
+
+}
+
+.product__name {
+
+}
+
+.product__price {
+
+}
+
+.product__quatity {
+
+}
+
+.product__total {
+
+}
