@@ -53,6 +53,16 @@
     max-width: 16.66667%;
 }
 
+.c-2-5 {
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+.c-60 {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+
 .c-1-2 {
     flex: 0 0 10%;
     max-width: 10%;

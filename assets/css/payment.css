@@ -1,0 +1,162 @@
+.main {
+    height: 100%;    
+}
+.app__container {
+    background-color: #f5f5f5;
+    overflow: hidden;
+    height: 100%;    
+}
+
+ul {
+    padding-left: 0;
+}
+/* Progress bar */
+.progress__payment {
+    display: flex;
+    justify-content:center;
+    margin-bottom: 100px;
+}
+
+.progress__step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.progress__step-number {
+    background-color: #c7c6c6;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 1.4em;
+    color: white;
+    font-weight: 500;
+}
+
+.progress__step-number--active {
+    background-color: var(--primary-color);
+}
+
+.progress__step-name {
+    font-size: 1.4em;
+    width: 186px;
+    position: absolute;
+    left:  -80px;
+    top: calc(100% + 10px);
+    padding: 8px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.progress__bar {
+    width: 300px;
+    height: 10px;
+    background-color: #dbdbdb;
+    border-radius: 5px;
+    margin: 0 2px;
+}
+
+.progress_bar--active {
+    background-color: var(--primary-color);
+}
+
+/* Choose payment */
+.choose__table {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.choose__list {
+    background-color: white;
+    list-style: none;
+    box-shadow: 0 0 3px 0 #dee2e6;
+    border-radius: 5px;
+    padding: 20px 100px 50px;
+}
+
+.choose__title {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.option {
+    margin: 30px;
+    padding: 15px;
+    box-shadow: 0 0 3px 0 #b6b6b6;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.option:hover .option__link{
+    color: var(--primary-color);
+}
+
+.option__link {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.option__img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.option__name {
+    font-size: 1.6rem;
+}
+
+
+/* User infor  */
+.user__infor {
+    background-color: white;
+    overflow: hidden;
+}
+
+.user__infor-list {
+    list-style: none;
+}
+
+.user__infor-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    padding: 10px;
+}
+
+.user__title {
+    font-weight: 500;
+}
+
+.user__detail {
+
+}
+
+/* Order Success */
+.notify {
+    text-align: center;
+}
+
+
+.notify__success-icon,
+.notify__success {
+    font-weight: 500;
+    font-size: 3rem;
+    line-height: 3.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.return-home-btn {
+    display: block;
+    text-decoration: none;
+    color: #0059ff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 50px;
+}

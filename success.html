@@ -7,6 +7,7 @@
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/cart.css">
     <link rel="stylesheet" href="./assets/css/payment.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,48 +30,35 @@
                         <div class="progress__step-name">
                             Phương thức thanh toán
                         </div>
-                        <div class="progress__bar"></div>
+                        <div class="progress__bar progress_bar--active"></div>
                     </div>
                     <div class="progress__step">
-                        <div class="progress__step-number">2</div>
-                        <div class="progress__step-name">
+                        <div class="progress__step-number progress__step-number--active">2</div>
+                        <div class="progress__step-name ">
                             Thông tin đơn hàng
                         </div>
-                        <div class="progress__bar"></div>
+                        <div class="progress__bar progress_bar--active"></div>
                     </div>
                     <div class="progress__step">
-                        <div class="progress__step-number">3</div>
-                        <div class="progress__step-name">
+                        <div class="progress__step-number progress__step-number--active">3</div>
+                        <div class="progress__step-name ">
                             Hoàn thành
                         </div>
                     </div>
                 </div>
-
-                <div class="choose__table mt-32">
-                    <ul class="choose__list">
-                        <li class="choose__title">
-                            <h1>Chọn phương thức thanh toán</h1>
-                        </li>
-                        <li class="option">
-                            <a href="" class="option__link">
-                                <img src="./assets/img/vnpay400.jpg" class="option__img" alt="">
-                                <div class="option__name">
-                                    Thanh toán bằng VNPAY
-                                </div>
-                            </a>
-                        </li>
-                        <li class="option">
-                            <a href="" class="option__link">
-                                <img src="./assets/img/paycash.jpg" class="option__img" alt="">
-                                <div class="option__name">
-                                    Thanh toán khi nhận hàng
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="notify">
+                    <div class="notify__success-icon">
+                        <i class="far fa-check-circle"></i>
+                    </div>
+                    <div class="notify__success">
+                        Đặt hàng thành công
+                    </div>
+                    <a href="" class="return-home-btn">
+                        Trở về trang chủ
+                    </a>
                 </div>
-                
-            </div>
+        
+            </div>        
         </div>
     </div>
 </body>

@@ -23,6 +23,10 @@ html {
     box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+}
+
 .text-bold {
     font-weight: 400 !important;
 }
@@ -132,6 +136,11 @@ html {
 .btn.btn--border {
     border: 1px solid #c3c3c3;
     border-radius: 5px;
+}
+
+.btn a {
+    text-decoration: none;
+    color: #fff;
 }
 
 /* Selection */
