@@ -1,0 +1,88 @@
+/* html {
+    height: 100%;
+    background: url("../img/background.jpg") 0 0 / cover no-repeat;
+    opacity: 0.7;
+} */
+
+.container {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.25);
+}
+
+.form__login {
+    display: block;
+    background-color: rgb(255, 255, 255, 0.5);
+    z-index: 99;
+    padding: 30px 50px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.form__icon {
+    font-size: 6rem;
+    position: absolute;
+    bottom: calc(100% - 40px);
+    left: 40%;
+    background-color: #00274D;
+    border-radius: 50%;
+    padding: 20px 25px;
+    color: white;
+}
+
+.form__title {
+    padding: 40px 0 30px;
+    color: var(--text-color);
+}
+
+/* Input form */
+.input-icons i {
+    position: absolute;
+}
+  
+.input-icons {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 5px;
+    overflow: hidden;
+    
+}
+  
+.icon {
+    padding: 16px;
+    color: var(--text-color);
+    font-size: 2rem;
+    text-align: center;
+}
+  
+.input-field {
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
+.login__btn {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-login a {
+    color: var(--text-color) !important;
+}
