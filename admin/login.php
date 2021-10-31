@@ -1,3 +1,13 @@
+<?php
+    include('../classes/adminlogin.php');
+
+    $class = new adminLogin();
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $adminUser = $_POST['adminUser'];
+        $adminPassword = md5($_POST['adminPassword']);
+        $login_check = $class->login_admin($adminUser, $adminPassword);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +27,7 @@
 <body>
     <div class="main">
         <div class="container">
-            <form action="" class="form__login">
+            <form action="login.php" method="post" class="form__login">
                 <div class="form__icon">
                     <i class="far fa-user"></i>
                 </div>
@@ -28,18 +38,29 @@
                     <i class="fa fa-user icon"></i>
                     <input class="input-field" 
                            type="text" 
-                           placeholder="Username">
+                           placeholder="Username"
+                           name="adminUser"
+                           required="">
                 </div>
                 <div class="input-icons">
                     <i class="fas fa-unlock-alt icon"></i>
                     <input class="input-field" 
-                           type="text" 
-                           placeholder="Password" >
+                           type="password" 
+                           placeholder="Password"
+                           name="adminPassword"
+                           required="" >
                 </div>
                 <div class="login__btn">
-                    <button class="btn btn-login mt-16">
-                        <a href="">Đăng nhập</a> 
-                    </button>
+                    <?php 
+                        if(isset($login_check)){
+                            echo $login_check;
+                            echo $adminUser;
+                            echo $adminPassword;
+                        }
+                    ?>
+                </div>
+                <div class="login__btn">
+                    <input type="submit" value="Đăng nhập" class="btn btn-login mt-16">
                 </div>
             </form>
         </div>

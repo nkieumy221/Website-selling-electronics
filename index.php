@@ -297,7 +297,7 @@
                                         </div>
                                     </div>
                                     <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
+                                        <img src="./assets/img/vnpay400.jpg" alt="">
                                         Giảm thêm 5% tối đa 700.000đ
                                     </div>
                                 </div>
@@ -456,7 +456,7 @@
                                         </div>
                                     </div>
                                     <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
+                                        <img src="./assets/img/vnpay400.jpg" alt="">
                                         Giảm thêm 5% tối đa 700.000đ
                                     </div>
                                 </div>
@@ -526,7 +526,7 @@
                                         </div>
                                     </div>
                                     <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
+                                        <img src="./assets/img/vnpay400.jpg" alt="">
                                         Giảm thêm 5% tối đa 700.000đ
                                     </div>
                                 </div>
@@ -596,7 +596,7 @@
                                         </div>
                                     </div>
                                     <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpeg" alt="">
+                                        <img src="./assets/img/vnpay400.jpg" alt="">
                                         Giảm thêm 5% tối đa 700.000đ
                                     </div>
                                 </div>
