@@ -243,7 +243,7 @@ body {
 
 .header {
     height: var(--header-height);
-    background-image: linear-gradient(0,#FF582E,#F63728) ;
+    background-color: var(--primary-color);
 }
 
 .header .navbar {
