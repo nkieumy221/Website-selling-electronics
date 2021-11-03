@@ -55,7 +55,7 @@ body {
     width: 250px;
     display: flex;
     justify-content: center;
-    background: #2a3042;
+    background: #d3d3d3;
 }
 
 .header__logo-img {
@@ -114,7 +114,7 @@ body {
 .slider__bar {
     width: 250px;
     z-index: 1001;
-    background: #2a3042;
+    background: #d3d3d3;
     bottom: 0;
     margin-top: 0;
     position: fixed;
@@ -140,8 +140,19 @@ body {
     padding: 15px 0 15px 20px ;
 }    
 
+.slider__item-link i {
+    font-size: 1.8rem;
+    margin-right: 10px;
+}
+
 .slider__item-link--active {
     color: white;
+}
+
+.slider__list-child {
+    list-style: none;
+
+    height: 100%;
 }
 
 .page_content {
