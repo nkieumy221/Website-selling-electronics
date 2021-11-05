@@ -10,31 +10,17 @@
 <body>
     <div class="slider__bar">           
         <ul class="slider__menu">
-            <li class="slider__item">
-                <a href="" class="slider__item-link slider__item-link--active" >
-                    <i class="far fa-window-maximize"></i>
-                    Tổng quan
-                </a>
-            </li>
             <li class="silder__item">
-                <a href="#expe1" class="slider__item-link" id="attach_box">
+                <a href="./listCategory.php" class="slider__item-link" id="attach_box">
                     <i class="far fa-server"></i>
                     Quản lý danh mục
                 </a>
-                <ul class="slider__list-child" id="expe1">
-                    <li class="silder__item">
-                        <a href="" class="slider__item-link">
-                            <i class="far fa-plus-square"></i>
-                            Thêm danh mục
-                        </a>
-                    </li>
-                    <li class="silder__item">
-                        <a href="" class="slider__item-link">
-                            <i class="fas fa-th-list"></i>
-                            Danh sách danh mục
-                        </a>
-                    </li>
-                </ul>
+            </li>
+            <li class="slider__item">
+                <a href="./listBrand.php" class="slider__item-link " > <!-- slider__item-link--active -->
+                    <i class="far fa-window-maximize"></i>
+                    Thương hiệu sản phẩm
+                </a>
             </li>
             <li class="silder__item">
                 <a href="" class="slider__item-link">
@@ -52,16 +38,6 @@
                 </a>
             </li>
         </ul>
-        <script type="text/javascript">
-            document.querySelector('.slider__list-child').style.display = 'none';
-            document.querySelector('a[href^="#"]').click() = function() {
-                document.querySelector('.slider__list-child').style.display = 'none';
-                var target = this.attr('href');
-
-                document.querySelector('.slider__list-child'+target).style.display = 'block';
-
-            }
-        </script>
     </div>
 </body>
 </html>

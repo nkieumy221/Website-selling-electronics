@@ -25,6 +25,11 @@ html {
 
 body {
     margin: 0;
+    height: 100%;
+}
+
+.main__content {
+    
 }
 
 .btn-primary {
@@ -159,9 +164,6 @@ body {
     margin-left: 250px;
     overflow: hidden;
     padding: calc(70px + 24px) calc(24px / 2) 60px calc(24px / 2);
-}
-
-.page_content{
-    font-size: 20px;
+    height: 100%;
     background-color: #F8F8FB;
 }

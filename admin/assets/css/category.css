@@ -1,0 +1,56 @@
+/* Input Category */
+.addcat {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.addcat__title {
+    display:inline-block;
+    color: var(--text-color);
+    margin-right: 10px;
+}
+
+.addcat__input {
+    width: 400px;
+}
+
+.addcat__input,
+.addcat__btn {
+    border: 0.5px solid rgb(155, 155, 155);
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+    color: var(--text-color);
+    margin-right: 10px;
+}
+
+.addcat__btn {
+
+}
+
+/* List Categoy */
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+table {
+    width: 100%;
+}
+
+thead {
+    background-color: #96D4D4;
+    font-weight: 500;
+}
+
+td {
+    padding:5px 10px;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    
+}
+
+.cat__link {
+    color: var(--text-color);
+}
