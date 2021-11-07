@@ -1,6 +1,6 @@
 <?php
-    include('../lib/database.php');
-    include('../helpers/format.php');
+    include_once('../lib/database.php');
+    include_once('../helpers/format.php');
 ?>
 <?php 
     class brand
@@ -22,7 +22,7 @@
                 $alert = "<span class='success'>Không được để trống</span>  ";
                 return $alert;
             } else {
-                $query = "INSERT INTO danhmuccon(TenDanhMuc) VALUES ('$brandName')";
+                $query = "INSERT INTO danhmuccon(TenThuongHieu) VALUES ('$brandName')";
                 $result = $this->db->insert($query);
                 if($result && !empty($brandName)) {
                     $alert = "
@@ -61,7 +61,7 @@
                 $alert = "<span class='success'>Không được để trống</span>  ";
                 return $alert;
             } else {
-                $query = "UPDATE danhmuccon SET TenDanhMuc='$brandName' WHERE ID = '$id'";
+                $query = "UPDATE danhmuccon SET TenThuongHieu='$brandName' WHERE ID = '$id'";
                 $result = $this->db->insert($query);
                 if($result && !empty($brandName)) {
                     $alert = "

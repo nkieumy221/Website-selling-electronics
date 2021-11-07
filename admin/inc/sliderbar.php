@@ -23,7 +23,8 @@
                 </a>
             </li>
             <li class="silder__item">
-                <a href="" class="slider__item-link">
+                <a href="./listProduct.php" class="slider__item-link">
+                    <i class="fas fa-mobile"></i>
                     Quản lý hàng hóa
                 </a>
             </li>

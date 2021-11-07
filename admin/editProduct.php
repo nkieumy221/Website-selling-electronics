@@ -2,12 +2,17 @@
 <?php include('../classes/category.php');?>
 <?php include('../classes/product.php');?>
 <?php
-    /* Insert Product */
+    /* update Product */
+    /* show category update */
     $productClass = new product();
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $productName = $_POST['productName'];
-
-        $insertProduct = $productClass->insertProduct($_POST, $_FILES);
+    if (!isset($_GET['productId']) || $_GET['productId'] == NULL) {
+        echo "<script>window.location = 'listProduct.php'</script>";
+    } else {
+        $id = $_GET['productId'];
+    }
+    /* Update category */
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['   productId'])) {
+        $updateProduct = $productClass->updateProduct($_POST, $_FILES, $id);
     }
     
 ?>
@@ -42,11 +47,17 @@
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
                 <?php 
-                    if(isset($insertProduct)) {
-                        echo $insertProduct;
+                    if(isset($updateProduct)) {
+                        echo $updateProduct;
                     }
                 ?>
-                <form action="addProduct.php" method="post" enctype="multipart/form-data">
+                <?php
+                    $getProductById = $productClass->getProductById($id);
+                    if($getProductById){
+                        while($result_product = $getProductById->fetch_assoc()){
+
+                ?>
+                <form action="editProduct.php" method="post" enctype="multipart/form-data">
                     <table class="form">
                     
                         <tr>
@@ -54,7 +65,7 @@
                                 <label>Tên sản phẩm</label>
                             </td>
                             <td>
-                                <input type="text" name="productName" placeholder="Nhập tên sản phẩm..." class="medium" />
+                                <input type="text" name="productName" placeholder="Nhập tên sản phẩm..." value="<?php echo $result_product['TenSanPham']; ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -71,8 +82,12 @@
                                     if($catlist){
                                         while($result = $catlist->fetch_assoc()){
                                     ?>
-
-                                    <option value="<?php echo $result['ID'] ?>"><?php echo $result['TenDanhMuc'] ?></option>
+                                    
+                                        <option 
+                                            if($result['ID'] == $result_product['IDDanhMucLon']){
+                                                echo 'selected';
+                                            }
+                                            value="<?php echo $result['ID'] ?>"><?php echo $result['TenDanhMuc'] ?></option>
 
                                     <?php
                                         }
@@ -113,7 +128,7 @@
                                 <label>Mô tả</label>
                             </td>
                             <td>
-                                <textarea name="product_desc" class="tinymce" id="summernote"></textarea>
+                                <textarea name="product_desc" class="tinymce" id="summernote"><?php echo $result_product['MoTa']; ?></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -121,7 +136,7 @@
                                 <label>Giá gốc</label>
                             </td>
                             <td>
-                                <input type="text" name="priceOrigin" placeholder="Nhập giá gốc..." class="medium" />
+                                <input type="text" name="priceOrigin" value="<?php echo $result_product['GiaGoc']; ?>" placeholder="Nhập giá gốc..." class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -129,7 +144,7 @@
                                 <label>Giá Khuyến Mãi</label>
                             </td>
                             <td>
-                                <input type="text" name="priceSale" placeholder="Nhập giá khuyến mãi..." class="medium" />
+                                <input type="text" name="priceSale" value="<?php echo $result_product['GiaKM']; ?>" placeholder="Nhập giá khuyến mãi..." class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -137,7 +152,7 @@
                                 <label>Cấu hình Ram</label>
                             </td>
                             <td>
-                                <input type="text" name="ram" placeholder="Ram..." class="medium" />
+                                <input type="text" name="ram" placeholder="Ram..." value="<?php echo $result_product['RAM']; ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -145,7 +160,7 @@
                                 <label>Cấu hình Bộ nhớ</label>
                             </td>
                             <td>
-                                <input type="text" name="memo" placeholder="Bộ nhớ..." class="medium" />
+                                <input type="text" name="memo" placeholder="Bộ nhớ..." value="<?php echo $result_product['BoNho']; ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -153,7 +168,7 @@
                                 <label>Cấu hình CPU</label>
                             </td>
                             <td>
-                                <input type="text" name="cpu" placeholder="CPU..." class="medium" />
+                                <input type="text" name="cpu" placeholder="CPU..." value="<?php echo $result_product['CPU']; ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -161,7 +176,7 @@
                                 <label>Màn hình</label>
                             </td>
                             <td>
-                                <input type="text" name="screen" placeholder="Màn hình..." class="medium" />
+                                <input type="text" name="screen" placeholder="Màn hình..." value="<?php echo $result_product['ManHinh']; ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -169,7 +184,7 @@
                                 <label>Số lượng</label>
                             </td>
                             <td>
-                                <input type="text" name="quatity" placeholder="Nhập số lượng" class="medium" />
+                                <input type="text" name="quatity" placeholder="Nhập số lượng" value="<?php echo $result_product['SoLuong']; ?>" class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -177,23 +192,10 @@
                                 <label>Đăng tải hình ảnh</label>
                             </td>
                             <td>
+                                <img src="<?php echo $result_product['HinhAnh'] ?>" alt="" style="width:100px;">
                                 <input type="file" name="image" />
                             </td>
                         </tr>
-                        
-                        <tr>
-                            <td>
-                                <label>Loại sản phẩm</label>
-                            </td>
-                            <td>
-                                <select id="select" name="type">
-                                    <option>Chọn loại sản phẩm</option>
-                                    <option value="0">Không nổi bật</option>
-                                    <option value="1">Nổi bật</option>
-                                </select>
-                            </td>
-                        </tr>
-
                         <tr>
                             <td></td>
                             <td>
@@ -202,6 +204,10 @@
                         </tr>
                     </table>
                 </form>
+                <?php 
+                    }
+                }
+                ?>
             </div>
         </div>
 
@@ -225,7 +231,7 @@
         ['para', ['ul', 'ol', 'paragraph']],
         ['height', ['height']],
         ['table', ['table']],
-        ['insert', ['link', 'picture', 'hr']],
+        ['update', ['link', 'picture', 'hr']],
         //['view', ['fullscreen', 'codeview']],
         ['help', ['help']]
       ],

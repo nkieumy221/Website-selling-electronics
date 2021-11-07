@@ -46,7 +46,7 @@
                 ?>
                 <form method="post" action="" class="addcat-input">
                     <h2 class="addcat__title">Sửa danh mục</h2>
-                    <input type="text" name="brandName" value="<?php echo $result['TenDanhMuc']?>" placeholder="Nhập tên    ..." class="addcat__input">
+                    <input type="text" name="brandName" value="<?php echo $result['TenThuongHieu']?>" placeholder="Nhập tên    ..." class="addcat__input">
                     <input type="submit" name="submit" value="Cập nhật" class="addcat__btn">
                     <?php 
                     if(isset($updateBrand)) {

@@ -79,7 +79,7 @@
                                     <?php echo $i ?>
                                 </td>
                                 <td class="cat__item">
-                                    <?php echo $result['TenDanhMuc'] ?>
+                                    <?php echo $result['TenThuongHieu'] ?>
                                 </td>
                                 <td class="cat__item">
                                     <?php echo $result['IDDanhMuc'] ?>
