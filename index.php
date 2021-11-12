@@ -19,7 +19,7 @@
 <body>
     <div class="main">
         <?php
-            include('header.php'); 
+            include('./inc/header.php'); 
         ?>
         <div class="app__container">
             <div class="grid wide">
@@ -765,7 +765,7 @@
                 </div>
             </div>
         </div>
-        <?php include('footer.php'); ?>
+        <?php include('./inc/footer.php'); ?>
     </div>
 
     

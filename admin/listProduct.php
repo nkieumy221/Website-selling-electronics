@@ -1,5 +1,5 @@
 <?php 
-    include('../classes/product.php');
+    include_once('../classes/product.php');
     include_once('../helpers/format.php');
     ?>
 <?php
@@ -8,9 +8,9 @@
     /* Show list product */
     $showProduct = $productClass->showProduct();
     /* Delete product*/
-    if (isset($_GET['deleteproductId'])) {
-        $id = $_GET['deleteproductId'];
-        //$deleteProduct = $productClass->deleteProduct($id);
+    if (isset($_GET['deleteProductId'])) {
+        $id = $_GET['deleteProductId'];
+        $deleteProduct = $productClass->deleteProduct($id);
     }
     
     
@@ -41,8 +41,8 @@
             <div class="page_content">
                 <a href="addProduct.php">Thêm sản phẩm</a>
                 <?php
-                    if(isset($deleteproduct)){
-                        echo $deleteproduct;
+                    if(isset($deleteProduct)){
+                        echo $deleteProduct;
                     }
                 ?>
                 <div class="cat-list mt-32">

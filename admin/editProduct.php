@@ -11,7 +11,7 @@
         $id = $_GET['productId'];
     }
     /* Update category */
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['   productId'])) {
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $updateProduct = $productClass->updateProduct($_POST, $_FILES, $id);
     }
     
@@ -57,7 +57,7 @@
                         while($result_product = $getProductById->fetch_assoc()){
 
                 ?>
-                <form action="editProduct.php" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data">
                     <table class="form">
                     
                         <tr>
@@ -84,9 +84,9 @@
                                     ?>
                                     
                                         <option 
-                                            if($result['ID'] == $result_product['IDDanhMucLon']){
+                                            <?php if($result['ID'] == $result_product['IDDanhMucLon']){
                                                 echo 'selected';
-                                            }
+                                            } ?>
                                             value="<?php echo $result['ID'] ?>"><?php echo $result['TenDanhMuc'] ?></option>
 
                                     <?php
@@ -112,7 +112,11 @@
                                         while($result = $brandlist->fetch_assoc()){
                                     ?>
 
-                                    <option value="<?php echo $result['ID'] ?>"><?php echo $result['TenDanhMuc'] ?></option>
+                                    <option
+                                        <?php if($result['ID'] == $result_product['IDDanhMucCon']){
+                                                echo 'selected';
+                                        } ?>
+                                        value="<?php echo $result['ID'] ?>"><?php echo $result['TenThuongHieu'] ?></option>
 
                                     <?php
                                         }
@@ -199,7 +203,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" name="submit" Value="Save" />
+                                <input type="submit" name="submit" value="Cập nhật" />
                             </td>
                         </tr>
                     </table>

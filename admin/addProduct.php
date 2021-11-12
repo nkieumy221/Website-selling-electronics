@@ -4,9 +4,7 @@
 <?php
     /* Insert Product */
     $productClass = new product();
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-        $productName = $_POST['productName'];
-
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $insertProduct = $productClass->insertProduct($_POST, $_FILES);
     }
     
@@ -46,15 +44,14 @@
                         echo $insertProduct;
                     }
                 ?>
-                <form action="addProduct.php" method="post" enctype="multipart/form-data">
+                <form action="addProduct.php" method="POST" enctype="multipart/form-data">
                     <table class="form">
-                    
                         <tr>
                             <td>
                                 <label>Tên sản phẩm</label>
                             </td>
                             <td>
-                                <input type="text" name="productName" placeholder="Nhập tên sản phẩm..." class="medium" />
+                                <input type="text" name="ten" placeholder="Nhập tên sản phẩm..." class="medium" />
                             </td>
                         </tr>
                         <tr>
@@ -97,7 +94,7 @@
                                         while($result = $brandlist->fetch_assoc()){
                                     ?>
 
-                                    <option value="<?php echo $result['ID'] ?>"><?php echo $result['TenDanhMuc'] ?></option>
+                                    <option value="<?php echo $result['ID'] ?>"><?php echo $result['TenThuongHieu'] ?></option>
 
                                     <?php
                                         }

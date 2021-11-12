@@ -1,26 +1,9 @@
-<?php session_start();?>
+<?php 
+    include('../lib/session.php'); 
+    Session::init();
+?>
 <?php
     $conn = mysqli_connect("localhost","root","","electronicshop");
-    // đếm số lượng giỏ hàng
-    $ok =1;
-    $dem=0;
-    if(isset($_SESSION['cart']))
-    {
-    foreach($_SESSION['cart'] as $k  => $v)
-    {
-        if(isset($v)){
-        $ok =2;
-        }
-    }
-    }
-    if($ok !=2)
-    {
-    $dem =0;
-    }
-    else{
-    $items = $_SESSION['cart'];
-    $dem = count($items);
-    }
 
     // xử lý sự kiện khi nhấn đăng nhập, đăng kí
     function login() { echo 'Đăng nhập'; }
