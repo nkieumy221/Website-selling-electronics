@@ -1,8 +1,9 @@
 <?php
-    include('../lib/session.php');
+    $filepath = realpath(dirname(__FILE__));
+    include($filepath.'/../lib/session.php');
     Session::checkLogin();
-    include('../lib/database.php');
-    include('../helpers/format.php');
+    include($filepath.'/../lib/database.php');
+    include($filepath.'/../helpers/format.php');
 ?>
 <?php 
     class adminLogin

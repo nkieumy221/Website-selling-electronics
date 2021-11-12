@@ -18,6 +18,9 @@
 </head>
 <body>
     <div class="main">
+        <?php
+            include('./inc/header.php'); 
+        ?>
         <div class="app__container">
             <div class="grid wide">
                 <div class="row sm-gutter app__header">
@@ -141,6 +144,7 @@
                 
             </div>
         </div>
+        <?php include('./inc/footer.php'); ?>
     </div>
 </body>
 </html>
