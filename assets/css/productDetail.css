@@ -294,6 +294,7 @@
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 4px;
+    width: 80px;
 }
 
 .product__recomment-item-content {

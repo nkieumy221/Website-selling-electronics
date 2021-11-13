@@ -32,6 +32,7 @@
                 </div>
             </div>
             <div class="grid wide">
+                <!-- Banner slide -->
                 <div class="local mt-32">
                     <div class="row">                
                         <div class="banner_slide col c-8">
@@ -141,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Category list -->
                 <div class="local mt-32">
                     <div class="row">                
                         <a href class="col c-2 category__item">
@@ -243,8 +244,9 @@
                     </div>
                 </div>
             </div>
-
+            <!-- main center -->
             <div class="grid wide">
+                <!-- Product sale list -->
                 <div class="local mt-32">
                     <h2 class="sale__title">
                         <i class="fab fa-hotjar"></i>
@@ -252,17 +254,14 @@
                     </h2>
                     <div class="sale__list row">
                         <?php
-                            $conn = mysqli_connect("localhost","root","","electronicshop");
-                            $sqlKM = "SELECT * FROM hanghoa LIMIT 4";
-                            
-                            $resultKM = mysqli_query($conn,$sqlKM);
-
-                            while($row = mysqli_fetch_assoc($resultKM))
+                            $productSale = $productClass->showProductSales();
+                            if($productSale){
+                            while($row = $productSale->fetch_assoc())
                             {
                             
                         ?>
                         <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
+                            <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
                                 <div class="sale__item-img">
                                     <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
@@ -311,14 +310,15 @@
                                 </div>
                             </a>
                         </div>
-                        <?php } ?>
+                        <?php } 
+                            }
+                        ?>
                     </div>
                 </div>
-
+                <!-- Sale program -->
                 <div class=" mt-32">
                     <img src="./assets/img/adver.jpg" alt="" class="advertisement-img">
                 </div>
-
                 <div class="local mt-32">
                     <div class="program_sale">
                         <div class="program_sale__header">
@@ -403,7 +403,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Mobile sale -->
                 <div class="local mt-32">
                     <h2 class="sale__title">
                         <i class="fab fa-hotjar"></i>
@@ -411,17 +411,16 @@
                     </h2>
                     <div class="sale__list row">
                         <?php
-                            $conn = mysqli_connect("localhost","root","","electronicshop");
-                            $sqlKM = "SELECT * FROM hanghoa WHERE IDDanhMucLon = 1 LIMIT 8";
-                            
-                            $resultKM = mysqli_query($conn,$sqlKM);
-
-                            while($row = mysqli_fetch_assoc($resultKM))
+                            $idCategory = 1;
+                            $limit = 8;
+                            $productSale = $productClass->showProductByCategory($idCategory,$limit);
+                            if($productSale){
+                            while($row = mysqli_fetch_assoc($productSale))
                             {
                             
                         ?>
                         <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
+                            <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
                                 <div class="sale__item-img">
                                     <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
@@ -470,10 +469,11 @@
                                 </div>
                             </a>
                         </div>
-                        <?php } ?>
+                        <?php }
+                            } ?>
                     </div>
                 </div>
-
+                <!-- Laptop sale -->
                 <div class="local mt-32">
                     <h2 class="sale__title">
                         <i class="fab fa-hotjar"></i>
@@ -481,17 +481,15 @@
                     </h2>
                     <div class="sale__list row">
                         <?php
-                            $conn = mysqli_connect("localhost","root","","electronicshop");
-                            $sqlKM = "SELECT * FROM hanghoa WHERE IDDanhMucLon = 2 LIMIT 8";
-                            
-                            $resultKM = mysqli_query($conn,$sqlKM);
-
-                            while($row = mysqli_fetch_assoc($resultKM))
+                            $idCategory = 2;
+                            $limit = 8;
+                            $productSale = $productClass->showProductByCategory($idCategory,$limit);
+                            if($productSale){
+                            while($row = mysqli_fetch_assoc($productSale))
                             {
-                            
                         ?>
                         <div class="col c-3 sale__item">
-                            <a href="" class="sale__item-link">
+                            <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
                                 <div class="sale__item-img">
                                     <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
@@ -540,10 +538,11 @@
                                 </div>
                             </a>
                         </div>
-                        <?php } ?>
+                        <?php }
+                            } ?>
                     </div>
                 </div>
-
+                <!-- Tablet sale -->
                 <div class="local mt-32">
                     <h2 class="sale__title">
                         <i class="fab fa-hotjar"></i>
@@ -551,17 +550,15 @@
                     </h2>
                     <div class="sale__list row">
                         <?php
-                            $conn = mysqli_connect("localhost","root","","electronicshop");
-                            $sqlKM = "SELECT * FROM hanghoa WHERE IDDanhMucLon = 3 LIMIT 8";
-                            
-                            $resultKM = mysqli_query($conn,$sqlKM);
-
-                            while($row = mysqli_fetch_assoc($resultKM))
+                            $idCategory = 3;
+                            $limit = 8;
+                            $productSale = $productClass->showProductByCategory($idCategory,$limit);
+                            if($productSale){
+                            while($row = mysqli_fetch_assoc($productSale))
                             {
-                            
                         ?>
                         <div class="col c-3 sale__item">
-                            <a href='Chitietsanpham.php?id=<?= $row['ID'] ?>' class="sale__item-link">
+                            <a href='productDetail.php?productId=<?= $row['ID'] ?>' class="sale__item-link">
                                 <div class="sale__item-img">
                                     <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                 </div>
@@ -610,10 +607,11 @@
                                 </div>
                             </a>
                         </div>
-                        <?php } ?>
+                        <?php }
+                            } ?>
                     </div>
                 </div>
-
+                <!-- Phone accessories list -->
                 <div class="local mt-32">
                     <h2 class="sale__title">
                         PHỤ KIỆN HOT
@@ -749,7 +747,7 @@
                         </a>
                     </div>
                 </div>
-
+                <!-- Img baner footer -->
                 <div class="mt-32">
                     <div class="row">
                         <div class="col c-4">

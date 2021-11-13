@@ -1,3 +1,22 @@
+<?php 
+    /* Kiểm tra id sản phẩm */
+    if (!isset($_GET['productId']) || $_GET['productId'] == NULL) {
+        echo "<script>window.location = '404.php'</script>";
+    } else {
+        $id = $_GET['productId'];
+    }
+
+    
+?>
+<?php 
+    include_once('./classes/cart.php');
+    /* xử lý btn addcart */
+    $class = new cart();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $quantity = $_POST['quantity'];
+        $addCart = $class->addToCart($id, $quantity);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +38,7 @@
 <body>
     <div class="main">
         <?php include('./inc/header.php'); ?>
-
+        
         <div class="pd-header">
             <div class="grid wide mt-16">
                 <!-- Direction -->
@@ -28,28 +47,35 @@
                     <span class="title-page"> / Điện thoại</span>
                     <span class="title-page"> / Samsung</span>
                 </div>
+                <?php 
+                    $getProductDetail = $productClass->getProductDetails($id);
+                    if($getProductDetail){
+                        while($row = $getProductDetail->fetch_assoc()){
+
+                        
+                ?>
                 <div class="row sm-gutter app__content mt-32">
                     <div class="col l-6 m-0 c-0">
                         <div class="product__intro">
                             <div class="product__img">
-                                <img src="https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2021/8/11/637643195814330368_samsung-galaxy-z-fold3-xanh-1.jpg" class="product_img">
+                                <img src="<?= $row['HinhAnh'] ?>" class="product_img">
                             </div>
                             <ul class="frame-boder product__details-list ">
                                 <div class="product__detail">
                                     <i class="fal fa-archive"></i>
-                                    Màn hình chính: 7.6”, Màn hình phụ: 6.2”, HD+, Chính: Dynamic AMOLED 2X, phụ: Dynamic AMOLED 2X, 1768 x 2208 Pixel
+                                    Màn hình : <?= $row['ManHinh'] ?>”
                                 </div>
                                 <div class="product__detail">
                                     <i class="fas fa-mobile-alt"></i>
-                                    12.0 MP + 12.0 MP + 12.0 MP
+                                    <?= $row['CPU'] ?>
                                 </div>
                                 <div class="product__detail">
                                     <i class="fas fa-microchip"></i>
-                                    Snapdragon 888
+                                    <?= $row['RAM'] ?>
                                 </div>
                                 <div class="product__detail">
                                     <i class="far fa-hdd"></i>
-                                    256 GB
+                                    <?= $row['BoNho'] ?>
                                 </div>
                                 <div class="product__detail">
                                     <a href="" class="product__sale-link">Xem chi tiết thông số kĩ thuật</a>
@@ -70,14 +96,14 @@
                     <div class="col l-6 m-12 c-12">
                         <div class="product__infor">
                             <div class="product__name">
-                                Samsung Galaxy Z Fold3 5G 256GB
+                                <?= $row['TenSanPham'] ?>
                             </div>
                             <div class="product__price">
                                 <div class="product__price-sale">
-                                    41.990.000₫
+                                    <?= number_format($row['GiaKM']) ?> đ
                                 </div>
                                 <div class="product__price-origin">
-                                    42.990.000₫
+                                    <?= number_format($row['GiaGoc']) ?> đ
                                 </div>
                             </div>
                             <div class="frame-boder product__exhibit ">
@@ -137,15 +163,16 @@
                                 </div>
                             </div>
                             <div class="add_cart mt-16">
-                                <div class="quantity buttons_added">
-                                    <input type="button" value="-" class="minus">
-                                    <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="">
-                                    <input type="button" value="+" class="plus">
-                                </div>
-                                <div class="btn btn--warning add_cart-btn">
-                                    Thêm vào giỏ hàng
-                                </div>
+                                <form action="" method="post">
+                                    <input type="number" class="buyfield" name="quantity" value="1" min="1"/>
+                                    <input type="submit" class="btn btn--warning add_cart-btn" name="submit" value="Buy Now"/>
+                                </form>	
                             </div>
+                            <?php
+                                if(isset($addCart)){
+                                    echo $addCart;
+                                }
+                            ?>	
                             <div class="btn btn--primary buy_now mt-16">
                                 <div class="buy_now-title">
                                     MUA NGAY
@@ -157,6 +184,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
         <div class="pd-body">
@@ -168,40 +196,9 @@
                                 Mô tả sản phẩm
                             </h2>
                             <div class="product__description-content">
-                                <b>iPhone 13 Pro Max xứng đáng là một chiếc iPhone lớn nhất, 
-                                mạnh mẽ nhất và có thời lượng pin dài nhất từ trước đến nay sẽ cho bạn trải nghiệm tuyệt vời, 
-                                từ những tác vụ bình thường cho đến các ứng dụng chuyên nghiệp.</b> <br>
-                                <img src="https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-13-pro-max-2.jpg" alt=""> 
+                                <?= $row['MoTa'] ?>
                                 <span id="dots">...</span><span id="more">
-                                Đắm chìm trong không gian màn hình lớn cực đã
-                                Dù là giải trí khi xem phim, chơi game hay kiểm tra email, đọc tài liệu thì màn hình lớn tới 6,7 inch của iPhone 13 Pro Max cũng luôn cho trải nghiệm tuyệt vời nhất.
-                                Không chỉ lớn, đây còn là màn hình chất lượng hàng đầu thế giới smartphone với tấm nền OLED tuyệt đẹp, công nghệ Super Retina XDR siêu nét và độ sáng tối đa đạt mức khó tin, 
-                                lên tới 1200 nits cho nội dung HDR. Trước mắt bạn là một không gian giải trí mãn nhãn, một thiết bị di động lý tưởng để giải quyết nhanh công việc với màn hình thực sự xuất sắc.
-                                iPhone 13 Pro Max xứng đáng là một chiếc iPhone lớn nhất, 
-                                mạnh mẽ nhất và có thời lượng pin dài nhất từ trước đến nay sẽ cho bạn trải nghiệm tuyệt vời, 
-                                từ những tác vụ bình thường cho đến các ứng dụng chuyên nghiệp. <br>
-                                <img src="https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-13-pro-max-2.jpg" alt="">
-                                Đắm chìm trong không gian màn hình lớn cực đã
-                                Dù là giải trí khi xem phim, chơi game hay kiểm tra email, đọc tài liệu thì màn hình lớn tới 6,7 inch của iPhone 13 Pro Max cũng luôn cho trải nghiệm tuyệt vời nhất.
-                                Không chỉ lớn, đây còn là màn hình chất lượng hàng đầu thế giới smartphone với tấm nền OLED tuyệt đẹp, công nghệ Super Retina XDR siêu nét và độ sáng tối đa đạt mức khó tin, 
-                                lên tới 1200 nits cho nội dung HDR. Trước mắt bạn là một không gian giải trí mãn nhãn, một thiết bị di động lý tưởng để giải quyết nhanh công việc với màn hình thực sự xuất sắc.
-                                iPhone 13 Pro Max xứng đáng là một chiếc iPhone lớn nhất, 
-                                mạnh mẽ nhất và có thời lượng pin dài nhất từ trước đến nay sẽ cho bạn trải nghiệm tuyệt vời, 
-                                từ những tác vụ bình thường cho đến các ứng dụng chuyên nghiệp. <br>
-                                <img src="https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-13-pro-max-2.jpg" alt="">
-                                Đắm chìm trong không gian màn hình lớn cực đã
-                                Dù là giải trí khi xem phim, chơi game hay kiểm tra email, đọc tài liệu thì màn hình lớn tới 6,7 inch của iPhone 13 Pro Max cũng luôn cho trải nghiệm tuyệt vời nhất.
-                                Không chỉ lớn, đây còn là màn hình chất lượng hàng đầu thế giới smartphone với tấm nền OLED tuyệt đẹp, công nghệ Super Retina XDR siêu nét và độ sáng tối đa đạt mức khó tin, 
-                                lên tới 1200 nits cho nội dung HDR. Trước mắt bạn là một không gian giải trí mãn nhãn, một thiết bị di động lý tưởng để giải quyết nhanh công việc với màn hình thực sự xuất sắc.
-                                iPhone 13 Pro Max xứng đáng là một chiếc iPhone lớn nhất, 
-                                mạnh mẽ nhất và có thời lượng pin dài nhất từ trước đến nay sẽ cho bạn trải nghiệm tuyệt vời, 
-                                từ những tác vụ bình thường cho đến các ứng dụng chuyên nghiệp. <br>
-                                <img src="https://fptshop.com.vn/Uploads/images/2015/Tin-Tuc/QuanLNH2/iphone-13-pro-max-2.jpg" alt="">
-                                Đắm chìm trong không gian màn hình lớn cực đã
-                                Dù là giải trí khi xem phim, chơi game hay kiểm tra email, đọc tài liệu thì màn hình lớn tới 6,7 inch của iPhone 13 Pro Max cũng luôn cho trải nghiệm tuyệt vời nhất.
-                                Không chỉ lớn, đây còn là màn hình chất lượng hàng đầu thế giới smartphone với tấm nền OLED tuyệt đẹp, công nghệ Super Retina XDR siêu nét và độ sáng tối đa đạt mức khó tin, 
-                                lên tới 1200 nits cho nội dung HDR. Trước mắt bạn là một không gian giải trí mãn nhãn, một thiết bị di động lý tưởng để giải quyết nhanh công việc với màn hình thực sự xuất sắc.
-                                </span>
+                                
                                 <button class="btn btn--border " href="" onclick="myFunction()" id="myBtn">Xem thêm</a>
                                 <script>
                                     function myFunction() {
@@ -223,56 +220,35 @@
                             </div>
                         </div>
                     </div>
+                    <?php 
+                            }
+                        }
+                    ?>
                     <div class="col l-5 mt-32">
                         <div class="product__recomment">
                             <h2 class="product__recomment-title">
                                 Phụ kiện thường mua kèm
                             </h2>
+                            <?php
+                                $idCategory = 4;
+                                $limit = 4;
+                                $productSale = $productClass->showProductByCategory($idCategory,$limit);
+                                if($productSale){
+                                while($row = mysqli_fetch_assoc($productSale))
+                                {
+                                
+                            ?>
                             <ul class="product__recomment-list">
                                 <li class="product__recomment-item">
-                                    <img src="https://images.fpt.shop/unsafe/fit-in/70x70/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/27/637683598147862087_44.png" alt="" class="product__recomment-item-img">
+                                    <img src="<?= $row['HinhAnh'] ?>" alt="" class="product__recomment-item-img">
                                     <div class="product__recomment-item-content">
                                         <div class="product__recomment-item-name">
-                                            Cáp USB-C to Lightning MFI 1m Belkin Playa 30W dây dù
+                                            <?= $row['TenSanPham'] ?>
                                         </div>
                                         <div class="product__recomment-item-price">
-                                            360.000đ
+                                            <?= number_format($row['GiaKM']) ?> đ
                                             <div class="product__recomment-item-price--origin">
-                                                450.000đ
-                                            </div>
-                                        </div>
-                                        <div class="btn btn--warning">
-                                            Thêm vào giỏ hàng
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product__recomment-item">
-                                    <img src="https://images.fpt.shop/unsafe/fit-in/70x70/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/27/637683591336724802_adapter%20Belkin.jpg" alt="" class="product__recomment-item-img">
-                                    <div class="product__recomment-item-content">
-                                        <div class="product__recomment-item-name">
-                                            Adapter sạc nhanh 2 cổng Belkin 37W (USB-C PD 25W + USB-A 12W)
-                                        </div>
-                                        <div class="product__recomment-item-price">
-                                            660.000đ
-                                            <div class="product__recomment-item-price--origin">
-                                                750.000đ
-                                            </div>
-                                        </div>
-                                        <div class="btn btn--warning">
-                                            Thêm vào giỏ hàng
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="product__recomment-item">
-                                    <img src="https://images.fpt.shop/unsafe/fit-in/70x70/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/30/637686120429102718_AVT.jpg" alt="" class="product__recomment-item-img">
-                                    <div class="product__recomment-item-content">
-                                        <div class="product__recomment-item-name">
-                                            Ốp lưng Magsage iPhone 13 Pro Max Mipow
-                                        </div>
-                                        <div class="product__recomment-item-price">
-                                            460.000đ
-                                            <div class="product__recomment-item-price--origin">
-                                                550.000đ
+                                                <?= number_format($row['GiaGoc']) ?> đ
                                             </div>
                                         </div>
                                         <div class="btn btn--warning">
@@ -281,6 +257,10 @@
                                     </div>
                                 </li>
                             </ul>
+                            <?php 
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

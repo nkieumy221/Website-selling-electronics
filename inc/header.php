@@ -313,7 +313,7 @@
                                                 <ul class="row header_menu-list-item">
                                                     <?php while($danhmuccon = mysqli_fetch_assoc($query)){ ?>
                                                     <li class="col c-4 header_menu-item">
-                                                        <a href="" class="header_menu-item-link"><?php echo $danhmuccon['TenDanhMuc'] ?></a>
+                                                        <a href="" class="header_menu-item-link"><?php echo $danhmuccon['TenThuongHieu'] ?></a>
                                                     </li>
                                                     <?php }?>    
                                                 </ul>

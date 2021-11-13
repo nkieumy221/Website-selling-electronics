@@ -163,7 +163,7 @@
         }
 
         /* Delete product */
-        public function deleteproduct($id) {
+        public function deleteProduct($id) {
             $query = "DELETE FROM hanghoa WHERE ID = '$id'";
             $result = $this->db->delete($query);
             if($result){
@@ -174,5 +174,34 @@
                 return $alert;
             }
         } 
+
+        /* END BACKEND */
+
+        /* Show product sale*/
+        public function showProductSales() {
+            $query = "SELECT * FROM hanghoa WHERE GiaKM < GiaGoc LIMIT 4";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        /* Show product sale by category */
+
+        public function showProductByCategory($categoryID,$limit) {
+            $query = "SELECT * FROM hanghoa WHERE IDDanhMucLon = '$categoryID' LIMIT $limit";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        /* Show product details */
+        public function getProductDetails($productID){
+            $query = "
+                SELECT hanghoa.*, danhmuclon.TenDanhMuc, danhmuccon.TenThuongHieu 
+                FROM hanghoa INNER JOIN danhmuclon ON hanghoa.IDDanhMucLon = danhmuclon.ID
+                INNER JOIN danhmuccon ON hanghoa.IDDanhMucCon = danhmuccon.ID
+                WHERE hanghoa.ID = '$productID'
+                ";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }   
 ?>
