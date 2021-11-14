@@ -49,6 +49,16 @@
     font-size: 1.5rem;
 }
 
+.form-quantity {
+    display:flex;
+    justify-content: center;
+}
+
+.form-quantity__input {
+    width: 40px;
+    margin-right: 5px;
+}
+
 .cart__foot {
     list-style: none;
     text-align: center;

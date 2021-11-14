@@ -40,7 +40,7 @@
         }
         /* Show category */
         public function showCategory() {
-            $query = "SELECT * FROM danhmuclon ORDER BY ID desc";
+            $query = "SELECT * FROM danhmuclon ORDER BY ID asc";
             $result = $this->db->select($query);
             return $result;
         }
@@ -89,6 +89,42 @@
                 $alert = "<span class='error'>Không thành công</span>  ";
                 return $alert;
             }
+        }
+
+        /* Show brand by category */
+        public function showCategoryByBrand($categoryId) {
+            $sqlDMCon = "SELECT * FROM danhmuccon WHERE IDDanhMuc = '$categoryId' "; 
+            $result = $this->db->select($sqlDMCon);
+            return $result;
+        }
+
+        /* Show list product by category */
+        public function showProductByCategory($categoryId){
+            $sqlDM = "SELECT * FROM hanghoa WHERE IDDanhMucLon = '$categoryId' LIMIT 12"; 
+            $result = $this->db->select($sqlDM);
+            return $result;
+        }
+        /* Show list product by brand */
+        public function showProductByBrand($brandId){
+            $sqlDMCon = "SELECT * FROM hanghoa WHERE IDDanhMucCon = '$brandId' LIMIT 12"; 
+            $result = $this->db->select($sqlDMCon);
+            return $result;
+        }
+
+        public function getNameByCategory($categoryId){
+            $sqlDM = "SELECT hanghoa.*, danhmuclon.TenDanhMuc, danhmuclon.ID 
+                    FROM hanghoa, danhmuclon
+                    WHERE hanghoa.IDDanhMucLon = danhmuclon.ID AND hanghoa.IDDanhMucLon ='$categoryId'"; 
+            $result = $this->db->select($sqlDM);
+            return $result;
+        }
+
+        public function getNameByBrand($brandId){
+            $sqlDM = "SELECT hanghoa.*, danhmuccon.TenThuongHieu, danhmuccon.ID 
+                    FROM hanghoa, danhmuccon
+                    WHERE hanghoa.IDDanhMucCon = danhmuccon.ID AND hanghoa.IDDanhMucCon ='$brandId'"; 
+            $result = $this->db->select($sqlDM);
+            return $result;
         }
     }   
 ?>

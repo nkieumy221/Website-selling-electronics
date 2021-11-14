@@ -1,3 +1,19 @@
+<?php 
+    include_once('./classes/cart.php');
+    /* xử lý btn addcart */
+    $cartClass = new cart();
+    /* Delete product in cart */
+    if (isset($_GET['cartId'])) {
+        $id = $_GET['cartId'];
+        $deleteCart = $cartClass->deleteCart($id);
+    }
+    /* Update quantity of product */
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+        $cartId = $_POST['cartId'];
+        $quantity = $_POST['quantity'];
+        $updateQuantity = $cartClass->updateQuantity($cartId, $quantity);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +40,11 @@
                     <span class="title-direct"><a href="index.html">Trang chủ</a></span>
                     <span class="title-page"> / Giỏ hàng</span>
                 </div>
+                <?php 
+                    if(isset($updateQuantity)){
+                        echo $updateQuantity;
+                    }
+                ?>
                 <div class="products__list mt-32">
                     <ul class="row sm-gutter cart__header">
                         <li class="col c-2 cart__header-name">Hình ảnh </li>
@@ -34,62 +55,70 @@
                         <li class="col c-2 cart__header-name"></li>
                     </ul>
                     <div class="cart__body">
+                        <?php
+                            $productCart = $cartClass->showProductCart();
+                            $qtyProduct = 0;
+                            if($productCart) {
+                                $subtotal = 0;
+                                while($row = $productCart->fetch_assoc()){
+                                    $qtyProduct = $qtyProduct + 1;    
+                        ?>
                         <ul class="row product__infor ">
                             <li class="col c-2 product__img">
-                                <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/1/637686973775896947_ip-12-dd.jpg" alt="">
+                                <img src="<?= $row['HinhAnh'] ?>" alt="">
                             </li>
                             <li class="col c-2 product__name">
-                                iPhone 12 64GB
+                                <?= $row['TenSanPham'] ?>
                             </li>
                             <li class="col c-2 product__price">
-                                19.999.000 ₫
+                                <?= number_format($row['Gia']) ?> đ
                             </li>
                             <li class="col c-2 product__quatity">
-                                1
+                                <form action="" method="post" class="form-quantity">
+                                    <input type="hidden" name="cartId" value="<?php echo $row['IDCart'] ?>" class="form-quantity__input"/>
+                                    <input type="number" name="quantity" min="0"  value="<?php echo $row['SoLuong'] ?>" class="form-quantity__input"/>
+                                    <input type="submit" name="submit" value="Update"/>
+								</form>
                             </li>
                             <li class="col c-2 product__total">
-                                19.999.000 ₫
+                                <?php 
+                                    $total = $row['Gia'] * $row['SoLuong'];
+                                    $subtotal += $total;
+                                    echo number_format($total);
+                                ?> đ
                             </li>
                             <li class="col c-2 delete-btn">
-                                <i class="far fa-trash-alt"></i>
+                                <a href="?cartId=<?php echo $row['IDCart'] ?>">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
                             </li>
                         </ul>
-                        <ul class="row product__infor ">
-                            <li class="col c-2 product__img">
-                                <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/1/637686973775896947_ip-12-dd.jpg" alt="">
-                            </li>
-                            <li class="col c-2 product__name">
-                                iPhone 12 64GB
-                            </li>
-                            <li class="col c-2 product__price">
-                                19.999.000 ₫
-                            </li>
-                            <li class="col c-2 product__quatity">
-                                1
-                            </li>
-                            <li class="col c-2 product__total">
-                                19.999.000 ₫
-                            </li>
-                            <li class="col c-2 delete-btn">
-                                <i class="far fa-trash-alt"></i>
-                            </li>
-                        </ul>
-                        <ul class="row">
-                            <div class="col c-10"></div>
-                            <div class="col c-2">
-                                <div class="btn btn--warning">
-                                    <a href="">Cập nhập giỏ hàng</a>
-                                </div>
-                            </div>
-                        </ul>
+                        <?php 
+                                }   
+                            }
+                            Session::set('Qty', $qtyProduct);
+                        ?>
                     </div>
-                    <ul class="row cart__foot">
-                        <li class="col c-2 btn btn--warning"><a href="">Tiếp tục mua hàng</a></li>
-                        <li class="col c-4"></li>
-                        <li class="col c-2 total"><b>Tổng</b></li>
-                        <li class="col c-2 product__total">12.244.555đ</li>
-                        <li class="col c-2 btn btn--primary"><a href="">Thanh toán</a></li>
-                    </ul>
+                    <?php 
+                        $checkCart = $cartClass->checkCart();
+                        if($checkCart){
+                    ?>
+                        <ul class="row cart__foot">
+                            <li class="col c-2 btn btn--warning"><a href="">Tiếp tục mua hàng</a></li>
+                            <li class="col c-4"></li>
+                            <li class="col c-2 total"><b>Tổng</b></li>
+                            <li class="col c-2 product__total">
+                                <?php 
+                                    echo number_format($subtotal);
+                                ?> đ
+                            </li>
+                            <li class="col c-2 btn btn--primary"><a href="">Thanh toán</a></li>
+                        </ul>
+                    <?php 
+                        } else {
+                            echo '<div>Giỏ hàng trống</div>';
+                        }
+                    ?>
                 </div>
                 
             </div>

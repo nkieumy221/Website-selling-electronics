@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,13 +22,42 @@
 <body>
     <div class="main">
         <?php include('./inc/header.php'); ?>
-
+        <?php 
+            if(isset($_GET['idCategory'])){
+                $getProduct = $categoryClass->showProductByCategory($_GET['idCategory']);
+            }
+            if(isset($_GET['idBrand'])){
+                $getProduct = $categoryClass->showProductByBrand($_GET['idBrand']);
+            }
+        ?>
         <div class="app__container">
             <div class="grid wide">
                 <!-- Direction -->
                 <div class="row sm-gutter app__header">
                     <span class="title-direct"><a href="index.html">Trang chủ</a></span>
-                    <span class="title-page"> / Điện thoại</span>
+                    <?php 
+                        if(isset($_GET['idCategory'])){
+                            $getNameCategory = $categoryClass->getNameByCategory($_GET['idCategory']);
+                            if($getNameCategory){
+                                $row = $getNameCategory->fetch_assoc();     
+                    ?> 
+                        <span class="title-page"> / <?= $row['TenDanhMuc'] ?></span>
+                    <?php
+                            }
+                        }
+                    ?>
+                    <?php
+                        if(isset($_GET['idBrand'])){
+                            $getNameBrand = $categoryClass->getNameByBrand($_GET['idBrand']);
+                            if($getNameBrand){
+                                $row1 = $getNameBrand->fetch_assoc();   
+                    ?> 
+                    <span class="title-page"> / <?= $row1['TenThuongHieu'] ?></span>    
+                    <?php    
+                            }
+                        }
+                        
+                    ?>
                 </div>
                 <!-- Slide banner -->
                 <div class="local">
@@ -318,41 +351,45 @@
                             </ul>
                         </nav>
                         <!-- Home product -->
-                         <div class="sale__list row mt-16">
-                       
+                        
+                         <div class="sale__list row mt-16">       
+                            <?php 
+                                if($getProduct){
+                                    while($row = $getProduct->fetch_assoc()){      
+                            ?>       
                             <div class="col c-4 sale__item">
-                                <a href="" class="sale__item-link">
+                                <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
                                     <div class="sale__item-img">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg" alt="" >
+                                        <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                     </div>
                                     <div class="sale__item-name">
-                                        iPhone 13 Pro Max 128GB
+                                        <?= $row['TenSanPham'] ?>
                                     </div>
                                     <div class="sale__item-price">
                                         <div class="sale__item-price-sale">
-                                            33.990.000 ₫
+                                            <?= number_format($row['GiaKM']) ?> đ
                                         </div>
                                         <div class="sale__item-price-origin">
-                                            35.000.500đ
+                                            <?= number_format($row['GiaGoc']) ?> đ
                                         </div>
                                     </div>
                                     <div class="sale__item-config mt-16">
                                         <div class="sale__item-infor">
                                             <div class="item-infor__detail">
                                                 <i class="fal fa-archive"></i>
-                                                A15 Bionic
+                                                <?= $row['CPU'] ?>
                                             </div>
                                             <div class="item-infor__detail">
                                                 <i class="fas fa-mobile-alt"></i>
-                                                6.7"
+                                                <?= $row['ManHinh'] ?>
                                             </div>
                                             <div class="item-infor__detail">
                                                 <i class="fas fa-microchip"></i>
-                                                6 GB
+                                                <?= $row['RAM'] ?>
                                             </div>
                                             <div class="item-infor__detail">
                                                 <i class="far fa-hdd"></i>
-                                                128 GB
+                                                <?= $row['BoNho'] ?>
                                             </div>
                                         </div>
                                         <div class="sale__item-pay mt-16">
@@ -370,160 +407,10 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col c-4 sale__item">
-                                <a href="" class="sale__item-link">
-                                    <div class="sale__item-img">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg" alt="" >
-                                    </div>
-                                    <div class="sale__item-name">
-                                        iPhone 13 Pro Max 128GB
-                                    </div>
-                                    <div class="sale__item-price">
-                                        <div class="sale__item-price-sale">
-                                            33.990.000 ₫
-                                        </div>
-                                        <div class="sale__item-price-origin">
-                                            35.000.500đ
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-config mt-16">
-                                        <div class="sale__item-infor">
-                                            <div class="item-infor__detail">
-                                                <i class="fal fa-archive"></i>
-                                                A15 Bionic
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="fas fa-mobile-alt"></i>
-                                                6.7"
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="fas fa-microchip"></i>
-                                                6 GB
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="far fa-hdd"></i>
-                                                128 GB
-                                            </div>
-                                        </div>
-                                        <div class="sale__item-pay mt-16">
-                                            <img src="./assets/img/vnpay400.jpeg" alt="">
-                                            Giảm thêm 5% tối đa 700.000đ
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-btn mt-16">
-                                        <div class="btn btn--primary">
-                                            MUA NGAY
-                                        </div>
-                                        <div class="btn btn--warning">
-                                            GIỎ HÀNG
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col c-4 sale__item">
-                                <a href="" class="sale__item-link">
-                                    <div class="sale__item-img">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg" alt="" >
-                                    </div>
-                                    <div class="sale__item-name">
-                                        iPhone 13 Pro Max 128GBiPhone 13 Pro Max 128GBiPhone 13 Pro Max 128GB
-                                    </div>
-                                    <div class="sale__item-price">
-                                        <div class="sale__item-price-sale">
-                                            33.990.000 ₫
-                                        </div>
-                                        <div class="sale__item-price-origin">
-                                            35.000.500đ
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-config mt-16">
-                                        <div class="sale__item-infor">
-                                            <div class="item-infor__detail">
-                                                <i class="fal fa-archive"></i>
-                                                A15 Bionic
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="fas fa-mobile-alt"></i>
-                                                6.7"
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="fas fa-microchip"></i>
-                                                6 GB
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="far fa-hdd"></i>
-                                                128 GB
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="fal fa-archive"></i>
-                                                A15 Bionic
-                                            </div>
-                                        </div>
-                                        <div class="sale__item-pay mt-16">
-                                            <img src="./assets/img/vnpay400.jpeg" alt="">
-                                            Giảm thêm 5% tối đa 700.000đ
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-btn mt-16">
-                                        <div class="btn btn--primary">
-                                            MUA NGAY
-                                        </div>
-                                        <div class="btn btn--warning">
-                                            GIỎ HÀNG
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col c-4 sale__item">
-                                <a href="" class="sale__item-link">
-                                    <div class="sale__item-img">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/15/637673213598401263_iphone-13-pro-max-dd-1.jpg" alt="" >
-                                    </div>
-                                    <div class="sale__item-name">
-                                        iPhone 13 Pro Max 128GB
-                                    </div>
-                                    <div class="sale__item-price">
-                                        <div class="sale__item-price-sale">
-                                            33.990.000 ₫
-                                        </div>
-                                        <div class="sale__item-price-origin">
-                                            35.000.500đ
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-config mt-16">
-                                        <div class="sale__item-infor">
-                                            <div class="item-infor__detail">
-                                                <i class="fal fa-archive"></i>
-                                                A15 Bionic
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="fas fa-mobile-alt"></i>
-                                                6.7"
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="fas fa-microchip"></i>
-                                                6 GB
-                                            </div>
-                                            <div class="item-infor__detail">
-                                                <i class="far fa-hdd"></i>
-                                                128 GB
-                                            </div>
-                                        </div>
-                                        <div class="sale__item-pay mt-16">
-                                            <img src="./assets/img/vnpay400.jpeg" alt="">
-                                            Giảm thêm 5% tối đa 700.000đ
-                                        </div>
-                                    </div>
-                                    <div class="sale__item-btn mt-16">
-                                        <div class="btn btn--primary">
-                                            MUA NGAY
-                                        </div>
-                                        <div class="btn btn--warning">
-                                            GIỎ HÀNG
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                            <?php 
+                                    }
+                                } 
+                            ?>
                         </div>
                          <!-- Pagination -->
                         <ul class="pagination">

@@ -160,7 +160,7 @@
                     
                     <!-- Header logo -->
                     <div class="header__logo hide-on-tablet">
-                        <a href="" class="header__logo-link">
+                        <a href="./index.php" class="header__logo-link">
                             <img src="./assets/img/foxu.png" alt="" class="header__logo-img">
                         </a>       
                     </div>
@@ -204,9 +204,14 @@
                     </div>
                     <!-- Cart layout -->
                     <div class="header__cart">
-                        <div class="header_cart__wrap">
+                        <a href="./cartDetail.php" class="header_cart__wrap">
                             <i class="header__cart-icon fa fa-shopping-cart"></i>
-                            <span class="header__cart-notice">3</span>
+                            <span class="header__cart-notice">
+                                <?php 
+                                    $quantity = Session::get("Qty");
+                                    echo $quantity;
+                                ?>
+                            </span>
                             <div class="header-cart-list ">
                                 <!-- header no cart : header-cart-list--no-cart-->
                                 <img src="./assets/img/no_cart.png" alt="" class="header-cart-no-cart-img">
@@ -273,7 +278,7 @@
                                 <a class="btn btn--primary header__cart-view-cart" href="">Xem giỏ hàng</a>
 
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -297,7 +302,7 @@
                         
                     ?> 
                         <li class="header__sort-item">
-                            <a href="" class="header__sort-link">
+                            <a href="listProducts.php?idCategory=<?php echo $row['ID'] ?>" class="header__sort-link">
                                 <i class="fas fa-mobile-alt"></i>
                                 <?php echo $row['TenDanhMuc'] ?>
                             </a>
@@ -313,7 +318,7 @@
                                                 <ul class="row header_menu-list-item">
                                                     <?php while($danhmuccon = mysqli_fetch_assoc($query)){ ?>
                                                     <li class="col c-4 header_menu-item">
-                                                        <a href="" class="header_menu-item-link"><?php echo $danhmuccon['TenThuongHieu'] ?></a>
+                                                        <a href="listProducts.php?idBrand=<?php echo $danhmuccon['ID'] ?>" class="header_menu-item-link"><?php echo $danhmuccon['TenThuongHieu'] ?></a>
                                                     </li>
                                                     <?php }?>    
                                                 </ul>
@@ -326,15 +331,15 @@
                                                     <?php
                                                         $sqlHangHoa = "SELECT * FROM hanghoa WHERE IDDanhMucLon = " .$row['ID'] . " LIMIT 2"; 
                                                         $connectHanghoa = mysqli_query($conn,$sqlHangHoa);
-                                                        while($row = mysqli_fetch_assoc($connectHanghoa))
+                                                        while($result = mysqli_fetch_assoc($connectHanghoa))
                                                         {
                                                     ?> 
                                                     <li class="menu_item-new">
                                                         <a href="" class="menu_item-new-link">
-                                                            <img src="<?= $row['HinhAnh'] ?>" alt="" class="menu_item-new-img">
+                                                            <img src="<?= $result['HinhAnh'] ?>" alt="" class="menu_item-new-img">
                                                             <div class="menu_item-new-infor">
-                                                                <p class="menu_item-new-name"><?= $row['TenSanPham'] ?></p>
-                                                                <p class="menu_item-new-price"><?= number_format($row['GiaGoc']) ?> đ</p>
+                                                                <p class="menu_item-new-name"><?= $result['TenSanPham'] ?></p>
+                                                                <p class="menu_item-new-price"><?= number_format($result['GiaGoc']) ?> đ</p>
                                                             </div> 
                                                         </a>
                                                     </li>

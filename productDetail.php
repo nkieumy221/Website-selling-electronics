@@ -167,12 +167,13 @@
                                     <input type="number" class="buyfield" name="quantity" value="1" min="1"/>
                                     <input type="submit" class="btn btn--warning add_cart-btn" name="submit" value="Buy Now"/>
                                 </form>	
+                                <?php
+                                    if(isset($addCart)){
+                                        echo $addCart;
+                                    }
+                                ?>	
                             </div>
-                            <?php
-                                if(isset($addCart)){
-                                    echo $addCart;
-                                }
-                            ?>	
+                            
                             <div class="btn btn--primary buy_now mt-16">
                                 <div class="buy_now-title">
                                     MUA NGAY
