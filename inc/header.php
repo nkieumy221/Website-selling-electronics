@@ -16,16 +16,7 @@
     $userClass = new user();
     $categoryClass = new category();
     $productClass = new product();
-?>
-<?php
-    $conn = mysqli_connect("localhost","root","","electronicshop");
-
-    // xử lý sự kiện khi nhấn đăng nhập, đăng kí
-    function login() { echo 'Đăng nhập'; }
-    if (isset($_GET['login'])) { return login(); }
-    
-    function resgiter() { echo 'Đăng kí'; }
-    if (isset($_GET['resgiter'])) { return resgiter(); }
+    $customerClass = new customer();
 ?>
 <header class="header">       
         <div class="header-intro">
@@ -114,14 +105,19 @@
                                 Trợ giúp
                             </a>
                         </li>
-
-                        
                         <?php 
-                            if(isset($_SESSION['username']) &&  !empty($_SESSION['username'])){
+                            if(isset($_GET['customerId'])){
+                                $delCart = $cartClass->delAllDataCart();
+                                Session::destroy();
+                            }
+                        ?>
+                        <?php
+                            $checkLogin = Session::get('customerLogin');
+                            if($checkLogin){
                         ?>
                         <li class="navbar__item header__navbar-user">
                             <img src="https://i.pinimg.com/736x/21/2d/12/212d12e421963f8a66f95aece1182069.jpg" alt="" class="header__navbar-user-img">
-                            <span class="header__navbar-user-name">Kiều My</span>
+                            <span class="header__navbar-user-name"><?php echo Session::get('customerName'); ?></span>
 
                             <ul class="header__navbar-user-menu">
                                 <li class="header__navbar-user-item">
@@ -134,7 +130,7 @@
                                     <a href="">Đơn mua</a>
                                 </li>
                                 <li class="header__navbar-user-item header__navbar-user-item--separate">
-                                    <a href="">Đăng xuất</a>
+                                    <a href="?customerId=<?php echo Session::get('customerId') ?>">Đăng xuất</a>
                                 </li>
                             </ul>
                         </li>
@@ -298,8 +294,7 @@
                         {
                             $sqlDMCon = "SELECT * FROM danhmuccon WHERE IDDanhMuc = " .$row['ID'] . ""; 
                             $query = mysqli_query($conn,$sqlDMCon);
-                            $danhmuccon = mysqli_fetch_assoc($query)
-                        
+                            $danhmuccon = mysqli_fetch_assoc($query) 
                     ?> 
                         <li class="header__sort-item">
                             <a href="listProducts.php?idCategory=<?php echo $row['ID'] ?>" class="header__sort-link">
@@ -351,17 +346,14 @@
                                             <div class="">
                                                 <a href="" class="header_menu-item-img">
                                                     <img src="./assets/img/ip12.jpg" alt="" >
-                                                </a>
-                                                
-                                            </div>
-                                            
+                                                </a>  
+                                            </div>  
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <?php } ?>
                         </li>
-
                     <?php } ?>
                     </ul>
                 </div>  
@@ -372,64 +364,47 @@
     <div class="modal">
         <div class="modal__overlay"></div>
         <div class="model__body">
-
             <!-- Resgiter form -->
             <?php
-                $mess ='';
-                $u='';
-                $p ='';
-                $rp = '';
-                if($_SERVER["REQUEST_METHOD"]=="POST"){
-                    $u = $_POST['username'];
-                    $p = $_POST['password'];
-                    $rp = $_POST['password2'];
-                    if($p != $rp){
-                        $mess = "Mật khẩu không khớp";
-                    }else{
-                        $conn = mysqli_connect("localhost","root","","bansach1");
-                        $sql = "SELECT * FROM taikhoan WHERE username='$u' ";
-                        $kq = mysqli_query($conn,$sql);
-                        if(mysqli_num_rows($kq)>0){
-                            $mess ="Tên đăng nhập tồn tại";
-                        }else{
-                            $p1=md5($p);
-                            $sql = "INSERT INTO taikhoan(username,password,role) values('$u','$p1','User')";
-                            $kq = mysqli_query($conn,$sql);
-                            $mess = "Bạn đã đăng kí thành công";
-                        }
-                    }
-                }
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
+                    $insertCustomer = $customerClass->insertCustomer($_POST);
+                }   
             ?>
             <div id="resgiter-form" class="auth-form">
                 <div class="auth-form__container">
+                    <?php 
+                        if(isset($insertCustomer)) {
+                            echo $insertCustomer;
+                        }
+                    ?>
                     <div class="auth-form__header">
                         <h3 id="btn-register" class="auth-form__heading">Đăng kí</h3>
                         <span id="btn-login" class="auth-form__switch-btn">Đăng nhập</span>
                     </div>
-                    <div class="auth-form__form">
+                    <form action="" method="post"class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form-input" placeholder="Email của bạn">
+                            <input type="text" name="username" class="auth-form-input" placeholder="Tên người dùng...">
                         </div>
                         <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Mật khẩu">
+                            <input type="password" name="password" class="auth-form-input" placeholder="Mật khẩu">
                         </div>
                         <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Nhập lại mật khẩu">
+                            <input type="password" name="password2" class="auth-form-input" placeholder="Nhập lại mật khẩu">
                         </div>
-                    </div>
+            
+                        <div class="auth-form__aside">
+                            <p class="auth-form__policy-text">
+                                Bằng việc đăng kí, bạn đã đồng ý với các điều khoản Shop về
+                                <a href="" class="auth-form__text-link">Điều khoản dịch vụ </a> &
+                                <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                            </p>
+                        </div>
 
-                    <div class="auth-form__aside">
-                        <p class="auth-form__policy-text">
-                            Bằng việc đăng kí, bạn đã đồng ý với các điều khoản Shop về
-                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ </a> &
-                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
-                        </p>
-                    </div>
-
-                    <div class="auth-form__controls">
-                        <button class="btn auth-form__control-back btn--normal">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG KÝ</button>
-                    </div>    
+                        <div class="auth-form__controls">
+                            <a href="index.php" class="btn auth-form__control-back btn--normal">TRỞ LẠI</a>
+                            <input type="submit" name="register" value="ĐĂNG KÝ" class="btn btn--primary">
+                        </div>    
+                    </form>
                 </div>
 
                 <div class="auth-form__socicals">
@@ -446,7 +421,9 @@
             </div>
 
             <!-- <?php   
-                session_start();
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+                    $loginCustomer = $customerClass->loginCustomer($_POST);
+                }
                 $mess ='';
                 $u ='';
                 if(isset($_POST['dangnhap'])){
@@ -460,7 +437,6 @@
                         $_SESSION['username'] = $u;
                         $_SESSION['iduser'] = $row['id'];
                         $_SESSION['role'] = $row['role'];
-                        header('Location:index.php');
                     } else{
                         $mess = "Tên đăng nhập hoặc mật khẩu không đúng";
                     }
@@ -474,29 +450,29 @@
                         <h3 class="auth-form__heading">Đăng nhập</h3>
                         <span class="auth-form__switch-btn">Đăng kí</span>
                     </div>
-                    <form class="auth-form__form">
+                    <form action="" method="post" class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form-input" placeholder="Username" >
+                            <input type="text" name="usname" class="auth-form-input" placeholder="Username" >
                         </div>
                         <div class="auth-form__group">
-                            <input type="password" class="auth-form-input" placeholder="Password">
+                            <input type="password" name="pass" class="auth-form-input" placeholder="Password">
                         </div>
-                    </form>
-
-                    <div class="auth-form__aside">
-                        <div class="auth-form__help">
-                            <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
-                            <span class="auth-form__help-separate"></span>
-                            <a href="" class="auth-form__help-link ">Cần trợ giúp ?</a>
+                    
+                        <div class="auth-form__aside">
+                            <div class="auth-form__help">
+                                <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
+                                <span class="auth-form__help-separate"></span>
+                                <a href="" class="auth-form__help-link ">Cần trợ giúp ?</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="auth-form__controls">
-                        <button class="btn auth-form__control-back btn--normal">TRỞ LẠI</button>
-                        <button class="btn btn--primary">ĐĂNG NHẬP</button>
-                    </div>    
+                        <div class="auth-form__controls">
+                            <a href="index.php" class="btn auth-form__control-back btn--normal">TRỞ LẠI</a>
+                            <input type="submit" name="login" value="ĐĂNG NHẬP" class="btn btn--primary">
+                        </div>  
+                    </form>  
                 </div>
-
+                
                 <div class="auth-form__socicals">
                     <a href="" class="auth-form__socical-facebook btn btn--size-s btn--with-icon ">
                         <i class="fab fa-facebook-square  auth-form__socical-icon"></i>

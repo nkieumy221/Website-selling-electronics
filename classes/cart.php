@@ -83,5 +83,13 @@
 			$result = $this->db->select($query);
 			return $result;
 		}
+
+		/* Delete all data cart */
+		public function delAllDataCart() {
+			$sId = session_id();
+			$query = "DELETE FROM cart WHERE IDSession = '$sId'";
+			$result = $this->db->delete($query);
+			return $result;
+		}
     }   
 ?>
