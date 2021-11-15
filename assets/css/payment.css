@@ -152,6 +152,12 @@ ul {
     margin-bottom: 10px;
 }
 
+.notify__infor {
+    margin-top: 16px;
+    color: var(--text-color);
+    font-size: 1.6rem;
+}
+
 .return-home-btn {
     display: block;
     text-decoration: none;

@@ -1,12 +1,13 @@
 <?php 
+    include('./lib/handle.php'); 
+?>
+<?php 
     /* Kiểm tra id sản phẩm */
     if (!isset($_GET['productId']) || $_GET['productId'] == NULL) {
         echo "<script>window.location = '404.php'</script>";
     } else {
         $id = $_GET['productId'];
-    }
-
-    
+    }   
 ?>
 <?php 
     include_once('./classes/cart.php');

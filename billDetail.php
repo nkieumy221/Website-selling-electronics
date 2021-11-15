@@ -1,3 +1,15 @@
+<?php 
+    include('./lib/handle.php'); 
+?>
+<?php 
+    $cartClass = new cart();
+    if(isset($_GET['orderId']) && $_GET['orderId']){
+        $customerId = Session::get('customerId');
+        $insertOrder = $cartClass->insertOrder($customerId);
+        $delCart = $cartClass->delAllDataCart();
+        header("Location:success.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,45 +72,48 @@
                                 <li class="col c-2-5 cart__header-name">Tổng</li>
                             </ul>
                             <div class="cart__body">
+                                <?php
+                                    $productCart = $cartClass->showProductCart();
+                                    $i = 0;
+                                    if($productCart) {
+                                        $subtotal = 0;
+                                        while($row = $productCart->fetch_assoc()){
+                                            $i = $i + 1;    
+                                ?>
                                 <ul class="row product__infor ">
                                     <li class="col c-2-5 product__img">
-                                        1
+                                        <?= $i ?>
                                     </li>
                                     <li class="col c-2-5 product__name">
-                                        iPhone 12 64GB
+                                        <?= $row['TenSanPham'] ?>
                                     </li>
                                     <li class="col c-2-5 product__price">
-                                        19.999.000 ₫
+                                        <?= number_format($row['Gia']) ?> đ
                                     </li>
                                     <li class="col c-2-5 product__quatity">
-                                        1
+                                        <?= $row['SoLuong'] ?>
                                     </li>
                                     <li class="col c-2-5 product__total">
-                                        19.999.000 ₫
+                                    <?php 
+                                        $total = $row['Gia'] * $row['SoLuong'];
+                                        $subtotal += $total;
+                                        echo number_format($total);
+                                    ?> đ
                                     </li>
                                 </ul>
-                                <ul class="row product__infor ">
-                                    <li class="col c-2-5 product__img">
-                                        2
-                                    </li>
-                                    <li class="col c-2-5 product__name">
-                                        iPhone 12 64GB
-                                    </li>
-                                    <li class="col c-2-5 product__price">
-                                        19.999.000 ₫
-                                    </li>
-                                    <li class="col c-2-5 product__quatity">
-                                        1
-                                    </li>
-                                    <li class="col c-2-5 product__total">
-                                        19.999.000 ₫
-                                    </li>
-                                </ul>
+                                <?php 
+                                        }   
+                                    }
+                                ?>
                             </div>
                             <ul class="row cart__foot">
                                 <li class="col c-60"></li>
                                 <li class="col c-2-5 total"><b>Tổng</b></li>
-                                <li class="col c-2-5 product__total">12.244.555đ</li>
+                                <li class="col c-2-5 product__total">
+                                    <?php 
+                                        echo number_format($subtotal);
+                                    ?> đ
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -107,21 +122,19 @@
                             <ul class="row sm-gutter cart__header">
                                 <li class="col c-12 cart__header-name">Thông tin khách hàng</li>
                             </ul>
+                            <?php
+                                $id = Session::get('customerId');
+                                $getCustomers = $customerClass->showCustomers($id);
+                                if($getCustomers){
+                                    while($result = $getCustomers->fetch_assoc()){
+                            ?>
                             <ul class="user__infor-list">
                                 <li class="user__infor-item">
                                     <div class="user__title">
                                         Tên khách hàng:
                                     </div> 
                                     <div class="user__detail">
-                                        Mây
-                                    </div>
-                                </li>
-                                <li class="user__infor-item">
-                                    <div class="user__title">
-                                        Số điện thoại:
-                                    </div> 
-                                    <div class="user__detail">
-                                        Mây
+                                        <?php echo $result['TenKhachHang'] ?>
                                     </div>
                                 </li>
                                 <li class="user__infor-item">
@@ -129,17 +142,52 @@
                                         Địa chỉ:
                                     </div> 
                                     <div class="user__detail">
-                                        Mây
+                                        <?php echo $result['DiaChi'] ?>
+                                    </div>
+                                </li>
+                                <li class="user__infor-item">
+                                    <div class="user__title">
+                                        Số điện thoại:
+                                    </div> 
+                                    <div class="user__detail">
+                                        <?php echo $result['DienThoai'] ?>
+                                    </div>
+                                </li>
+                                <li class="user__infor-item">
+                                    <div class="user__title">
+                                        Email:
+                                    </div> 
+                                    <div class="user__detail">
+                                        <?php echo $result['Email'] ?>
+                                    </div>
+                                </li>
+                                <li class="user__infor-item">
+                                    <div class="user__title">
+                                        Zipcode:
+                                    </div> 
+                                    <div class="user__detail">
+                                        <?php echo $result['zipcode'] ?>
+                                    </div>
+                                </li>
+                                <li class="user__infor-item">
+                                    <div class="user__title">
+                                    </div> 
+                                    <div class="user__detail">
+                                        <a href="editProfile.php">Update Profile</a>
                                     </div>
                                 </li>
                             </ul>
+                            <?php 
+                                    }
+                                } 
+                            ?>
                         </div>
                     </div>
                 </div>
                 <ul class="row cart__foot">
-                    <li class="col c-2 btn btn--warning"><a href="">Quay lại</a></li>
+                    <li class="col c-2 btn btn--warning"><a href="payment.php">Quay lại</a></li>
                     <li class="col c-8"></li>
-                    <li class="col c-2 btn btn--warning"><a href="">Tiếp theo</a></li>
+                    <li class="col c-2 btn btn--warning"><a href="?orderId=order">Đặt hàng ngay</a></li>
                 </ul>
                 
             </div>

@@ -1,6 +1,5 @@
-<?php
-
-
+<?php 
+    include('./lib/handle.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">

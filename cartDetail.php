@@ -1,5 +1,7 @@
 <?php 
-    include_once('./classes/cart.php');
+    include('./lib/handle.php'); 
+?>
+<?php 
     /* xử lý btn addcart */
     $cartClass = new cart();
     /* Delete product in cart */
@@ -112,7 +114,7 @@
                                     echo number_format($subtotal);
                                 ?> đ
                             </li>
-                            <li class="col c-2 btn btn--primary"><a href="">Thanh toán</a></li>
+                            <li class="col c-2 btn btn--primary"><a href="payment.php">Thanh toán</a></li>
                         </ul>
                     <?php 
                         } else {

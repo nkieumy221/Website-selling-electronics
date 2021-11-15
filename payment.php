@@ -1,3 +1,6 @@
+<?php 
+    include('./lib/handle.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +64,7 @@
                             </a>
                         </li>
                         <li class="option">
-                            <a href="" class="option__link">
+                            <a href="billDetail.php" class="option__link">
                                 <img src="./assets/img/paycash.jpg" class="option__img" alt="">
                                 <div class="option__name">
                                     Thanh toán khi nhận hàng

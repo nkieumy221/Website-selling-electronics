@@ -91,5 +91,33 @@
 			$result = $this->db->delete($query);
 			return $result;
 		}
+
+		/* Insert order */
+		public function insertOrder($id){
+			$sId = session_id();
+			$query = "SELECT * FROM cart WHERE IDSession = '$sId'";
+			$getProduct = $this->db->select($query);
+			while($row = $getProduct->fetch_assoc()){
+				$productId = $row['IDSanPham'];
+				$productName = $row['TenSanPham'];
+				$quantity = $row['SoLuong'];
+				$price = $row['Gia'] * $quantity;
+				$img = $row['HinhAnh'];
+				$customerId = $id;
+
+				$queryInsert = "INSERT INTO dathang(IDSanPham, TenSanPham, IDKhachHang, SoLuong, Gia, HinhAnh) VALUES ('$productId','$productName','$customerId','$quantity','$price','$img')";
+				$insertOrder = $this->db->insert($queryInsert);
+				if($insertOrder){
+					header("Location:success.php");
+				}
+			}
+		}
+
+		/* Total order */
+		public function getAmountPrice($customerId) {
+			$query = "SELECT Gia FROM dathang WHERE IDKhachHang = '$customerId'";
+			$getPrice= $this->db->select($query);
+			return $getPrice;
+		}
     }   
 ?>

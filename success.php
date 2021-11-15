@@ -1,3 +1,6 @@
+<?php 
+    include('./lib/handle.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +56,22 @@
                     </div>
                     <div class="notify__success">
                         Đặt hàng thành công
+                    </div>
+                    <?php 
+                        $customerId = Session::get('customerId');
+                        $getAmount = $cartClass->getAmountPrice($customerId);
+                        if($getAmount){
+                            $amount = 0;
+                            while($result = $getAmount->fetch_assoc()){
+                                $price = $result['Gia'];
+                                $amount += $price;
+                            }
+                        }
+                    ?>
+                    <div class="notify__infor">
+                        Tổng số tiền đã mua là : <?= number_format($amount) ?> đ
+                        <p>Chúng tôi sẽ liên hệ với bạn sớm nhất có thể</p>
+                        <p>Kiểm tra đơn hàng <a href="orderDetails.php">tại đây</a></p>
                     </div>
                     <a href="" class="return-home-btn">
                         Trở về trang chủ
