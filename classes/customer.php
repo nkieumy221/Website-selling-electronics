@@ -63,5 +63,33 @@
                 }
             }
         }
+
+        public function showCustomers($id) {
+            $query = "SELECT * FROM khachhang WHERE ID = '$id'";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function updateCustomers($data, $id){
+            $name = mysqli_real_escape_string($this->db->link, $data['name']);
+            $phone = mysqli_real_escape_string($this->db->link, $data['phone']);
+            $zipcode = mysqli_real_escape_string($this->db->link, $data['zipcode']);
+            $email = mysqli_real_escape_string($this->db->link, $data['email']);
+            $address = mysqli_real_escape_string($this->db->link, $data['address']);
+            if($name=="" || $phone=="" || $zipcode=="" || $email=="" || $address=="") {
+                $alert = "<span class='success'>Không được để trống</span>  ";
+                return $alert;
+            }else{
+                $query ="UPDATE khachhang SET TenKhachHang = '$name', DiaChi = '$address', zipcode = '$zipcode', DienThoai = '$phone', Email = '$email' WHERE ID = '$id'";
+                $result = $this->db->update($query);
+                if ($result){
+                    $alert = "<span class='success'>Cập nhập thành công";
+                    return $alert;
+                } else {
+                    $alert = "<span class='error'>Cập nhập không thành công";
+                    return $alert;
+                }
+            }
+        }
     }   
 ?>

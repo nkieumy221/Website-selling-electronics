@@ -121,7 +121,7 @@
 
                             <ul class="header__navbar-user-menu">
                                 <li class="header__navbar-user-item">
-                                    <a href="">Tài khoản của tôi</a>
+                                    <a href="profile.php?idCustomer=<?php echo Session::get('customerId'); ?>" class =>Tài khoản của tôi</a>
                                 </li>
                                 <li class="header__navbar-user-item">
                                     <a href="">Địa chỉ</a>
