@@ -107,7 +107,7 @@
                                     <a href="">Địa chỉ</a>
                                 </li>
                                 <li class="header__navbar-user-item">
-                                    <a href="">Đơn mua</a>
+                                    <a href="orderDetails.php">Đơn mua</a>
                                 </li>
                                 <li class="header__navbar-user-item header__navbar-user-item--separate">
                                     <a href="?customerId=<?php echo Session::get('customerId') ?>">Đăng xuất</a>

@@ -26,6 +26,11 @@
             </div>
         </div>
         <div class="header__right">
+            <div class="notify__bell">
+                <a href="inbox.php">
+                    <i class="fas fa-bell"></i>
+                </a>
+            </div>
             <div class="user__name">
                 Hello 
                 <b> <?php echo Session::get('adminName'); ?></b>

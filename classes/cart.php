@@ -119,5 +119,49 @@
 			$getPrice= $this->db->select($query);
 			return $getPrice;
 		}
+
+		/* get cart ordered */
+		public function showProductOrdered($customerId) {
+			$query = "SELECT * FROM dathang WHERE IDKhachHang = '$customerId'";
+			$getPrice= $this->db->select($query);
+			return $getPrice;
+		}
+
+		/* Get inbox cart */
+		public function getInboxCart(){
+			$query = "SELECT * FROM dathang ORDER BY ThoiGian";
+			$getPrice= $this->db->select($query);
+			return $getPrice;
+		}
+
+		/* Xử lý thông tin đơn hàng */
+		public function shifted($id,$time,$price) {
+			$id = mysqli_real_escape_string($this->db->link, $id);
+			$time = mysqli_real_escape_string($this->db->link, $time);
+			$price = mysqli_real_escape_string($this->db->link, $price);
+
+			$query = "UPDATE dathang SET status = 1 WHERE ID = '$id' AND Gia ='$price' AND ThoiGian = '$time' ";
+			$result = $this->db->update($query);
+		}
+
+		/* Xóa đơn hàng */
+		public function deShifted($id,$time,$price) {
+			$id = mysqli_real_escape_string($this->db->link, $id);
+			$time = mysqli_real_escape_string($this->db->link, $time);
+			$price = mysqli_real_escape_string($this->db->link, $price);
+
+			$query = "DELETE FROM dathang WHERE ID = '$id' AND Gia ='$price' AND ThoiGian = '$time' ";
+			$result = $this->db->delete($query);
+		}
+
+		/* Xác nhận nhận đc hàng */
+		public function shiftedConfirm($id,$time,$price) {
+			$id = mysqli_real_escape_string($this->db->link, $id);
+			$time = mysqli_real_escape_string($this->db->link, $time);
+			$price = mysqli_real_escape_string($this->db->link, $price);
+
+			$query = "UPDATE dathang SET status = 2 WHERE IDKhachHang = '$id' AND Gia ='$price' AND ThoiGian = '$time' ";
+			$result = $this->db->update($query);
+		}
     }   
 ?>

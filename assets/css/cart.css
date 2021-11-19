@@ -35,6 +35,8 @@
 
 .product__infor {
     font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: var(--text-color);
     text-align: center;
     list-style: none;
 }
