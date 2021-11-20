@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="silder__item">
-                <a href="" class="slider__item-link">
+                <a href="./inbox.php" class="slider__item-link">
                     Quản lý đơn hàng
                 </a>
             </li>

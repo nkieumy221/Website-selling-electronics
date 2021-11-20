@@ -166,7 +166,7 @@
                             <div class="add_cart mt-16">
                                 <form action="" method="post">
                                     <input type="number" class="buyfield" name="quantity" value="1" min="1"/>
-                                    <input type="submit" class="btn btn--warning add_cart-btn" name="submit" value="Buy Now"/>
+                                    <input type="submit" class="btn btn--primary add_cart-btn" name="submit" value="Mua ngay"/>
                                 </form>	
                                 <?php
                                     if(isset($addCart)){

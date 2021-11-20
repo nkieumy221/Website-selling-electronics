@@ -250,6 +250,96 @@
             <!-- main center -->
             <div class="grid wide">
                 <!-- Product sale list -->
+                <?php 
+                    $customer = Session::get('customerName');
+                    if($customer){
+
+                ?>
+                <div class="local mt-32">
+                    <h2 class="sale__title">
+                        <i class="fab fa-hotjar"></i>
+                        GỢI Ý CHO BẠN
+                    </h2>
+                    <div class="sale__list row">
+                        <?php
+                            $products = $recommendation->ratingProductQuery();
+                            $matrix = array();
+                            while($row = $products->fetch_assoc()){
+                                $user = $recommendation->getUserName($row['IDUser']);
+                                $userName = mysqli_fetch_array($user);
+                                $product = $recommendation->getProductName($row['IDProduct']);
+                                $productName = mysqli_fetch_array($product);
+                                $matrix[$userName['username']][$productName['TenSanPham']] = $row['Rating'];
+                            }
+                            $recommen = array();
+                            $userActive = Session::get('customerName');
+                            $recommen = getRecommendation($matrix,$userActive); 
+                            foreach($recommen as $movie => $rating){
+                                $product = $recommendation->getProductByName($movie);
+                            if($product){
+                            while($row = $product->fetch_assoc())
+                            {
+                            
+                        ?>
+                        <div class="col c-3 sale__item">
+                            <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
+                                <div class="sale__item-img">
+                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
+                                </div>
+                                <div class="sale__item-name">
+                                    <?= $row['TenSanPham'] ?>
+                                </div>
+                                <div class="sale__item-price">
+                                    <div class="sale__item-price-sale">
+                                        <?= number_format($row['GiaKM']) ?> đ
+                                    </div>
+                                    <div class="sale__item-price-origin">
+                                        <?= number_format($row['GiaGoc']) ?> đ
+                                    </div>
+                                </div>
+                                <div class="sale__item-config mt-16">
+                                    <div class="sale__item-infor">
+                                        <div class="item-infor__detail">
+                                            <i class="fal fa-archive"></i>
+                                            <?= $row['CPU'] ?>
+                                        </div>
+                                        <div class="item-infor__detail">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <?= $row['ManHinh'] ?>
+                                        </div>
+                                        <div class="item-infor__detail">
+                                            <i class="fas fa-microchip"></i>
+                                            <?= $row['RAM'] ?>
+                                        </div>
+                                        <div class="item-infor__detail">
+                                            <i class="far fa-hdd"></i>
+                                            <?= $row['BoNho'] ?>
+                                        </div>
+                                    </div>
+                                    <div class="sale__item-pay mt-16">
+                                        <img src="./assets/img/vnpay400.jpg" alt="">
+                                        Giảm thêm 5% tối đa 700.000đ
+                                    </div>
+                                </div>
+                                <div class="sale__item-btn mt-16">
+                                    <div class="btn btn--primary">
+                                        MUA NGAY
+                                    </div>
+                                    <div class="btn btn--warning">
+                                        GIỎ HÀNG
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <?php } 
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+                <?php }
+                    else {
+                ?>
                 <div class="local mt-32">
                     <h2 class="sale__title">
                         <i class="fab fa-hotjar"></i>
@@ -318,6 +408,8 @@
                         ?>
                     </div>
                 </div>
+                <?php
+                } ?>
                 <!-- Sale program -->
                 <div class=" mt-32">
                     <img src="./assets/img/adver.jpg" alt="" class="advertisement-img">

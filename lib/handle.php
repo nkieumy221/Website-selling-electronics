@@ -17,4 +17,5 @@
     $categoryClass = new category();
     $productClass = new product();
     $customerClass = new customer();
+    $recommendation = new recommendation();
 ?>
