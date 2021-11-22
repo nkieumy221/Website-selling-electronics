@@ -104,7 +104,10 @@
                                     <a href="profile.php?idCustomer=<?php echo Session::get('customerId'); ?>" class =>Tài khoản của tôi</a>
                                 </li>
                                 <li class="header__navbar-user-item">
-                                    <a href="">Địa chỉ</a>
+                                    <a href="compareProduct.php">So sánh sản phẩm</a>
+                                </li>
+                                <li class="header__navbar-user-item">
+                                    <a href="wishlist.php">Sản phẩm yêu thích</a>
                                 </li>
                                 <li class="header__navbar-user-item">
                                     <a href="orderDetails.php">Đơn mua</a>

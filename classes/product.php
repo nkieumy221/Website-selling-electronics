@@ -203,5 +203,85 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        /* insert compare product */
+        public function insertCompare($productId, $customerId) {
+			$productId = mysqli_real_escape_string($this->db->link, $productId);
+			$customerId = mysqli_real_escape_string($this->db->link, $customerId);
+
+            $check_compare = "SELECT * FROM compare WHERE IDProduct = $productId AND IDCustomer ='$customerId'";
+			$result_check_compare = $this->db->select($check_compare);
+            if($result_check_compare){
+				$msg = "<span class='error'>Sản phẩm đã được thêm vào</span>";
+				return $msg;
+			}else{
+                $query = "SELECT * FROM hanghoa WHERE ID = $productId ";
+                $result = $this->db->select($query)->fetch_assoc();
+                
+                $productName = $result["TenSanPham"];
+                $image = $result["HinhAnh"];
+                $price = $result["GiaKM"];
+                $query_insert = "INSERT INTO compare(IDCustomer, IDProduct, productName, price, image) VALUES('$customerId','$productId','$productName','$price','$image')";
+                $insert_compare = $this->db->insert($query_insert);
+                if($insert_compare){
+                    $alert = "<span class='success'>Đã thêm vào so sánh</span>  ";
+                    return $alert;
+                } else {
+                    $alert = "<span class='error'>Không thành công</span>  ";
+                    return $alert;
+                }
+            }
+        }
+
+        /* Show product compare */
+        public function showProductCompare($customerId) {
+            $productCompare = "SELECT * FROM compare WHERE IDCustomer ='$customerId' ORDER BY ID DESC";
+			$result = $this->db->select($productCompare);
+            return $result;
+        }
+
+        /* Delete product Compare */
+        public function deleteProductCompare($id) {
+            $query = "DELETE FROM compare WHERE ID = '$id'";
+            $result = $this->db->delete($query);
+            return $result;
+        }
+
+        /* Insert wishlist */
+        public function insertWishlist($productId, $customerId) {
+            $productId = mysqli_real_escape_string($this->db->link, $productId);
+			$customerId = mysqli_real_escape_string($this->db->link, $customerId);
+
+            $check_compare = "SELECT * FROM wishlist WHERE IDProduct = $productId AND IDCustomer ='$customerId'";
+			$result_check_compare = $this->db->select($check_compare);
+            if($result_check_compare){
+				$msg = "<span class='error'>Sản phẩm đã được thêm vào</span>";
+				return $msg;
+			}else{
+                $query_insert = "INSERT INTO wishlist(IDCustomer, IDProduct) VALUES('$customerId','$productId')";
+                $insert_compare = $this->db->insert($query_insert);
+                if($insert_compare){
+                    $alert = "<span class='success'>Đã thêm vào yêu thích</span>  ";
+                    return $alert;
+                } else {
+                    $alert = "<span class='error'>Không thành công</span>  ";
+                    return $alert;
+                }
+            }
+        }
+
+        /* Show product wishlist */
+        public function showProductWishlist($customerId) {
+            $productCompare = "SELECT * FROM wishlist WHERE IDCustomer ='$customerId'";
+			$result = $this->db->select($productCompare);
+            return $result;
+        }
+
+        /* Delete product wishlist */
+        public function deleteProductWishlist($id) {
+            $query = "DELETE FROM wishlist WHERE ID = '$id'";
+            $result = $this->db->delete($query);
+            return $result;
+        }
     }   
 ?>

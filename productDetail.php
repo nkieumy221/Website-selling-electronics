@@ -7,15 +7,22 @@
         echo "<script>window.location = '404.php'</script>";
     } else {
         $id = $_GET['productId'];
-    }   
-?>
-<?php 
-    include_once('./classes/cart.php');
+    } 
     /* xử lý btn addcart */
-    $class = new cart();
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $quantity = $_POST['quantity'];
-        $addCart = $class->addToCart($id, $quantity);
+        $addCart = $cartClass->addToCart($id, $quantity);
+    }
+    /* Xử lí so sánh sản phẩm */
+    $customerId = Session::get('customerId');
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['compare'])) {
+        $productId = $_GET['productId'];
+        $insertCompare = $productClass->insertCompare($productId, $customerId);
+    }
+    /* Xử lí yêu thích sản phẩm*/
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
+        $productId = $_GET['productId'];
+        $insertWishlist = $productClass->insertWishlist($productId, $customerId);
     }
 ?>
 <!DOCTYPE html>
@@ -167,21 +174,38 @@
                                 <form action="" method="post">
                                     <input type="number" class="buyfield" name="quantity" value="1" min="1"/>
                                     <input type="submit" class="btn btn--primary add_cart-btn" name="submit" value="Mua ngay"/>
-                                </form>	
-                                <?php
-                                    if(isset($addCart)){
-                                        echo $addCart;
-                                    }
-                                ?>	
+                                </form>		
                             </div>
                             
-                            <div class="btn btn--primary buy_now mt-16">
-                                <div class="buy_now-title">
-                                    MUA NGAY
-                                </div>
-                                <div class="buy_now-content">
-                                    Gọi điện xác nhận và giao hàng tận nơi
-                                </div>
+                            <div class="add_cart mt-16">
+                                <form action="" method="post">
+                                    <?php 
+                                        $checkLogin = Session::get('customerLogin'); 
+                                        if($checkLogin){  
+                                    ?>
+                                    <input type="hidden" name="productId" value="<?php echo $row['ID'] ?>">
+                                    <input type="submit" name="compare" value="So sánh" class="btn frame-boder">
+                                    <?php 
+                                            if(isset($insertCompare)){
+                                                echo $insertCompare;
+                                            }
+                                        }
+                                    ?>
+                                </form>
+                                <form action="" method="post">
+                                    <?php 
+                                        $checkLogin = Session::get('customerLogin'); 
+                                        if($checkLogin){         
+                                    ?>
+                                    <input type="hidden" name="productId" value="<?php echo $row['ID'] ?>">
+                                    <input type="submit" name="wishlist" value="Yêu thích" class="btn frame-boder">
+                                    <?php 
+                                            if(isset($insertWishlist)){
+                                                echo $insertWishlist;
+                                            }
+                                        }
+                                    ?>
+                                </form>
                             </div>
                         </div>
                     </div>
