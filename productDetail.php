@@ -24,6 +24,15 @@
         $productId = $_GET['productId'];
         $insertWishlist = $productClass->insertWishlist($productId, $customerId);
     }
+    /* Xử lí bình luận */
+    if(isset($_POST["cmt-submit"])){
+        $comment = $commentClass->insertComment();
+    }
+
+    /* Đánh giá star */
+    if(isset($_POST["binhchon"])){
+        $startRating = $productClass->startRating($id);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -374,9 +383,59 @@
                             </div>
                         </div>
                         <div class="col l-4">
+                            
+                            <?php 
+                                $checkRated = $productClass->checkRated($id);
+                                if(!$checkRated){
+                            ?>
                             <div class="evaluate__point">
                                 Bạn đã dùng sản phẩm này? 
-                                <div class="btn btn--primary">Gửi đánh giá của bạn</div>
+                                <form class="ratings" action="#" method="POST" id="ratings">
+                                    <input type="radio" id="star5" name="ratings" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="star4half" name="ratings" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                    <input type="radio" id="star4" name="ratings" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="star3half" name="ratings" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                    <input type="radio" id="star3" name="ratings" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                    <input type="radio" id="star2half" name="ratings" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                    <input type="radio" id="star2" name="ratings" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="star1half" name="ratings" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                    <input type="radio" id="star1" name="ratings" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                    <input type="radio" id="starhalf" name="ratings" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label><br>
+                                    <button class="btn btn--primary" name="binhchon" onclick="myFunction()">Gửi đánh giá của bạn</button>
+                                </form>
+                            <script>
+                            function myFunction() {
+                                var x = document.getElementById("ratings");
+                                if (x.style.display === "none") {
+                                    x.style.display = "block";
+                                } 
+                                }
+                            </script>
+                                
+                                <?php 
+                                } 
+                                else{
+
+                                ?>
+                            <div class="evaluate__point">
+                                Bạn đã đánh giá cho sản phẩm này
+                                <div class="evaluate_star">
+                                <?php
+                                        $ratings = $productClass->showRatingByUser($id);
+                                        if($ratings){
+                                        while ($ratingRow = $ratings->fetch_assoc()){
+                                            $star = $ratingRow['Rating'];
+                                            for($i = 0; $i < $star; $i++){       
+                                ?>
+                                        
+                                        <i class="fas fa-star"></i>
+                                
+                                <?php             }
+                                            }
+                                        }
+                                    }
+                                ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -385,11 +444,21 @@
                     <h2 class="product__recomment-title">
                         Bình luận 
                     </h2>
-                    <div class="form-cmt mt-32">
-                        <input type="text" class="cmt-input" placeholder="Viết câu hỏi của bạn">
-                        <button class="btn btn--primary cmt-btn">Gửi câu hỏi</button>
-                    </div>
+                    <form action="" method="post" class="form-cmt mt-32">
+                        <input type="hidden" value="<?php echo $id ?>" name="productId">
+                        <input type="text" class="cmt-username" placeholder="Tên của bạn" name="cmt-username">
+                        <div class="cmt-content__form">
+                            <input type="text" class="cmt-input" placeholder="Viết câu hỏi của bạn" name="cmt-content">
+                            <input type="submit" class="btn btn--primary cmt-btn" value="Gửi câu hỏi" name="cmt-submit">
+                        </div>
+                    </form>
                     <div class="comment">
+                        <?php 
+                            $cmtList = $commentClass->showComment($id);
+                            $fm = new Format();
+                            if($cmtList){
+                                while($row = mysqli_fetch_assoc($cmtList)){
+                        ?>
                         <div class="user-cmt__form mt-32">
                             <div class="user-cmt__img">
                                 <img src="" alt="">
@@ -397,17 +466,21 @@
                             </div>
                             <div class="user-cmt__body">
                                 <div class="user-cmt_name">
-                                    <b>Nguyễn Hà</b>
-                                    <span class="user-cmt__time">1 giờ trước</span>
+                                    <b><?= $row['TenNguoiDung'] ?></b>
+                                    <span class="user-cmt__time"><?php echo $fm->formatDate($row['time']); ?></span>
                                 </div>
                                 <div class="user-cmt__content">
-                                    Trả góp qua thẻ tín dụng SCB có mất phí chuyển đổi không ah
+                                    <?= $row['NoiDung'] ?>
                                 </div>
                                 <a href="" class="reply-btn">
                                     Trả lời
                                 </a>
                             </div>
                         </div>
+                        <?php 
+                            }
+                        }
+                        ?>
                         <div class="reply-form">
                             <div class="user-reply__name">
                                 <b>Nguyễn Văn Khoa </b>

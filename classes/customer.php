@@ -56,7 +56,7 @@
                     Session::set('customerLogin', true);
                     Session::set('customerId', $value['ID']);
                     Session::set('customerName', $username);
-                    
+                    header("Location:index.php");
                 } else{
                     $alert = "<span class='error'>Tên đăng nhập hoặc tài khoản sai</span>  ";
                     return $alert;
@@ -87,6 +87,27 @@
                     return $alert;
                 } else {
                     $alert = "<span class='error'>Cập nhập không thành công";
+                    return $alert;
+                }
+            }
+        }
+
+        /* Comment in product */
+        public function insertComment() {
+            $username = $_POST['cmt-username'];
+            $productId = $_POST['productId'];
+            $contentCmnt = $_POST['cmt-content'];
+            if($username=="" || $productId=="" || $productId=="") {
+                $alert = "<span class='success'>Không được để trống</span>  ";
+                return $alert;
+            }else{
+                $query ="INSERT INTO binhluan(IDSanPham, TenNguoiDung, NoiDung) VALUES ('$username','$productId','$contentCmnt')";
+                $result = $this->db->insert($query);
+                if ($result){
+                    $alert = "<span class='success'>Thêm thành công";
+                    return $alert;
+                } else {
+                    $alert = "<span class='error'>Thêm không thành công";
                     return $alert;
                 }
             }

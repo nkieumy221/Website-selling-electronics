@@ -1,3 +1,4 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 .pd-header {
     box-shadow: 0 0 3px 0 #dee2e6;
     padding-bottom: 32px;
@@ -71,14 +72,6 @@
     text-decoration: line-through;
 }
 
-.product__exhibit {
-
-}
-
-.product__sale {
-    
-}
-
 .product__sale-title {
     color: #000;
     font-weight: 500;
@@ -97,10 +90,6 @@
 .product__sale-icon {
     color: #48bb78;
     margin-right: 10px;
-}
-
-.product__sale-name {
-
 }
 
 .product__sale-link {
@@ -143,10 +132,6 @@
 
 .vn_pay-title {
     font-weight: 500;
-}
-
-.vn_pay-content {
-
 }
 
 /* -- quantity box -- */
@@ -301,10 +286,6 @@
     padding-left: 10px;
 }
 
-.product__recomment-item-name {
-
-}
-
 .product__recomment-item-price {
     display: flex;
     color: var(--primary-color);
@@ -340,10 +321,6 @@
 }
 
 
-.rate__process {
-
-}
-
 .rate__process-item {
     display: flex;  
 }
@@ -371,17 +348,24 @@
 }
 
 /* Comment */
-.form-cmt {
+.cmt-content__form {
     display: flex;
     position: relative;
 }
 
+.cmt-username,
 .cmt-input {
     flex: 1;
     border-radius: 5px;
     border: 1px solid #ccc;
     height: 80px;
     margin-right: 10px;
+}
+
+.cmt-username {
+    height: 40px;
+    margin-bottom: 5px;
+    width: 99%;
 }
 
 .cmt-btn {
@@ -436,3 +420,42 @@
     margin: 0 2px;
     border-radius: 3px;
 }
+
+/* Đánh giá sao */
+.ratings { 
+    border: none;
+    float: left;
+}
+
+.ratings > input { 
+    display: none; 
+} 
+
+.ratings > label:before { 
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.ratings > .half:before { 
+    content: "\f089";
+    position: absolute;
+}
+
+.ratings > label { 
+    color: #ddd; 
+    float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.ratings > input:checked ~ label, /* show gold star when clicked */
+.ratings:not(:checked) > label:hover, /* hover current star */
+.ratings:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.ratings > input:checked + label:hover, /* hover current star when changing rating */
+.ratings > input:checked ~ label:hover,
+.ratings > label:hover ~ input:checked ~ label, /* lighten current selection */
+.ratings > input:checked ~ label:hover ~ label { color: #FFED85;  } 

@@ -283,5 +283,44 @@
             $result = $this->db->delete($query);
             return $result;
         }
+
+        /* Start rating */
+        public function startRating($id){
+            $rating = $_POST['ratings'];
+            $userId = Session::get('customerId');
+            $check = "SELECT * FROM ratingproduct WHERE IDProduct='$id' AND IDUser='$userId' AND rating='$rating'";
+            $result_check = $this->db->select($check);
+            if($result_check){
+                $msg = "<span class='error'>Sản phẩm đã được thêm vào</span>";
+                return $msg;
+            } else {
+                $query ="INSERT INTO ratingproduct(IDProduct, IDUser, Rating) VALUES ('$id','$userId','$rating')";
+                $result = $this->db->insert($query);
+                if ($result){
+                    $alert = "<span class='success'>Thêm thành công</span>";
+                    return $alert;
+                }    
+            }
+        }
+
+        /* check rating */
+        public function checkRated($id){
+            $userId = Session::get('customerId');
+            $check = "SELECT * FROM ratingproduct WHERE IDProduct='$id' AND IDUser='$userId'";
+            $result_check = $this->db->select($check);
+            if($result_check){
+                return true;
+            } else { 
+                return false;
+            }
+        }
+
+        /* show rating list */
+        public function showRatingByUser($id){
+            $userId = Session::get('customerId');
+            $check = "SELECT * FROM ratingproduct WHERE IDProduct='$id' AND IDUser='$userId'";
+            $result = $this->db->select($check);
+            return $result;
+        }
     }   
 ?>

@@ -423,7 +423,6 @@
                     } else{
                         $mess = "Tên đăng nhập hoặc mật khẩu không đúng";
                     }
-                    echo $sql;
                 }
             ?> -->
             <!-- Login form -->
