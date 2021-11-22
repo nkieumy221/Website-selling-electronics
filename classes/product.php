@@ -322,5 +322,47 @@
             $result = $this->db->select($check);
             return $result;
         }
+
+        /* Trung bình rating */
+        public function avgRating($id){
+            $check = "SELECT AVG(Rating) AS avgRating FROM ratingproduct WHERE IDProduct = $id";
+            $result = $this->db->select($check);
+            while($res = $result->fetch_assoc()) {
+                return number_format($res['avgRating'],1);
+            } 
+        }
+
+        /* Số lượt bình luận */
+        public function numberCmt($id) {
+            $check = "SELECT COUNT(noidung) AS noidung FROM binhluan WHERE IDSanPham = $id";
+            $result = $this->db->select($check);
+            while($res = $result->fetch_assoc()) {
+                return $res['noidung'];
+            } 
+        }
+        /* Số lượt đánh giá */
+        public function numberRating($id) {
+            $check = "SELECT COUNT(Rating) AS avgRating FROM ratingproduct WHERE IDProduct = $id";
+            $result = $this->db->select($check);
+            while($res = $result->fetch_assoc()) {
+                return $res['avgRating'];
+            } 
+        }
+
+        /* Số lượng rating */
+        public function numberByRating($id, $rating) {
+            $check = "SELECT COUNT(Rating) AS avgRating FROM ratingproduct WHERE IDProduct = $id AND Rating = $rating";
+            $result = $this->db->select($check);
+            while($res = $result->fetch_assoc()) {
+                return $res['avgRating'];
+            } 
+        } 
+
+        /* Progess lenght */
+        public function setProgessLengh($id, $rating){
+            $numberTotal = $this->numberRating($id);
+            $numberRating = $this->numberByRating($id, $rating);
+            return ($numberRating / $numberTotal) * 100;
+        }
     }   
 ?>

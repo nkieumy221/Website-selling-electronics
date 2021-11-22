@@ -304,11 +304,18 @@
                         Đánh giá & Nhận xét 
                     </h2>
                     <div class="row sm-gutter mt-32">
+                        <!-- Đánh giá tổng quan -->
                         <div class="col l-4">
                             <div class="evaluate__point">
                                 Đánh giá nhận xét   
                                 <div class="evaluate_rank">
-                                    5/5
+                                    <?php 
+                                        $avgRating = $productClass->avgRating($id);
+                                        if($avgRating){
+                                            echo $avgRating;
+                                        }
+                                    ?>
+                                    /5
                                 </div>
                                 <div class="evaluate_star">
                                     <i class="fas fa-star"></i>
@@ -318,72 +325,65 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                                 <div class="evaluate__quatity">
-                                    1 đánh giá & 0 nhận xét
+                                    <?php 
+                                        $numberRating = $productClass->numberRating($id);
+                                        if($numberRating){
+                                            echo $numberRating;
+                                        }
+                                    ?>
+                                    đánh giá &
+                                    <?php 
+                                        $numberCmt = $productClass->numberCmt($id);
+                                        if($numberCmt){
+                                            echo $numberCmt;
+                                        }
+                                    ?> 
+                                    nhận xét
                                 </div>
                             </div>
                         </div>
+                        <!-- Phân tích rating -->
                         <div class="col l-4">
                             <div class="rate__process">
+                                <?php 
+                                    for($i=5; $i>0; $i--){
+
+                                    
+                                ?>
                                 <div class="rate__process-item">
                                     <div class="rate__process-lable">
-                                        5 <i class="fas fa-star"></i>
+                                        <?= $i ?> <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="rate__process-bar rate__process-bar--full">
-
-                                    </div>
-                                    <div class="rate__process-quatity">
-                                        1
-                                    </div>
-                                </div>
-                                <div class="rate__process-item">
-                                    <div class="rate__process-lable">
-                                        4 <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="rate__process-bar">
-
+                                    <div class="rate__process-bar ">
+                                        <div class="rate__process-length" 
+                                            style="width:<?php 
+                                                $setProgessLengh = $productClass->setProgessLengh($id, $i);
+                                                if($setProgessLengh){
+                                                    echo $setProgessLengh;
+                                                } else {
+                                                    echo '0';
+                                                }
+                                            ?>">
+                                        </div>
                                     </div>
                                     <div class="rate__process-quatity">
-                                        0
+                                        <?php 
+                                            $numberByRating = $productClass->numberByRating($id,$i);
+                                            if($numberByRating){
+                                                echo $numberByRating;
+                                            } else {
+                                                echo '0';
+                                            }
+                                        ?>
                                     </div>
                                 </div>
-                                <div class="rate__process-item">
-                                    <div class="rate__process-lable">
-                                        3 <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="rate__process-bar">
-
-                                    </div>
-                                    <div class="rate__process-quatity">
-                                        0
-                                    </div>
-                                </div>
-                                <div class="rate__process-item">
-                                    <div class="rate__process-lable">
-                                        2 <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="rate__process-bar">
-
-                                    </div>
-                                    <div class="rate__process-quatity">
-                                        0
-                                    </div>
-                                </div>
-                                <div class="rate__process-item">
-                                    <div class="rate__process-lable">
-                                        1 <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="rate__process-bar">
-
-                                    </div>
-                                    <div class="rate__process-quatity">
-                                        0
-                                    </div>
-                                </div>
-
+                                <?php 
+                                    }
+                                ?>
                             </div>
                         </div>
-                        <div class="col l-4">
-                            
+                        <!-- Người dùng đánh giá -->
+                        <div class="col l-4">  
                             <?php 
                                 $checkRated = $productClass->checkRated($id);
                                 if(!$checkRated){
@@ -411,7 +411,7 @@
                                 } 
                                 }
                             </script>
-                                
+                            
                                 <?php 
                                 } 
                                 else{
@@ -433,13 +433,17 @@
                                 <?php             }
                                             }
                                         }
-                                    }
                                 ?>
                                 </div>
+                                <?php
+                                    }
+                                ?>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="mt-32 product__description ">
                     <h2 class="product__recomment-title">
                         Bình luận 

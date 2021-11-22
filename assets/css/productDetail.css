@@ -336,10 +336,12 @@
     background-color: #e9ecef;
     border-radius: 20px;
     margin: 10px 10px 0 ;
+    overflow: hidden;
 }
 
-.rate__process-bar--full {
+.rate__process-length {
     background-color: #48bb78;
+    height:10px;
 }
 
 .rate__process-quatity {
