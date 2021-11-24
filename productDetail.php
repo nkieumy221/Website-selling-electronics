@@ -363,7 +363,8 @@
                                                 } else {
                                                     echo '0';
                                                 }
-                                            ?>">
+                                            ?>%">
+
                                         </div>
                                     </div>
                                     <div class="rate__process-quatity">
@@ -392,16 +393,12 @@
                                 Bạn đã dùng sản phẩm này? 
                                 <form class="ratings" action="#" method="POST" id="ratings">
                                     <input type="radio" id="star5" name="ratings" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                    <input type="radio" id="star4half" name="ratings" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
                                     <input type="radio" id="star4" name="ratings" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                                    <input type="radio" id="star3half" name="ratings" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
                                     <input type="radio" id="star3" name="ratings" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                                    <input type="radio" id="star2half" name="ratings" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
                                     <input type="radio" id="star2" name="ratings" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                                    <input type="radio" id="star1half" name="ratings" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
                                     <input type="radio" id="star1" name="ratings" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                                    <input type="radio" id="starhalf" name="ratings" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label><br>
-                                    <button class="btn btn--primary" name="binhchon" onclick="myFunction()">Gửi đánh giá của bạn</button>
+                                    <br>
+                                    <button class="btn btn-star btn--primary" name="binhchon" onclick="myFunction()">Gửi đánh giá của bạn</button>
                                 </form>
                             <script>
                             function myFunction() {
@@ -482,21 +479,31 @@
                             </div>
                         </div>
                         <?php 
-                            }
-                        }
+                            $replyComment = $commentClass->showReplyComment($row['ID']);
+                            if($replyComment){
+                                while($row = mysqli_fetch_assoc($replyComment)){
                         ?>
                         <div class="reply-form">
                             <div class="user-reply__name">
-                                <b>Nguyễn Văn Khoa </b>
+                                <b><?php  
+                                    $username = $customerClass->getUserName($row['IDUser']);
+                                    echo $username; ?></b>
                                 <span class="admin-tag">Quản trị viên</span>
-                                <span class="user-cmt__time">1 giờ trước</span>
+                                <span class="user-cmt__time"><?php echo $fm->formatDate($row['Time']); ?></span>
                             </div>
                             <div class="user-cmt__content">
-                                Chào Selena, <br>
-                                Dạ sẽ tùy vào số tiền trả trước và số tháng trả góp nhé. Để được tư vấn chi tiết bạn vui lòng để lại SĐT hoặc bớt chút thời gian liên hệ tổng đài miễn phí 18006601, bên mình sẽ hỗ trợ bạn nhanh nhất ạ.
-                                Thân mến!
+                                <?= $row['Body'] ?>
                             </div>
                         </div>
+                        <?php
+                                }
+                            }
+                        ?>
+                        <?php 
+                            }
+                        }
+                        ?>
+                        
                     </div>
                 </div>
             </div>

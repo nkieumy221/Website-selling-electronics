@@ -429,6 +429,10 @@
     float: left;
 }
 
+.btn-star {
+    float: bottom;
+}
+
 .ratings > input { 
     display: none; 
 } 
@@ -449,6 +453,7 @@
 .ratings > label { 
     color: #ddd; 
     float: right; 
+    margin-right: 5px;
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/

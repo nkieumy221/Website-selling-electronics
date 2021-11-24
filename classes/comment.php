@@ -49,5 +49,12 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        /* Reply comments */
+        public function showReplyComment($id) {
+            $query = "SELECT * FROM replycomment WHERE IDComment = $id";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }   
 ?>

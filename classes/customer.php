@@ -112,5 +112,17 @@
                 }
             }
         }
+
+        /* Get username by id*/
+        public function getUserName($id){
+            $query = "SELECT username FROM khachhang WHERE ID = $id";
+            $result = $this->db->select($query);
+            if($result){
+                while($row = $result->fetch_assoc() ){
+                    return $row['username'];
+                }
+            }
+        }
+
     }   
 ?>

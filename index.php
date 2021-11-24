@@ -265,11 +265,9 @@
                             $products = $recommendation->ratingProductQuery();
                             $matrix = array();
                             while($row = $products->fetch_assoc()){
-                                $user = $recommendation->getUserName($row['IDUser']);
-                                $userName = mysqli_fetch_array($user);
-                                $product = $recommendation->getProductName($row['IDProduct']);
-                                $productName = mysqli_fetch_array($product);
-                                $matrix[$userName['username']][$productName['TenSanPham']] = $row['Rating'];
+                                $userName = $recommendation->getUserName($row['IDUser']);
+                                $productName = $recommendation->getProductName($row['IDProduct']);
+                                $matrix[$userName][$productName] = $row['Rating'];
                             }
                             $recommen = array();
                             $userActive = Session::get('customerName');

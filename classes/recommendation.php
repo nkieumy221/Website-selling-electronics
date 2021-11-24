@@ -25,14 +25,20 @@
         public function getUserName($id){
             $query = "SELECT username FROM khachhang WHERE ID = $id";
             $result = $this->db->select($query);
-            return $result;
+            if($result){
+                while($row = $result->fetch_assoc() ){
+                    return $row['username'];
+                }
+            }
         }
 
-        /* Get username by id*/
+        /* Get product name by id*/
         public function getProductName($id){
             $query = "SELECT TenSanPham FROM hanghoa WHERE ID = $id";
             $result = $this->db->select($query);
-            return $result;
+            while($row = $result->fetch_assoc()){
+                return $row['TenSanPham'];
+            }
         }
 
         /* Get product by name*/
