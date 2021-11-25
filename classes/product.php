@@ -364,5 +364,13 @@
             $numberRating = $this->numberByRating($id, $rating);
             return ($numberRating / $numberTotal) * 100;
         }
+
+        /* Search product */
+        public function searchProduct($searchContent){
+            $sql = "SELECT * FROM hanghoa WHERE TenSanPham like '%$searchContent%'" ;
+            $result = $this->db->select($sql);
+            
+            return $result;
+        }
     }   
 ?>

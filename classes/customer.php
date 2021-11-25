@@ -64,8 +64,14 @@
             }
         }
 
-        public function showCustomers($id) {
+        public function showCustomer($id) {
             $query = "SELECT * FROM khachhang WHERE ID = '$id'";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function showCustomers() {
+            $query = "SELECT * FROM khachhang";
             $result = $this->db->select($query);
             return $result;
         }

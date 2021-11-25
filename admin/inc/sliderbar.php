@@ -30,11 +30,13 @@
             </li>
             <li class="silder__item">
                 <a href="./inbox.php" class="slider__item-link">
+                    <i class="fas fa-shipping-fast"></i>
                     Quản lý đơn hàng
                 </a>
             </li>
             <li class="silder__item">
-                <a href="" class="slider__item-link">
+                <a href="./listCustomer.php" class="slider__item-link">
+                    <i class="fas fa-user"></i>
                     Quản lý tài khoản 
                 </a>
             </li>

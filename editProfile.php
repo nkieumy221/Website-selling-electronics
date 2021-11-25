@@ -45,7 +45,7 @@
                         </tr>
                         <?php
                             $id = Session::get('customerId');
-                            $get_customers = $customerClass->showCustomers($id);
+                            $get_customers = $customerClass->showCustomer($id);
                             if($get_customers){
                                 while($result = $get_customers->fetch_assoc()){
                         ?>

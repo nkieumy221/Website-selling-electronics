@@ -34,7 +34,7 @@
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
                 <?php 
-                    $getCustomer = $class->showCustomers($id);
+                    $getCustomer = $class->showCustomer($id);
                     if($getCustomer) {
                         while($result = $getCustomer->fetch_assoc()){
 

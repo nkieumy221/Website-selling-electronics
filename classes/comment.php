@@ -56,5 +56,7 @@
             $result = $this->db->select($query);
             return $result;
         }
+
+        
     }   
 ?>

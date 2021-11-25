@@ -146,41 +146,27 @@
                     <!-- Header search -->
                     <input id="mobile-search-checkbox" type="checkbox" name="" class="header__search-checkbox" hidden>
 
-                    <div class="header__search">
+                    <form action="listSearch.php" method="get" class="header__search">
                         <div class="header__search-input-wrap">
-                            <input type="text" placeholder="Nhập để tìm kiếm sản phẩm" class="header__search-input">
+                            <input type="text" name="search" placeholder="Nhập tên điện thoại, máy tính, phụ kiện... cần tìm" class="header__search-input">
                             
                             <!-- Search history -->
-                            <div class="header__search-history">
+                            <!-- <div class="header__search-history">
                                 <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
                                 <ul class="header__search-history-list">
                                     <li class="header__search-history-item">
-                                        <a href="">Kem dưỡng da</a>
+                                        <a href="">IPhone 13</a>
                                     </li>
                                     <li class="header__search-history-item">
-                                        <a href="">Kem trị mụn</a>
+                                        <a href="">Laptop Assus</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="header__search-select">
-                            <span class="header__search-select-label"> Trong shop</span>   
-                            <i class="header__search-select-icon fas fa-angle-down"></i>
-                            <ul class="header__search-option">
-                                <li class="header__search-option-item header__search-option-item--active">
-                                    <span>Trong shop</span>
-                                    <i class="fas fa-check"></i>
-                                </li>
-                                <li class="header__search-option-item">
-                                    <span>Ngoài shop</span>
-                                    <i class="fas fa-check"></i>
-                                </li>
-                            </ul>
-                        </div>
-                        <button class="header__search-btn">
+                        <button type="submit" name="search-btn" class="header__search-btn">
                             <i class="header__search-btn-icon fas fa-search"></i>                        
                         </button>
-                    </div>
+                    </form>
                     <!-- Cart layout -->
                     <div class="header__cart">
                         <a href="./cartDetail.php" class="header_cart__wrap">
@@ -403,7 +389,7 @@
 
             </div>
 
-            <!-- <?php   
+            <?php   
                 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                     $loginCustomer = $customerClass->loginCustomer($_POST);
                 }
@@ -424,7 +410,7 @@
                         $mess = "Tên đăng nhập hoặc mật khẩu không đúng";
                     }
                 }
-            ?> -->
+            ?>
             <!-- Login form -->
             <div id="login-form" class="auth-form">
                 <div class="auth-form__container">
