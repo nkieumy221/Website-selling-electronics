@@ -21,6 +21,13 @@
             return $result;
         }
 
+        /* Get rating of user */
+        public function getRatingByUserId($id){
+            $query = "SELECT * FROM ratingproduct WHERE IDUser = $id";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
         /* Get username by id*/
         public function getUserName($id){
             $query = "SELECT username FROM khachhang WHERE ID = $id";

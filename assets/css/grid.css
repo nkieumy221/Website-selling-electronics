@@ -17,6 +17,10 @@
     margin-top: 16px;
 }
 
+.mt-86 {
+    margin-top: 86px;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;

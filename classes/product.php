@@ -101,7 +101,7 @@
             $unique_image = substr(md5(time()),0,10).'.'.$file_ext;
             $uploaded_image = 'uploads/'.$unique_image;
 
-            if($productName=="" || $brand=="" || $category=="" || $product_desc=="" || $priceOrigin=="" || $file_name =="") {
+            if($productName=="" || $brand=="" || $category=="" || $product_desc=="" || $priceOrigin=="" ) {
                 $alert = "<span class='success'>Không được để trống</span>  ";
                 return $alert;
             }else{

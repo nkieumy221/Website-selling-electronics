@@ -207,6 +207,15 @@
     font-size: 1.6rem;
 }
 
+.buyfield {
+    height: 40px;
+    border: 1px solid rgb(182, 182, 182);
+    outline: none;
+    border-radius: 4px;
+    width: 100px;
+    overflow: hidden;
+}
+
 .buy_now {
     width: 100%;
     padding:30px 0 ;
@@ -219,6 +228,29 @@
 
 .buy_now-content {
     margin-top: 5px;
+}
+
+.compare {
+    margin-right: 30px important;
+}
+
+.form__wishlist {
+    position: relative;
+}
+
+.btn-heart {
+    background-color: #48bb78;
+    margin-right: 20px;
+    color: white;
+}
+
+.fa-heart {
+    position:absolute;
+    top: 0;
+    right: 50%;
+    font-size: 3rem;
+    color: rgb(255, 0, 76);
+    cursor: pointer;
 }
 
 /* Product description */

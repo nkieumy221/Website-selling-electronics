@@ -37,10 +37,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="grid wide">
                 <!-- Banner slide -->
-                <div class="local mt-32">
+                <div class="local mt-86">
                     <div class="row">                
                         <div class="banner_slide col c-8">
                             <div class="banner_slide-img">

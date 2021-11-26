@@ -66,10 +66,11 @@
                 </div>
                 <?php 
                     $getProductDetail = $productClass->getProductDetails($id);
+                    $mota = '';
                     if($getProductDetail){
                         while($row = $getProductDetail->fetch_assoc()){
-
-                        
+                            $mota = $row['MoTa'];
+                            
                 ?>
                 <div class="row sm-gutter app__content mt-32">
                     <div class="col l-6 m-0 c-0">
@@ -180,48 +181,52 @@
                                 </div>
                             </div>
                             <div class="add_cart mt-16">
+                                <form action="" method="post" class="form__wishlist">
+                                    <?php 
+                                        $checkLogin = Session::get('customerLogin'); 
+                                        if($checkLogin){         
+                                    ?>
+                                    <input type="hidden" name="productId" value="<?php echo $row['ID'] ?>">
+                                    <input type="submit" name="wishlist" value="Yêu thích" class="btn btn-heart">
+                                    <?php     
+                                        }
+                                    ?>
+                                </form>
+                                <form action="" method="post" class="compare">
+                                    <?php 
+                                        $checkLogin = Session::get('customerLogin'); 
+                                        if($checkLogin){  
+                                    ?>
+                                    <input type="hidden" name="productId" value="<?php echo $row['ID'] ?>">
+                                    <input type="submit" name="compare" value="So sánh" class="btn btn--gray btn-compare">
+                                    <?php 
+                                        }
+                                        if(isset($insertCompare)){
+                                            echo $insertCompare;
+                                        }
+                                        if(isset($insertWishlist)){
+                                            echo $insertWishlist;
+                                        }
+                                    ?>
+                                </form>
+                            </div>
+                            <div class="add_cart mt-16">
                                 <form action="" method="post">
                                     <input type="number" class="buyfield" name="quantity" value="1" min="1"/>
                                     <input type="submit" class="btn btn--primary add_cart-btn" name="submit" value="Mua ngay"/>
                                 </form>		
                             </div>
                             
-                            <div class="add_cart mt-16">
-                                <form action="" method="post">
-                                    <?php 
-                                        $checkLogin = Session::get('customerLogin'); 
-                                        if($checkLogin){  
-                                    ?>
-                                    <input type="hidden" name="productId" value="<?php echo $row['ID'] ?>">
-                                    <input type="submit" name="compare" value="So sánh" class="btn frame-boder">
-                                    <?php 
-                                            if(isset($insertCompare)){
-                                                echo $insertCompare;
-                                            }
-                                        }
-                                    ?>
-                                </form>
-                                <form action="" method="post">
-                                    <?php 
-                                        $checkLogin = Session::get('customerLogin'); 
-                                        if($checkLogin){         
-                                    ?>
-                                    <input type="hidden" name="productId" value="<?php echo $row['ID'] ?>">
-                                    <input type="submit" name="wishlist" value="Yêu thích" class="btn frame-boder">
-                                    <?php 
-                                            if(isset($insertWishlist)){
-                                                echo $insertWishlist;
-                                            }
-                                        }
-                                    ?>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
-                
+                <?php 
+                        }
+                    }
+                ?>
             </div>
         </div>
+
         <div class="pd-body">
             <div class="grid wide">
                 <div class="row sm-gutter">
@@ -229,36 +234,16 @@
                         <div class="product__description ">
                             <h2 class="product__description-header">
                                 Mô tả sản phẩm
-                            </h2>
                             <div class="product__description-content">
-                                <?= $row['MoTa'] ?>
-                                <span id="dots">...</span><span id="more">
-                                
-                                <button class="btn btn--border " href="" onclick="myFunction()" id="myBtn">Xem thêm</a>
-                                <script>
-                                    function myFunction() {
-                                        var dots = document.getElementById("dots");
-                                        var moreText = document.getElementById("more");
-                                        var btnText = document.getElementById("myBtn");
-                                        
-                                        if (dots.style.display === "none") {
-                                            dots.style.display = "inline";
-                                            btnText.innerHTML = "Xem thêm"; 
-                                            moreText.style.display = "none";
-                                        } else {
-                                            dots.style.display = "none";
-                                            btnText.innerHTML = "Rút gọn"; 
-                                            moreText.style.display = "inline";
-                                        }
-                                    }
-                                    </script>
+                                <?php   
+                                    $story_desc = substr($mota,0,8000);  
+                                    $story_desc = substr($story_desc,0,strrpos($story_desc,' '));  
+                                    echo $story_desc."<a href='#'>Xem thêm...</a>";                                    
+                                ?>
                             </div>
                         </div>
                     </div>
-                    <?php 
-                            }
-                        }
-                    ?>
+                    
                     <div class="col l-5 mt-32">
                         <div class="product__recomment">
                             <h2 class="product__recomment-title">

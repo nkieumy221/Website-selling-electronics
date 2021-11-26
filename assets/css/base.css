@@ -138,6 +138,12 @@ body {
     color: white;
 }
 
+.btn.btn--heart {
+    background-color: #ff002b;
+    color: white;
+    margin-left: 30px;
+}
+
 .btn a {
     text-decoration: none;
     color: #fff;
