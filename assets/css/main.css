@@ -625,6 +625,27 @@
     color: var(--primary-color);
 }
 
+/* Back to top */
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 120px;
+    right: 50px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    cursor: pointer;
+    padding: 20px 25px;
+    border-radius: 50%;
+  }
+  
+#backToTop:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 /* Chatbot */
 #chat-circle {
     position: fixed;

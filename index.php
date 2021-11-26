@@ -862,6 +862,9 @@
         </div>
         <?php include('./inc/footer.php'); ?>
     </div>
+    <!-- Back to top -->
+    <button onclick="topFunction()" id="backToTop" title="Go to top"><i class="fas fa-angle-up"></i></button>
+    <!-- Chatbot -->
     <div id="body"> 
     
         <div id="chat-circle" class=" btn-raised" onclick="moForm()">
