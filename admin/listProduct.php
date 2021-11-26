@@ -39,7 +39,7 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
-                <a href="addProduct.php">Thêm sản phẩm</a>
+                <a href="addProduct.php" class="add__btn">Thêm sản phẩm</a>
                 <?php
                     if(isset($deleteProduct)){
                         echo $deleteProduct;

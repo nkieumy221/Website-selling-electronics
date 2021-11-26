@@ -54,3 +54,13 @@ td {
 .cat__link {
     color: var(--text-color);
 }
+
+.add__btn {
+    text-decoration: none;
+    color: var(--text-color);
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 3px 0 #dee2e6;
+    padding: 10px 20px;
+    font-size:1.4rem;
+}

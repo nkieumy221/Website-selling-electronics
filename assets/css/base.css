@@ -133,6 +133,11 @@ body {
     background-color: #c3c3c3;
 }
 
+.btn.btn--gray{
+    background-color: #99a2aa;
+    color: white;
+}
+
 .btn a {
     text-decoration: none;
     color: #fff;

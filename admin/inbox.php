@@ -92,13 +92,13 @@
                                     <?= $result['IDKhachHang'] ?>
                                 </td>
                                 <td class="cat__item">
-                                    <a href="customer.php?customerId=<?php echo $result['IDKhachHang'] ?>">Xem chi tiết</a>
+                                    <a href="customer.php?customerId=<?php echo $result['IDKhachHang'] ?>" class="cat__link">Xem chi tiết</a>
                                 </td>
                                 <td class="cat__item">
                                 <?php 
                                     if($result['status']==0){
                                 ?>
-                                    <a href="?shiftid=<?php echo $result['ID'] ?>&price=<?php echo $result['Gia'] ?>&time=<?php echo $result['ThoiGian'] ?>">Chờ xử lý</a>
+                                    <a href="?shiftid=<?php echo $result['ID'] ?>&price=<?php echo $result['Gia'] ?>&time=<?php echo $result['ThoiGian'] ?>" class="cat__link">Chờ xử lý</a>
 
                                 <?php
                                     }elseif($result['status']==1){
@@ -109,7 +109,7 @@
                                 <?php
                                     }elseif($result['status']==2){
                                 ?>
-                                <a href="?delid=<?php echo $result['ID'] ?>&price=<?php echo $result['Gia'] ?>&time=<?php echo $result['ThoiGian'] ?>">Xóa</a>
+                                <a class="cat__link" href="?delid=<?php echo $result['ID'] ?>&price=<?php echo $result['Gia'] ?>&time=<?php echo $result['ThoiGian'] ?>">Xóa</a>
                                 <?php
                                     }
                                 ?>
