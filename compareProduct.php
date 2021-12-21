@@ -7,6 +7,17 @@
         $id = $_GET['compareID'];
         $deleteProductCompare = $productClass->deleteProductCompare($id);
     }
+    if (isset($_GET['productCompareId'])) {
+        
+        $customerId = Session::get('customerId');
+        if(isset($customerId)){
+            $customerId = Session::get('customerId');
+        } else {
+            $customerId = session_id(); 
+        }
+        $id = $_GET['productCompareId'];
+        $insertCompare = $productClass->insertCompare($id, $customerId);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

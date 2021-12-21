@@ -173,8 +173,13 @@
                             <i class="header__cart-icon fa fa-shopping-cart"></i>
                             <span class="header__cart-notice">
                                 <?php 
-                                    $quantity = Session::get("Qty");
-                                    echo $quantity;
+                                    $qty = $cartClass->count();
+                                    if(isset($qty)){
+                                        echo $qty;   
+                                    }else {
+                                        echo "0";
+                                    }
+                                    
                                 ?>
                             </span>
                             <div class="header-cart-list ">
@@ -393,23 +398,6 @@
                 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                     $loginCustomer = $customerClass->loginCustomer($_POST);
                 }
-                $mess ='';
-                $u ='';
-                if(isset($_POST['dangnhap'])){
-                    $u = $_POST['username'];
-                    $p = $_POST['password'];
-                    
-                    $sql = "SELECT * FROM account WHERE UserName ='".$u."' AND 	PassWord='".$p."'";
-                    $kq = mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($kq)>0){ 
-                        $row = mysqli_fetch_array($kq);
-                        $_SESSION['username'] = $u;
-                        $_SESSION['iduser'] = $row['id'];
-                        $_SESSION['role'] = $row['role'];
-                    } else{
-                        $mess = "Tên đăng nhập hoặc mật khẩu không đúng";
-                    }
-                }
             ?>
             <!-- Login form -->
             <div id="login-form" class="auth-form">
@@ -436,7 +424,7 @@
 
                         <div class="auth-form__controls">
                             <a href="index.php" class="btn auth-form__control-back btn--normal">TRỞ LẠI</a>
-                            <input type="submit" name="login" value="ĐĂNG NHẬP" class="btn btn--primary">
+                            <input type="submit" onclick="loginBtn(event)" name="login" value="ĐĂNG NHẬP" class="btn btn--primary">
                         </div>  
                     </form>  
                 </div>

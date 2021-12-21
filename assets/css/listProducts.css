@@ -363,12 +363,16 @@
 
 .sale__item-link {
     display:block;
-    text-decoration: none;
+
     position: relative;
     border: 1px solid #dee2e6;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px;   
     padding: 12px;
     height: 520px;
+}
+
+.sale__item-link a {
+    text-decoration: none;
 }
 
 .sale__item-link:hover {

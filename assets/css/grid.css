@@ -166,7 +166,7 @@
     margin-left: 91.66667%;
 }
 
-.c-1-8 {
+.l-1-8 {
     flex: 0 0 12.5%;
     max-width: 12.5%;
 }
@@ -310,8 +310,8 @@
 /* PC medium resolution > */
 @media (min-width: 1113px) {
     .row {
-        margin-left: -8px;
-        margin-right: -8px;
+        margin-left: -4px;
+        margin-right: -4px;
     }
 
     .row.sm-gutter {
@@ -320,8 +320,8 @@
     }
 
     .col {
-        padding-left: 8px;
-        padding-right: 8px;
+        padding-left: 4px;
+        padding-right: 4px;
     }
 
     .row.sm-gutter .col {
@@ -462,7 +462,7 @@
 /* Tablet - PC low resolution */
 @media (min-width: 740px) and (max-width: 1023px) {
     .wide {
-        width: 644px;
+        width: 844px;
     }
 }
 

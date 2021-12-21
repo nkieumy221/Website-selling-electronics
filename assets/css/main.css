@@ -50,11 +50,13 @@
 
 .banner_slide-img img {
     border-radius: 5px;
-    margin: 5px 0 0 5px;    
+    margin: 5px 0 0 5px;   
+    width: 100%; 
 }
 
 .banner_infor-img img {
     border-radius: 5px;
+    width: 100%;
 }
 
 .banner_infor-highlight-title {
@@ -197,12 +199,16 @@
 
 .sale__item-link {
     display:block;
-    text-decoration: none;
+    
     position: relative;
     border: 1px solid #dee2e6;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px;   
     padding: 12px;
     height: 520px;
+}
+
+.sale__item-link a{
+    text-decoration: none;
 }
 
 .sale__item-link:hover {
@@ -303,10 +309,11 @@
 
 .sale__item-btn {
     display: none;
+    justify-content: space-around;
 }
 
 .sale__item-link:hover .sale__item-btn {
-    display: block;
+    display: flex;
 }
 
 /* favorite and sale label */
@@ -405,7 +412,6 @@
 .program_sale__content {
     margin-left: 70px;
     margin-right: 70px;
-
 }
 
 .sale__content-item {
@@ -417,9 +423,10 @@
 
 }
 
-.sale__content-img {
+.sale__content-img img{
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .sale__content-tile {
@@ -494,6 +501,7 @@
     border: solid 0 #000;
     background-color: rgba(0,0,0,0);
     object-fit: contain;
+    width: 100%;
 }
 
 /* Authen model */

@@ -56,7 +56,7 @@
                     Session::set('customerLogin', true);
                     Session::set('customerId', $value['ID']);
                     Session::set('customerName', $username);
-                    header("Location:index.php");
+                    header('Refresh: 1; url=index.php');
                 } else{
                     $alert = "<span class='error'>Tên đăng nhập hoặc tài khoản sai</span>  ";
                     return $alert;

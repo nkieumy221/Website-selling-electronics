@@ -163,5 +163,19 @@
 			$query = "UPDATE dathang SET status = 2 WHERE IDKhachHang = '$id' AND Gia ='$price' AND ThoiGian = '$time' ";
 			$result = $this->db->update($query);
 		}
+
+		/* Đếm số lượng sản phẩm trong giỏ hàng */
+
+		public function count(){
+			$productCart = $this->showProductCart();
+			$qtyProduct = 0;
+			if($productCart) {
+				$subtotal = 0;
+				while($row = $productCart->fetch_assoc()){
+					$qtyProduct = $qtyProduct + 1;
+				}
+			}
+			return $qtyProduct;
+		}
     }   
 ?>

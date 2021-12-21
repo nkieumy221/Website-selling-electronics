@@ -4,6 +4,10 @@
         display: none !important;
     }
 
+    .display-on-mobile-tablet-flex {
+        display: flex !important;
+    }
+
     .header {
         position: fixed;
         z-index: 10;
@@ -38,6 +42,52 @@
 
     .mobile-category {
         display: block;
+    }
+
+    .header__sort-bar {
+        display: flex;
+        list-style: none;
+        padding-left: 0;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow:scroll;
+        margin:0;
+    }
+
+    .header__sort-bar::-webkit-scrollbar {
+        width: 0;  /* Remove scrollbar space */
+        background: transparent;  /* Optional: just make scrollbar invisible */
+        height: 5px;
+    }
+    /* Optional: show position indicator in red */
+    .header__sort-bar::-webkit-scrollbar-thumb {
+        background: #dddddd;
+    }
+
+    .header__sort-item  {
+        flex-shrink: 0;
+    }
+    .header__sort-link {
+        --line-height: 2rem;
+        overflow: hidden;
+        width: 120px;
+        height: 40px;
+        border-radius: 5px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        user-select: none;
+        -webkit-user-select: none;
+        padding: 0 6px;
+    }
+
+    .header__sort-item:hover .header_menu-list-in-item {
+        display: none;
+    }
+
+    .program_sale__content {
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -162,6 +212,13 @@
             opacity: 1;
             top: var(--header-height);
         }
+    }
+
+    .sale__content-name,
+    .sale__content-reduce,
+    .sale__content-price {
+        font-size: 1.2rem;
+        line-height: 2rem;
     }
 }
 

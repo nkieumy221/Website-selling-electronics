@@ -91,7 +91,7 @@ body {
 
 /* Button style */
 .btn {
-    min-width: 124px;
+    min-width: 94px;
     height: 34px;
     text-decoration: none;
     border: none;
@@ -350,7 +350,6 @@ body {
     margin: 0;
     display: flex;
     padding-left: 0;
-    
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 

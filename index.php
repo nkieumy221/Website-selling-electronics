@@ -40,7 +40,7 @@
                 <!-- Banner slide -->
                 <div class="local mt-86">
                     <div class="row">                
-                        <div class="banner_slide col c-8">
+                        <div class="banner_slide col c-12 l-8 m-8">
                             <div class="banner_slide-img">
                                 <img src="./assets/img/banner1.jpg" alt="banner1" class="mySlides">
                                 <img src="./assets/img/banner2.jpg" alt="banner1" class="mySlides">
@@ -49,14 +49,14 @@
                                 <img src="./assets/img/banner5.jpg" alt="banner1" class="mySlides">
                                 <img src="./assets/img/banner6.jpg" alt="banner1" class="mySlides">
 
-                                <div class="local-slide__left " onclick="plusSlides(-1)"><!-- local-slide__none-direct -->
+                                <div class="local-slide__left hide-on-mobile" onclick="plusSlides(-1)"><!-- local-slide__none-direct -->
                                     <i class="local-slide__left-icon fas fa-chevron-left"></i>
                                 </div>
-                                <div class="local-slide__right " onclick="plusSlides(1)">
+                                <div class="local-slide__right hide-on-mobile" onclick="plusSlides(1)">
                                     <i class="local-slide__left-icon fas fa-chevron-right"></i>
                                 </div>
                             </div>
-                            <ul class="banner_slide-list-title">
+                            <ul class="banner_slide-list-title hide-on-mobile-tablet">
                                 <li class="banner_slide-title-name banner_slide-title-name--active">
                                     Galaxy Z Fold3 | Z Flip3 5G bảo hành 2
                                 </li>
@@ -109,7 +109,7 @@
                                 }
                             </script>
                         </div>
-                        <div class="banner_infor col c-4">
+                        <div class="banner_infor col c-4 hide-on-mobile">
                             <div class="banner_infor-img">
                                 <img src="./assets/img/bn_min1.jpg" alt="" class="banner_slide-img">
                             </div>
@@ -149,8 +149,8 @@
                 </div>
                 <!-- Category list -->
                 <div class="local mt-32">
-                    <div class="row">                
-                        <a href class="col c-2 category__item">
+                    <div class="row hide-on-mobile">                
+                        <a href class="col l-2 m-4 category__item">
                             <div class="category__item-img">
                                 <img src="./assets/img/dien-thoai.png" alt="">
                             </div>
@@ -158,7 +158,7 @@
                                 Điện thoại
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item">
                             <div class="category__item-img">
                                 <img src="./assets/img/laptop.png" alt="">
                             </div>
@@ -166,7 +166,7 @@
                                 Laptop
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item">
                             <div class="category__item-img">
                                 <img src="./assets/img/apple.png" alt="">
                             </div>
@@ -174,7 +174,7 @@
                                 Apple
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item">
                             <div class="category__item-img">
                                 <img src="./assets/img/chuyentrangsamsung8_7.png" alt="">
                             </div>
@@ -182,7 +182,7 @@
                                 Samsung
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item">
                             <div class="category__item-img">
                                 <img src="./assets/img/smart-watch.png" alt="">
                             </div>
@@ -190,7 +190,7 @@
                                 Đồng hồ thông minh
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item">
                             <div class="category__item-img">
                                 <img src="./assets/img/xiaomi2.png" alt="">
                             </div>
@@ -198,7 +198,7 @@
                                 Xiaomi
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item hide-on-tablet">
                             <div class="category__item-img">
                                 <img src="./assets/img/may_cu.png" alt="">
                             </div>
@@ -206,7 +206,7 @@
                                 Máy cũ
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item hide-on-tablet">
                             <div class="category__item-img">
                                 <img src="./assets/img/tablet.png" alt="">
                             </div>
@@ -214,7 +214,7 @@
                                 Tablet
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item hide-on-tablet">
                             <div class="category__item-img">
                                 <img src="./assets/img/giadung.png" alt="">
                             </div>
@@ -222,7 +222,7 @@
                                 Đồ gia dụng
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item hide-on-tablet">
                             <div class="category__item-img">
                                 <img src="./assets/img/donghothoitrang.png" alt="">
                             </div>
@@ -230,7 +230,7 @@
                                 Đồng hồ thời trang
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item hide-on-tablet">
                             <div class="category__item-img">
                                 <img src="./assets/img/mayban.png" alt="">
                             </div>
@@ -238,7 +238,7 @@
                                 Máy tính bàn
                             </div>
                         </a>
-                        <a href class="col c-2 category__item">
+                        <a href class="col l-2 m-4 category__item hide-on-tablet">
                             <div class="category__item-img">
                                 <img src="./assets/img/may-in.png" alt="">
                             </div>
@@ -281,55 +281,57 @@
                             {
                             
                         ?>
-                        <div class="col c-3 sale__item">
-                            <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
-                                </div>
-                                <div class="sale__item-name">
-                                    <?= $row['TenSanPham'] ?>
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        <?= number_format($row['GiaKM']) ?> đ
+                        <div class="col l-3 m-4 c-6 sale__item">
+                            <div class="sale__item-link">
+                                <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="">
+                                    <div class="sale__item-img">
+                                        <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                     </div>
-                                    <div class="sale__item-price-origin">
-                                        <?= number_format($row['GiaGoc']) ?> đ
+                                    <div class="sale__item-name">
+                                        <?= $row['TenSanPham'] ?>
                                     </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            <?= $row['CPU'] ?>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            <?= number_format($row['GiaKM']) ?> đ
                                         </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            <?= $row['ManHinh'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            <?= $row['RAM'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            <?= $row['BoNho'] ?>
+                                        <div class="sale__item-price-origin">
+                                            <?= number_format($row['GiaGoc']) ?> đ
                                         </div>
                                     </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                <?= $row['CPU'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <?= $row['ManHinh'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                <?= $row['RAM'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                <?= $row['BoNho'] ?>
+                                            </div>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
+                                    <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="btn btn--primary">
                                         MUA NGAY
-                                    </div>
-                                    <div class="btn btn--gray">
+                                    </a>
+                                    <a href="compareProduct.php?productCompareId=<?= $row['ID'] ?>" class="btn btn--gray">
                                         SO SÁNH
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <?php } 
                             }
@@ -353,55 +355,57 @@
                             {
                             
                         ?>
-                        <div class="col c-3 sale__item">
-                            <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
-                                </div>
-                                <div class="sale__item-name">
-                                    <?= $row['TenSanPham'] ?>
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        <?= number_format($row['GiaKM']) ?> đ
+                        <div class="col l-3 m-6 c-6 sale__item">
+                            <div class=" sale__item-link">
+                                <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="">
+                                    <div class="sale__item-img">
+                                        <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                     </div>
-                                    <div class="sale__item-price-origin">
-                                        <?= number_format($row['GiaGoc']) ?> đ
+                                    <div class="sale__item-name">
+                                        <?= $row['TenSanPham'] ?>
                                     </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            <?= $row['CPU'] ?>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            <?= number_format($row['GiaKM']) ?> đ
                                         </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            <?= $row['ManHinh'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            <?= $row['RAM'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            <?= $row['BoNho'] ?>
+                                        <div class="sale__item-price-origin">
+                                            <?= number_format($row['GiaGoc']) ?> đ
                                         </div>
                                     </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                <?= $row['CPU'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <?= $row['ManHinh'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                <?= $row['RAM'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                <?= $row['BoNho'] ?>
+                                            </div>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
+                                    <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="btn btn--primary">
                                         MUA NGAY
-                                    </div>
-                                    <div class="btn btn--gray">
+                                    </a>
+                                    <a href="compareProduct.php?productCompareId=<?= $row['ID'] ?>" class="btn btn--gray">
                                         SO SÁNH
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <?php } 
                             }
@@ -424,7 +428,7 @@
                             </div>
                         </div>
                         <div class="row program_sale__content mt-16">
-                            <div class=" col c-3">
+                            <div class=" col l-3 m-3 c-3">
                                 <div class="sale__content-item">
                                     <div class="sale__content-img">
                                         <img src="./assets/img/p-s1.png" alt="">
@@ -438,7 +442,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class=" col c-3">
+                            <div class=" col l-3 m-3 c-3">
                                 <div class="sale__content-item">
                                     <div class="sale__content-img">
                                         <img src="./assets/img/desktop-html-img03.jpg" alt="">
@@ -452,7 +456,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class=" col c-3">
+                            <div class=" col l-3 m-3 c-3">
                                 <div class="sale__content-item">
                                     <div class="sale__content-img">
                                         <img src="./assets/img/desktop-html-img02.jpg" alt="">
@@ -466,7 +470,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class=" col c-3">
+                            <div class=" col l-3 m-3 c-3">
                                 <div class="sale__content-item">
                                     <div class="sale__content-img">
                                         <img src="./assets/img/desktop-html-img01.png" alt="">
@@ -514,55 +518,57 @@
                             {
                             
                         ?>
-                        <div class="col c-3 sale__item">
-                            <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
-                                </div>
-                                <div class="sale__item-name">
-                                    <?= $row['TenSanPham'] ?>
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        <?= number_format($row['GiaKM']) ?> đ
+                        <div class="col col l-3 m-6 c-6 sale__item">
+                            <div class="sale__item-link">
+                                <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="">
+                                    <div class="sale__item-img">
+                                        <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                     </div>
-                                    <div class="sale__item-price-origin">
-                                        <?= number_format($row['GiaGoc']) ?> đ
+                                    <div class="sale__item-name">
+                                        <?= $row['TenSanPham'] ?>
                                     </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            <?= $row['CPU'] ?>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            <?= number_format($row['GiaKM']) ?> đ
                                         </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            <?= $row['ManHinh'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            <?= $row['RAM'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            <?= $row['BoNho'] ?>
+                                        <div class="sale__item-price-origin">
+                                            <?= number_format($row['GiaGoc']) ?> đ
                                         </div>
                                     </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                <?= $row['CPU'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <?= $row['ManHinh'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                <?= $row['RAM'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                <?= $row['BoNho'] ?>
+                                            </div>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
+                                    <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="btn btn--primary">
                                         MUA NGAY
-                                    </div>
-                                    <div class="btn btn--gray">
+                                    </a>
+                                    <a href="compareProduct.php?productCompareId=<?= $row['ID'] ?>" class="btn btn--gray">
                                         SO SÁNH
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <?php }
                             } ?>
@@ -583,55 +589,57 @@
                             while($row = mysqli_fetch_assoc($productSale))
                             {
                         ?>
-                        <div class="col c-3 sale__item">
-                            <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
-                                </div>
-                                <div class="sale__item-name">
-                                    <?= $row['TenSanPham'] ?>
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        <?= number_format($row['GiaKM']) ?> đ
+                        <div class="col col l-3 m-6 c-6 sale__item">
+                            <div class="sale__item-link">
+                                <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="">
+                                    <div class="sale__item-img">
+                                        <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                     </div>
-                                    <div class="sale__item-price-origin">
-                                        <?= number_format($row['GiaGoc']) ?> đ
+                                    <div class="sale__item-name">
+                                        <?= $row['TenSanPham'] ?>
                                     </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            <?= $row['CPU'] ?>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            <?= number_format($row['GiaKM']) ?> đ
                                         </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            <?= $row['ManHinh'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            <?= $row['RAM'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            <?= $row['BoNho'] ?>
+                                        <div class="sale__item-price-origin">
+                                            <?= number_format($row['GiaGoc']) ?> đ
                                         </div>
                                     </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                <?= $row['CPU'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <?= $row['ManHinh'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                <?= $row['RAM'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                <?= $row['BoNho'] ?>
+                                            </div>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
+                                    <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="btn btn--primary">
                                         MUA NGAY
-                                    </div>
-                                    <div class="btn btn--gray">
+                                    </a>
+                                    <a href="compareProduct.php?productCompareId=<?= $row['ID'] ?>" class="btn btn--gray">
                                         SO SÁNH
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <?php }
                             } ?>
@@ -652,67 +660,69 @@
                             while($row = mysqli_fetch_assoc($productSale))
                             {
                         ?>
-                        <div class="col c-3 sale__item">
-                            <a href='productDetail.php?productId=<?= $row['ID'] ?>' class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
-                                </div>
-                                <div class="sale__item-name">
-                                    <?= $row['TenSanPham'] ?>
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        <?= number_format($row['GiaKM']) ?> đ
+                        <div class="col col l-3 m-6 c-6 sale__item">
+                            <div class="sale__item-link">
+                                <a href='productDetail.php?productId=<?= $row['ID'] ?>' class="">
+                                    <div class="sale__item-img">
+                                        <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                     </div>
-                                    <div class="sale__item-price-origin">
-                                        <?= number_format($row['GiaGoc']) ?> đ
+                                    <div class="sale__item-name">
+                                        <?= $row['TenSanPham'] ?>
                                     </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            <?= $row['CPU'] ?>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            <?= number_format($row['GiaKM']) ?> đ
                                         </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            <?= $row['ManHinh'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            <?= $row['RAM'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            <?= $row['BoNho'] ?>
+                                        <div class="sale__item-price-origin">
+                                            <?= number_format($row['GiaGoc']) ?> đ
                                         </div>
                                     </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                <?= $row['CPU'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <?= $row['ManHinh'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                <?= $row['RAM'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                <?= $row['BoNho'] ?>
+                                            </div>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
+                                    <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="btn btn--primary">
                                         MUA NGAY
-                                    </div>
-                                    <div class="btn btn--warning">
-                                        <!-- <a href="addcart.php?item=<?= $row['ID'] ?>" class="btn btn--warning text-white"> -->GIỎ HÀNG<!-- </a> -->
-                                    </div>
+                                    </a>
+                                    <a href="compareProduct.php?productCompareId=<?= $row['ID'] ?>" class="btn btn--gray">
+                                        SO SÁNH
+                                    </a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <?php }
                             } ?>
                     </div>
                 </div>
                 <!-- Phone accessories list -->
-                <div class="local mt-32">
+                <div class="local mt-32 hide-on-mobile-tablet">
                     <h2 class="sale__title">
                         PHỤ KIỆN HOT
                     </h2>
                     <div class="row">                
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8  category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-award"></i>
                             </div>
@@ -720,7 +730,7 @@
                                 Phụ kiện nổi bật
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-suitcase"></i>
                             </div>
@@ -728,7 +738,7 @@
                                 Bao da ốp lưng
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-car-battery"></i>
                             </div>
@@ -736,7 +746,7 @@
                                 Sạc dự phòng
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-sticky-note"></i>
                             </div>
@@ -744,7 +754,7 @@
                                 Thẻ nhớ
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fab fa-apple"></i>    
                             </div>
@@ -752,7 +762,7 @@
                                 Phụ kiện Apple
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-mobile"></i>
                             </div>
@@ -760,7 +770,7 @@
                                 Miếng dán màn hình
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-headphones"></i>
                             </div>
@@ -768,7 +778,7 @@
                                 Tai nghe
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-shredder"></i>
                             </div>
@@ -776,7 +786,7 @@
                                 Mực ink
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-volume-up"></i>
                             </div>
@@ -784,7 +794,7 @@
                                 Loa
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="far fa-hdd"></i>
                             </div>
@@ -792,7 +802,7 @@
                                 USB - Ổ cứng
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-charging-station"></i>
                             </div>
@@ -800,7 +810,7 @@
                                 Sạc cáp
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-mouse-pointer"></i>
                             </div>
@@ -808,7 +818,7 @@
                                 Chuột
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-keyboard"></i>
                             </div>
@@ -816,7 +826,7 @@
                                 Bàn phím
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-backpack"></i>
                             </div>
@@ -824,7 +834,7 @@
                                 Balo - Túi xách
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-tv"></i>
                             </div>
@@ -832,7 +842,7 @@
                                 TV - BOX
                             </div>
                         </a>
-                        <a href class="col c-1-8 category__item">
+                        <a href class="col l-1-8 category__item">
                             <div class="category__item-icon">
                                 <i class="fas fa-ellipsis-h"></i>
                             </div>
