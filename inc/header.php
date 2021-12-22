@@ -195,7 +195,7 @@
                                         <img src="https://goldsunviet.com/wp-content/uploads/2019/11/Noi-com-dien-Goldsun-ARC-G18DM-ava.gif" alt="" class="header__cart-item-img">
                                         <div class="header__cart-item-infor">
                                             <div class="header__cart-item-head">
-                                                <h5 class="header__cart-item-name">Bộ kem đặc trị vùng mắt</h5>
+                                                <h5 class="header__cart-item-name">Ịphone 13</h5>
                                                 <div class="header__cart-item-price-wrap">
                                                     <span class="header__cart-item-price">2.000.000đ</span>
                                                     <span class="header__cart-item-multiply">x</span>

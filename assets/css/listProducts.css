@@ -152,6 +152,10 @@
     box-shadow: 0 0 3px 0 #dee2e6;
 }
 
+.category_menu {
+    overflow: hidden;
+}
+
 .category__heading {
     font-size: 1.6rem;
     font-weight: 500;
@@ -358,7 +362,7 @@
 .sale__item {
     padding-top: 5px;
     padding-bottom: 20px;
-    
+    background-color: #fff;
 }
 
 .sale__item-link {
@@ -473,10 +477,11 @@
 
 .sale__item-btn {
     display: none;
+    justify-content: space-around;
 }
 
 .sale__item-link:hover .sale__item-btn {
-    display: block;
+    display: flex;
 }
 
 .pagination {

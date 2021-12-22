@@ -118,7 +118,7 @@
     </div>
     <div class="footer__bottom">
         <div class="grid wide">
-            <p class="footer__text">© 2021 - Bản quyền thuộc về Công ty TNHH See</p>
+            <p class="footer__text">© 2021 - Bản quyền thuộc về Công ty TNHHMTV KMY</p>
         </div>
     </div>
 </footer>

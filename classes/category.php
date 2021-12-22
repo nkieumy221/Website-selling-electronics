@@ -120,10 +120,17 @@
         }
 
         public function getNameByBrand($brandId){
-            $sqlDM = "SELECT hanghoa.*, danhmuccon.TenThuongHieu, danhmuccon.ID 
+            $sqlDM = "SELECT hanghoa.*, danhmuccon.*
                     FROM hanghoa, danhmuccon
                     WHERE hanghoa.IDDanhMucCon = danhmuccon.ID AND hanghoa.IDDanhMucCon ='$brandId'"; 
             $result = $this->db->select($sqlDM);
+            return $result;
+        }
+
+        /* Hiển thị logo brand */
+        public function showBrandLogo($categoryId){
+            $sqlDMCon = "SELECT * FROM danhmuccon WHERE IDDanhMuc = '$categoryId' "; 
+            $result = $this->db->select($sqlDMCon);
             return $result;
         }
     }   

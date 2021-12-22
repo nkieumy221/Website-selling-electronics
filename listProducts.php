@@ -24,10 +24,13 @@
         <?php 
             if(isset($_GET['idCategory'])){
                 $getProduct = $categoryClass->showProductByCategory($_GET['idCategory']);
+                $idCategory = $_GET['idCategory'];
             }
             if(isset($_GET['idBrand'])){
                 $getProduct = $categoryClass->showProductByBrand($_GET['idBrand']);
+                $idBrand = $_GET['idBrand'];
             }
+
         ?>
         <div class="app__container">
             <div class="grid wide">
@@ -50,12 +53,13 @@
                             $getNameBrand = $categoryClass->getNameByBrand($_GET['idBrand']);
                             if($getNameBrand){
                                 $row1 = $getNameBrand->fetch_assoc();   
+                                $idCategory = $row1['IDDanhMuc'];
+                                
                     ?> 
                     <span class="title-page"> / <?= $row1['TenThuongHieu'] ?></span>    
                     <?php    
                             }
                         }
-                        
                     ?>
                 </div>
                 <!-- Slide banner -->
@@ -128,42 +132,29 @@
                                 </h3>
                                 <ul class="category-list row">
                                     <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
+                                        <input type="checkbox" class="category-item__check" checked>
                                         <span class="category-item__name">Tất cả</span>
                                     </li>
+                                    <?php 
+                                        $getLogoBrand = $categoryClass->showBrandLogo($idCategory);
+                                        if($getLogoBrand){
+                                            while($row = $getLogoBrand->fetch_assoc()){
+                                    ?>
                                     <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">Apple</span>
+                                        <input type="checkbox" class="category-item__check"
+                                                name= <?= $row['ID']?>
+                                            <?php
+                                                if(isset($idBrand) && $idBrand == $row["ID"]){
+                                                    echo "checked";
+                                                }
+                                            ?>
+                                        >
+                                        <span class="category-item__name"><?= $row['TenThuongHieu'] ?></span>
                                     </li>
-                                    <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">SamSung</span>
-                                    </li>
-                                    <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">SamSung</span>
-                                    </li>
-                                    <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">SamSung</span>
-                                    </li>
-                                    <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">SamSung</span>
-                                    </li>
-                                    <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">SamSung</span>
-                                    </li>
-                                    <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">SamSung</span>
-                                    </li>
-                                    <li class="category-item l-6">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">SamSung</span>
-                                    </li>
-
+                                    <?php 
+                                            }
+                                        }
+                                    ?>
                                 </ul>
                             </div>
                             <div class="category_menu">
@@ -172,7 +163,7 @@
                                 </h3>
                                 <ul class="category-list row">
                                     <li class="category-item l-12">
-                                        <input type="checkbox" class="category-item__check">
+                                        <input type="checkbox" class="category-item__check" checked >
                                         <span class="category-item__name">Tất cả</span>
                                     </li>
                                     <li class="category-item l-12">
@@ -229,61 +220,19 @@
                                 <h1>Điện thoại <span>(321 sản phẩm)</span></h1>
                             </div>
                             <ul class="category-img__list">                
+                            <?php 
+                                $getLogoBrand = $categoryClass->showBrandLogo($idCategory);
+                                if($getLogoBrand){
+                                    while($row = $getLogoBrand->fetch_assoc()){
+                            ?>
                                 <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" >
+                                    <a href="listProducts.php?idBrand=<?= $row['ID'] ?>" class="category-img__link">
+                                        <img src="./assets/img/logoBrand/<?= $row['logo'] ?>" >
                                     </a>
                                 </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490193124614_iPhone-Apple@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
-                                    </a>
-                                </li>
-                                <li class="category-img__item">
-                                    <a href="" class="category-img__link">
-                                        <img src="https://images.fpt.shop/unsafe/fit-in/108x40/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/8/26/637340490904217021_Samsung@2x.jpg" >
-                                    </a>
-                                </li>
+                            <?php }
+                                }
+                            ?>
                             </ul> 
                         </div>
                         <!-- Home filter -->
