@@ -134,7 +134,7 @@
                                             Galaxy Buds2 - Tặng bao da chính hãng
                                         </div>
                                     </a>
-                                    <a href="" class="banner_infor-highlight-details-item">
+                                    <a href="" class="banner_infor-highlight-details-item hide-on-mobile-tablet">
                                         <div class="banner_infor-highlight-details-item--img">
                                             <img src="./assets/img/oppoST.png" alt="">
                                         </div>
@@ -418,7 +418,7 @@
                 <div class=" mt-32">
                     <img src="./assets/img/adver.jpg" alt="" class="advertisement-img">
                 </div>
-                <div class="local mt-32">
+                <div class="local mt-32 hide-on-mobile">
                     <div class="program_sale">
                         <div class="program_sale__header">
                             <img src="./assets/img/Desk-Tagline.png" alt="">
@@ -488,7 +488,7 @@
                         <div class="program_sale__reduce mt-16">
                             <img src="./assets/img/giam700.png" alt="">
                         </div>
-                        <div class="program_sale__banner mt-16">
+                        <div class="program_sale__banner hide-on-mobile mt-16">
                             <div class="content">
                                 <img src="./assets/img/trung.png" alt="">
                                 <span class="program_sale__gift">

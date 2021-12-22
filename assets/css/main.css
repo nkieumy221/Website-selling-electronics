@@ -17,6 +17,10 @@
     justify-content: center;
 }
 
+.banner_sale-img img {
+    width: 100%;
+}
+
 /* Banner adversiting */
 .local {
     background-color: var(--white-color);
@@ -404,6 +408,8 @@
     padding-top: 32px;
 }
 
+
+
 .program_sale-time {
     font-size: 2rem;
     color : var(--text-color)
@@ -462,10 +468,12 @@
     justify-content: center;
 }
 
+
 .program_sale__banner {
     display: flex;
     justify-content: center;  
     margin-bottom: 32px;
+    width: 100%;
 }
 
 .program_sale__banner .content {

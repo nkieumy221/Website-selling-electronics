@@ -89,6 +89,18 @@
         margin-left: 0;
         margin-right: 0;
     }
+
+    .program_sale__header img,
+    .program_sale__reduce img {
+        width: 100%;
+    }
+
+    .sale__content-name,
+    .sale__content-reduce,
+    .sale__content-price {
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
 }
 
 /* Tablet */
@@ -214,11 +226,18 @@
         }
     }
 
-    .sale__content-name,
-    .sale__content-reduce,
-    .sale__content-price {
+    .mt-86 {
+        margin-top: 32px;
+    }
+
+    .sale__item-config {
+        display: none;
+    }
+    .sale__item-link {
+        height: auto;
+    }
+    .sale__item-price-sale {
         font-size: 1.2rem;
-        line-height: 2rem;
     }
 }
 
