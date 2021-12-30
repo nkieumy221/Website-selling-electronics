@@ -21,6 +21,10 @@
     position: relative;
 }
 
+.banner_slide-img img{
+    width: 100%;
+}
+
 .banner_slide-list-title {
     display: flex;
     justify-content: center;
@@ -367,7 +371,6 @@
 
 .sale__item-link {
     display:block;
-
     position: relative;
     border: 1px solid #dee2e6;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px;   
@@ -397,6 +400,7 @@
     display: flex;
     justify-content:center;
     height: 220px;
+    overflow: hidden;
 }
 
 .sale__item-img--bg {
@@ -407,6 +411,7 @@
 .sale__item-img img {
     height: 200px;
     padding: 30px 0 0 0;
+    width: 100%;
 }
 
 .sale__item-name {

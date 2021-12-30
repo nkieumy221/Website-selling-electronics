@@ -46,53 +46,55 @@
                         ?>
                         <div class="col c-3 sale__item">
                             <div class="sale__item-link">
-                                <div class="sale__item-img">
-                                    <img src="<?= $row['HinhAnh'] ?>" alt="" >
-                                </div>
-                                <div class="sale__item-name">
-                                    <?= $row['TenSanPham'] ?>
-                                </div>
-                                <div class="sale__item-price">
-                                    <div class="sale__item-price-sale">
-                                        <?= number_format($row['GiaKM']) ?> đ
+                                <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="">
+                                    <div class="sale__item-img">
+                                        <img src="<?= $row['HinhAnh'] ?>" alt="" >
                                     </div>
-                                    <div class="sale__item-price-origin">
-                                        <?= number_format($row['GiaGoc']) ?> đ
+                                    <div class="sale__item-name">
+                                        <?= $row['TenSanPham'] ?>
                                     </div>
-                                </div>
-                                <div class="sale__item-config mt-16">
-                                    <div class="sale__item-infor">
-                                        <div class="item-infor__detail">
-                                            <i class="fal fa-archive"></i>
-                                            <?= $row['CPU'] ?>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            <?= number_format($row['GiaKM']) ?> đ
                                         </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            <?= $row['ManHinh'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="fas fa-microchip"></i>
-                                            <?= $row['RAM'] ?>
-                                        </div>
-                                        <div class="item-infor__detail">
-                                            <i class="far fa-hdd"></i>
-                                            <?= $row['BoNho'] ?>
+                                        <div class="sale__item-price-origin">
+                                            <?= number_format($row['GiaGoc']) ?> đ
                                         </div>
                                     </div>
-                                    <div class="sale__item-pay mt-16">
-                                        <img src="./assets/img/vnpay400.jpg" alt="">
-                                        Giảm thêm 5% tối đa 700.000đ
+                                    <div class="sale__item-config mt-16">
+                                        <div class="sale__item-infor">
+                                            <div class="item-infor__detail">
+                                                <i class="fal fa-archive"></i>
+                                                <?= $row['CPU'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-mobile-alt"></i>
+                                                <?= $row['ManHinh'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="fas fa-microchip"></i>
+                                                <?= $row['RAM'] ?>
+                                            </div>
+                                            <div class="item-infor__detail">
+                                                <i class="far fa-hdd"></i>
+                                                <?= $row['BoNho'] ?>
+                                            </div>
+                                        </div>
+                                        <div class="sale__item-pay mt-16">
+                                            <img src="./assets/img/vnpay400.jpg" alt="">
+                                            Giảm thêm 5% tối đa 700.000đ
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                                 <div class="sale__item-btn mt-16">
-                                    <div class="btn btn--primary">
-                                        <a href="productDetail.php?productId=<?= $row['ID'] ?>">MUA NGAY </a>
-                                    </div>
-                                    <div class="btn btn--warning">
-                                        <a href="?wishlistID=<?php echo $row['ID'] ?>">XÓA YÊU THÍCH</a>
-                                    </div>
+                                    <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="btn btn--primary">
+                                        MUA NGAY
+                                    </a>
+                                    <a href="compareProduct.php?productCompareId=<?= $row['ID'] ?>" class="btn btn--gray">
+                                        SO SÁNH
+                                    </a>
                                 </div>
-                                </div>
+                            </div>
                         </div>
                         <?php 
                             } 

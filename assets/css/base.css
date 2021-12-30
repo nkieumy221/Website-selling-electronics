@@ -149,6 +149,10 @@ body {
     color: #fff;
 }
 
+.clearfix {
+    overflow: auto;
+}
+
 /* Selection */
 
 .select-input {

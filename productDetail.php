@@ -1,10 +1,11 @@
 <?php 
     include('./lib/handle.php'); 
 ?>
+<?php include('functions.php'); ?>
 <?php 
     /* Kiểm tra id sản phẩm */
     if (!isset($_GET['productId']) || $_GET['productId'] == NULL) {
-        echo "<script>window.location = '404.php'</script>";
+        
     } else {
         $id = $_GET['productId'];
     } 
@@ -34,6 +35,7 @@
         $startRating = $productClass->startRating($id);
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,9 +62,11 @@
             <div class="grid wide mt-16">
                 <!-- Direction -->
                 <div class="row sm-gutter app__header">
-                    <span class="title-direct"><a href="index.html">Trang chủ</a></span>
-                    <span class="title-page"> / Điện thoại</span>
-                    <span class="title-page"> / Samsung</span>
+                    <div class="col m-12 l-12">
+                        <span class="title-direct"><a href="index.html">Trang chủ</a></span>
+                        <span class="title-page"> / Điện thoại</span>
+                        <span class="title-page"> / Samsung</span>
+                    </div>
                 </div>
                 <?php 
                     $getProductDetail = $productClass->getProductDetails($id);
@@ -73,7 +77,7 @@
                             
                 ?>
                 <div class="row sm-gutter app__content mt-32">
-                    <div class="col l-6 m-0 c-0">
+                    <div class="col l-6 m-6 c-12">
                         <div class="product__intro">
                             <div class="product__img">
                                 <img src="<?= $row['HinhAnh'] ?>" class="product_img">
@@ -99,7 +103,7 @@
                                     <a href="" class="product__sale-link">Xem chi tiết thông số kĩ thuật</a>
                                 </div>
                             </ul>
-                            <div class="product__intro-footer">
+                            <div class="product__intro-footer hide-on-mobile">
                                 <div class="product__intro-footer-item">
                                     <i class="fas fa-award"></i>
                                     Hàng chính hãng - bảo hành 12 Tháng
@@ -111,7 +115,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col l-6 m-12 c-12">
+                    <div class="col l-6 m-6 c-12">
                         <div class="product__infor">
                             <div class="product__name">
                                 <?= $row['TenSanPham'] ?>
@@ -127,7 +131,7 @@
                             <div class="frame-boder product__exhibit ">
                                 <b>Bảo hành: </b> Phiên bản thị trường Mỹ, mới 100% Fullbox đầy đủ phụ kiện chính hãng. Vui lòng chọn màu để xem giá chi tiết.
                             </div>
-                            <div class= "frame-boder product__sale ">
+                            <div class= "frame-boder product__sale hide-on-mobile-tablet ">
                                 <div class="product__sale-title">
                                     Khuyến mãi
                                 </div>
@@ -230,7 +234,7 @@
         <div class="pd-body">
             <div class="grid wide">
                 <div class="row sm-gutter">
-                    <div class="col l-7 mt-32">
+                    <div class="col l-7 m-12 c-12 mt-32">
                         <div class="product__description ">
                             <h2 class="product__description-header">
                                 Mô tả sản phẩm
@@ -244,7 +248,7 @@
                         </div>
                     </div>
                     
-                    <div class="col l-5 mt-32">
+                    <div class="col l-5 m-0 c-0 mt-32">
                         <div class="product__recomment">
                             <h2 class="product__recomment-title">
                                 Phụ kiện thường mua kèm
@@ -290,7 +294,7 @@
                     </h2>
                     <div class="row sm-gutter mt-32">
                         <!-- Đánh giá tổng quan -->
-                        <div class="col l-4">
+                        <div class="col l-4 m-4 c-6">
                             <div class="evaluate__point">
                                 Đánh giá nhận xét   
                                 <div class="evaluate_rank">
@@ -328,7 +332,7 @@
                             </div>
                         </div>
                         <!-- Phân tích rating -->
-                        <div class="col l-4">
+                        <div class="col l-4 m-4 c-0">
                             <div class="rate__process">
                                 <?php 
                                     for($i=5; $i>0; $i--){
@@ -369,7 +373,7 @@
                             </div>
                         </div>
                         <!-- Người dùng đánh giá -->
-                        <div class="col l-4">  
+                        <div class="col l-4 m-4 c-6">  
                             <?php 
                                 $checkRated = $productClass->checkRated($id);
                                 if(!$checkRated){
@@ -407,7 +411,7 @@
                                         if($ratings){
                                         while ($ratingRow = $ratings->fetch_assoc()){
                                             $star = $ratingRow['Rating'];
-                                            for($i = 0; $i < $star; $i++){       
+                                            for($i = 0; $i < $star/2; $i++){       
                                 ?>
                                         
                                         <i class="fas fa-star"></i>
@@ -426,74 +430,83 @@
                     </div>
                 </div>
 
-                <div class="mt-32 product__description ">
+                <div class="mt-32 product__description">
                     <h2 class="product__recomment-title">
                         Bình luận 
                     </h2>
-                    <form action="" method="post" class="form-cmt mt-32">
-                        <input type="hidden" value="<?php echo $id ?>" name="productId">
-                        <input type="text" class="cmt-username" placeholder="Tên của bạn" name="cmt-username">
-                        <div class="cmt-content__form">
-                            <input type="text" class="cmt-input" placeholder="Viết câu hỏi của bạn" name="cmt-content">
-                            <input type="submit" class="btn btn--primary cmt-btn" value="Gửi câu hỏi" name="cmt-submit">
+                    <!-- if user is not signed in, tell them to sign in. If signed in, present them with comment form -->
+                    <?php if (isset($user_id)): ?>
+                        <form class="clearfix cmt-content__form mt-32" action="productDetail.php" method="post" id="comment_form form-cmt">
+                            <textarea name="comment_text" id="comment_text" class="cmt-input" cols="30" rows="3"></textarea>
+                            <button class="btn btn--primary cmt-btn" id="submit_comment">Submit comment</button>
+                        </form>
+                    <?php else: ?>
+                        <div class="well" style="margin-top: 20px;">
+                            <h4 class="text-center"><a href="#">Sign in</a> to post a comment</h4>
                         </div>
-                    </form>
-                    <div class="comment">
-                        <?php 
-                            $cmtList = $commentClass->showComment($id);
-                            $fm = new Format();
-                            if($cmtList){
-                                while($row = mysqli_fetch_assoc($cmtList)){
-                        ?>
-                        <div class="user-cmt__form mt-32">
-                            <div class="user-cmt__img">
-                                <img src="" alt="">
-                                <div class="name-text">S</div>
-                            </div>
-                            <div class="user-cmt__body">
-                                <div class="user-cmt_name">
-                                    <b><?= $row['TenNguoiDung'] ?></b>
-                                    <span class="user-cmt__time"><?php echo $fm->formatDate($row['time']); ?></span>
+                    <?php endif ?>
+                    <!-- Display total number of comments on this post  -->
+                    <h3><span id="comments_count"><?php echo count($comments) ?></span> Comment(s)</h3>
+                    <hr>
+                    <!-- comments wrapper -->
+                    <div id="comments-wrapper">
+                    <?php if (isset($comments)): ?>
+                        <!-- Display comments -->
+                        <?php foreach ($comments as $comment): ?>
+                        <!-- comment -->
+                        <div class="comment">
+                            <div class="user-cmt__form">
+                                <img src="./assets/img/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="" class="profile_pic">
+                                <div class="comment-details">
+                                    <span class="comment-name"><?php echo getUsernameById($comment['IDUser']) ?></span>
+                                    <span class="comment-date"><?php echo date("F j, Y ", strtotime($comment["time"])); ?></span>
+                                    <p><?php echo $comment['NoiDung']; ?></p>
+                                    <a class="reply-btn" href="#" data-id="<?php echo $comment['ID']; ?>">Trả lời</a>
                                 </div>
-                                <div class="user-cmt__content">
-                                    <?= $row['NoiDung'] ?>
-                                </div>
-                                <a href="" class="reply-btn">
-                                    Trả lời
-                                </a>
+                                <!-- reply form -->
+                                <form action="productDetail.php?productId=<?= $id ?>" class="reply_form clearfix" id="comment_reply_form_<?php echo $comment['ID'] ?>" data-id="<?php echo $comment['ID']; ?>">
+                                    <input type="hidden" value="<?php echo $id ?>" name="productId">
+                                    <textarea class="cmt-input" name="reply_text" id="reply_text" cols="30" rows="2"></textarea>
+                                    <button class="btn btn--primary btn-xs pull-right submit-reply">Submit reply</button>
+                                </form>
+                            </div>
+
+                            <!-- GET ALL REPLIES -->
+                            <?php $replies = getRepliesByCommentId($comment['ID']) ?>
+                            <div class="replies_wrapper_<?php echo $comment['ID']; ?> reply-form">
+                                <?php if (isset($replies)): ?>
+                                    <?php foreach ($replies as $reply): ?>
+                                        <!-- reply -->
+                                        <div class="comment reply clearfix">
+                                            <img src="./assets/img/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg" alt="" class="profile_pic">
+                                            <div class="comment-details">
+                                                <span class="comment-name"><?php echo getUsernameById($reply['IDUser']) ?></span>
+                                                <span class="comment-date"><?php echo date("F j, Y ", strtotime($reply["Time"])); ?></span>
+                                                <p><?php echo $reply['Body']; ?></p>
+                                                <a class="reply-btn" href="#">Trả lời</a>
+                                            </div>
+                                        </div>
+                                    <?php endforeach ?>
+                                <?php endif ?>
                             </div>
                         </div>
-                        <?php 
-                            $replyComment = $commentClass->showReplyComment($row['ID']);
-                            if($replyComment){
-                                while($row = mysqli_fetch_assoc($replyComment)){
-                        ?>
-                        <div class="reply-form">
-                            <div class="user-reply__name">
-                                <b><?php  
-                                    $username = $customerClass->getUserName($row['IDUser']);
-                                    echo $username; ?></b>
-                                <span class="admin-tag">Quản trị viên</span>
-                                <span class="user-cmt__time"><?php echo $fm->formatDate($row['Time']); ?></span>
-                            </div>
-                            <div class="user-cmt__content">
-                                <?= $row['Body'] ?>
-                            </div>
-                        </div>
-                        <?php
-                                }
-                            }
-                        ?>
-                        <?php 
-                            }
-                        }
-                        ?>
-                        
-                    </div>
-                </div>
+                            <!-- // comment -->
+                        <?php endforeach ?>
+                    <?php else: ?>
+                        <h2>Be the first to comment on this post</h2>
+                    <?php endif ?>
+                    </div><!-- comments wrapper -->
+                </div><!-- // all comments -->
+                
             </div>
         </div>
         <?php include('./inc/footer.php'); ?>
-    </div>
+    </div>  
+
+    <!-- Javascripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -65,7 +65,7 @@
                 <!-- Slide banner -->
                 <div class="local">
                     <div class="row">                
-                        <div class="banner_slide col c-12">
+                        <div class="col c-12 l-12 m-12 banner_slide">
                             <div class="banner_slide-img">
                                 <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/1/637686909938218976_F-C1_1200x300.png" alt="banner1" class="mySlides">
                                 <img src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/9/24/637680387364945356_F-C1_1200x300.png" alt="banner1" class="mySlides">
@@ -184,33 +184,6 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="category_menu">
-                                <h3 class="category__heading">
-                                    Mức giá
-                                </h3>
-                                <ul class="category-list row">
-                                    <li class="category-item l-12">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">Tất cả</span>
-                                    </li>
-                                    <li class="category-item l-12">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">Dưới 2 triệu</span>
-                                    </li>
-                                    <li class="category-item l-12">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">Từ 2 - 4 triệu</span>
-                                    </li>
-                                    <li class="category-item l-12">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">Từ 4 - 7 triệu</span>
-                                    </li>
-                                    <li class="category-item l-12">
-                                        <input type="checkbox" class="category-item__check">
-                                        <span class="category-item__name">Từ 7 - 13 triệu</span>
-                                    </li>
-                                </ul>
-                            </div>
                         </nav>
                     </div>
                     <div class="col l-9 m-12 c-12">
@@ -238,8 +211,8 @@
                         <!-- Home filter -->
                         <div class="home-filter hide-on-mobile-tablet mt-16">
                             <span class="home-filter__label">Sắp xếp theo</span>
-                            <button class="home-filter__btn btn">Phố biến</button>
-                            <button class="home-filter__btn btn btn--primary">Mới nhất</button>
+                            <button class="home-filter__btn btn btn--primary">Phố biến</button>
+                            <button class="home-filter__btn btn ">Mới nhất</button>
                             <button class="home-filter__btn btn">Bán chạy</button>
                             <div class="select-input">
                                 <span class="select-input__label">Giá</span>
@@ -268,36 +241,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Mobile category -->
-                        <nav class="mobile-category">
-                            <ul class="mobile-category__list">
-                                <li class="mobile-category__item">
-                                    <a href="" class="mobile-category__link">Dụng cụ & Thiết bị điện tử</a>
-                                </li>
-                                <li class="mobile-category__item">
-                                    <a href="" class="mobile-category__link">Dụng cụ & Thiết bị điện tử</a>
-                                </li>
-                                <li class="mobile-category__item">
-                                    <a href="" class="mobile-category__link">Dụng cụ & Thiết bị điện tử</a>
-                                </li>
-                                <li class="mobile-category__item">
-                                    <a href="" class="mobile-category__link">Dụng cụ & Thiết bị điện tử</a>
-                                </li>
-                                <li class="mobile-category__item">
-                                    <a href="" class="mobile-category__link">Dụng cụ & Thiết bị điện tử</a>
-                                </li>
-                                <li class="mobile-category__item">
-                                    <a href="" class="mobile-category__link">Dụng cụ & Thiết bị điện tử</a>
-                                </li>
-                                <li class="mobile-category__item">
-                                    <a href="" class="mobile-category__link">Dụng cụ & Thiết bị điện tử</a>
-                                </li>
-                                <li class="mobile-category__item">
-                                    <a href="" class="mobile-category__link">Dụng cụ & Thiết bị điện tử</a>
-                                </li>
-
-                            </ul>
-                        </nav>
                         <!-- Home product -->
                         
                          <div class="sale__list row mt-16">       
@@ -305,7 +248,7 @@
                                 if($getProduct){
                                     while($row = $getProduct->fetch_assoc()){      
                             ?>       
-                            <div class="col c-4 sale__item">
+                            <div class="col l-3 m-4 c-6 sale__item">
                                 <div class="sale__item-link">
                                     <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="">
                                         <div class="sale__item-img">
