@@ -375,7 +375,7 @@
     border: 1px solid #dee2e6;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px;   
     padding: 12px;
-    height: 520px;
+    min-height: 450px;
 }
 
 .sale__item-link a {
@@ -411,7 +411,7 @@
 .sale__item-img img {
     height: 200px;
     padding: 30px 0 0 0;
-    width: 100%;
+    width: 90%;
 }
 
 .sale__item-name {

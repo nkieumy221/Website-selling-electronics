@@ -24,74 +24,98 @@
         <div class="app__container">
             <div class="grid wide">
                 <div class="row">
-                    <div class="col c-3">
+                    <div class="col c-3 mt-16">
                         <ul class="slider__bar">
-                            <li class="slider__item">
-                                <a href="#" class="slider__link">Thông tin khách hàng</a>
+                            <li class="slider__header">
+                                <img src="https://i.pinimg.com/736x/21/2d/12/212d12e421963f8a66f95aece1182069.jpg" alt="" class="user__img">
+                                <div class="user__infor">
+                                    <div class="user__name">
+                                        <?php echo Session::get('customerName'); ?>
+                                    </div>
+                                    <div class="user__edit">
+                                        <a href="editProfile.php" class="">
+                                            <i class="far fa-edit"></i>
+                                            Sửa hồ sơ
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="slider__item mt-16">
+                                <i class="far fa-user"></i>
+                                <a href="#" class="slider__link slider__link--active">Tài khoản của tôi</a>
                             </li>
                             <li class="slider__item">
+                                <i class="fas fa-compress"></i>
                                 <a href="compareProduct.php" class="slider__link">So sánh sản phẩm</a>
                             </li>
                             <li class="slider__item">
+                                <i class="far fa-heart"></i>
                                 <a href="wishlist.php" class="slider__link">Sản phẩm yêu thích</a>
                             </li>
                             <li class="slider__item">
+                                <i class="far fa-list-alt"></i>
                                 <a href="orderDetails.php" class="slider__link">Đơn hàng</a>
                             </li>
                             <li class="slider__item">
+                                <i class="far fa-question-circle"></i>
                                 <a href="user_recommendation.php" class="slider__link">Hệ thống gợi ý sản phẩm</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col c-9">
-                        <div class="row sm-gutter app__header">
-                            <h2 class="title-direct"><a href="">THÔNG TIN KHÁCH HÀNG</a></h2>
+                    <div class="col c-9 pd-body mt-16">
+                        <div class="body__header">
+                            <h3 class="title">Hồ Sơ Của Tôi</h3> <br>
+                            <p class="subtitle">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
                         </div>
-                        <table class="tblone">
-                            <?php
-                                $login_check = Session::get('customerLogin'); 
-                                if($login_check==false){
-                                    header('Location:index.php');
+                        <div class="body__content">
+                            <table class="tblone">
+                                <?php
+                                    $login_check = Session::get('customerLogin'); 
+                                    if($login_check==false){
+                                        header('Location:index.php');
+                                    }
+                                    
+                                    $id = Session::get('customerId');
+                                    
+                                    $getCustomers = $customerClass->showCustomer($id);
+                                    if($getCustomers){
+                                        while($result = $getCustomers->fetch_assoc()){
+                                ?>
+                                <tr>
+                                    <td class="tb__title">Tên khách hàng</td>
+                                    <td class="tb__infor"><?php echo $result['TenKhachHang']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="tb__title">Địa chỉ</td>
+                                    <td class="tb__infor"><?php echo $result['DiaChi'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="tb__title">Số điện thoại</td>
+                                    <td class="tb__infor"><?php echo $result['DienThoai'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="tb__title">Zipcode</td>
+                                    <td class="tb__infor"><?php echo $result['zipcode'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="tb__title">Email</td>
+                                    <td class="tb__infor"><?php echo $result['Email'] ?></td>
+                                </tr>
+                                <?php
+                                    }
                                 }
-                                
-                                $id = Session::get('customerId');
-                                $getCustomers = $customerClass->showCustomer($id);
-                                if($getCustomers){
-                                    while($result = $getCustomers->fetch_assoc()){
-                            ?>
-                            <tr>
-                                <td>Tên khách hàng</td>
-                                <td>:</td>
-                                <td><?php echo $result['TenKhachHang'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>Địa chỉ</td>
-                                <td>:</td>
-                                <td><?php echo $result['DiaChi'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>Số điện thoại</td>
-                                <td>:</td>
-                                <td><?php echo $result['DienThoai'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>Zipcode</td>
-                                <td>:</td>
-                                <td><?php echo $result['zipcode'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>:</td>
-                                <td><?php echo $result['Email'] ?></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><a href="editProfile.php" class="btn btn--gray">Update Profile</a></td>
-                            </tr>
-                            <?php
-                                }
-                            }
-                            ?>
-                        </table>
+                                ?>
+                            </table>
+                            <div class="img__infor">
+                                <img src="https://i.pinimg.com/736x/21/2d/12/212d12e421963f8a66f95aece1182069.jpg" alt="" class="">
+                                <div class="user__edit text-center mt-16">
+                                    <a href="editProfile.php" class="">
+                                        <i class="far fa-edit"></i>
+                                        Sửa hồ sơ
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

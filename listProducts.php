@@ -284,10 +284,6 @@
                                                     <?= $row['BoNho'] ?>
                                                 </div>
                                             </div>
-                                            <div class="sale__item-pay mt-16">
-                                                <img src="./assets/img/vnpay400.jpeg" alt="">
-                                                Giảm thêm 5% tối đa 700.000đ
-                                            </div>
                                         </div>
                                     </a>
                                     <div class="sale__item-btn mt-16">

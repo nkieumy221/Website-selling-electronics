@@ -10,7 +10,7 @@
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/grid.css">
-    <link rel="stylesheet" href="./assets/css/cart.css">
+    <link rel="stylesheet" href="./assets/css/profile.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,71 +23,112 @@
         <?php include('./inc/header.php'); ?>
         <div class="app__container">
             <div class="grid wide">
-                <div class="row sm-gutter app__header">
-                    <span class="title-direct"><a href="">CHỈNH SỬA THÔNG TIN KHÁCH HÀNG</a></span>
+            <div class="row">
+                    <div class="col c-3 mt-16">
+                        <ul class="slider__bar">
+                            <li class="slider__header">
+                                <img src="https://i.pinimg.com/736x/21/2d/12/212d12e421963f8a66f95aece1182069.jpg" alt="" class="user__img">
+                                <div class="user__infor">
+                                    <div class="user__name">
+                                        <?php echo Session::get('customerName'); ?>
+                                    </div>
+                                    <div class="user__edit">
+                                        <a href="editProfile.php" class="">
+                                            <i class="far fa-edit"></i>
+                                            Sửa hồ sơ
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="slider__item mt-16">
+                                <i class="far fa-user"></i>
+                                <a href="profile.php" class="slider__link slider__link--active">Tài khoản của tôi</a>
+                            </li>
+                            <li class="slider__item">
+                                <i class="fas fa-compress"></i>
+                                <a href="compareProduct.php" class="slider__link">So sánh sản phẩm</a>
+                            </li>
+                            <li class="slider__item">
+                                <i class="far fa-heart"></i>
+                                <a href="wishlist.php" class="slider__link">Sản phẩm yêu thích</a>
+                            </li>
+                            <li class="slider__item">
+                                <i class="far fa-list-alt"></i>
+                                <a href="orderDetails.php" class="slider__link">Đơn hàng</a>
+                            </li>
+                            <li class="slider__item">
+                                <i class="far fa-question-circle"></i>
+                                <a href="user_recommendation.php" class="slider__link">Hệ thống gợi ý sản phẩm</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col c-9 pd-body mt-16">
+                        <div class="body__header">
+                            <h3 class="title">Hồ Sơ Của Tôi</h3> <br>
+                            <p class="subtitle">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+                        </div>
+                        <div class="body__content">
+                            <form action="" method="post">
+                                <table class="tblone">
+                                    <?php
+                                        $login_check = Session::get('customerLogin'); 
+                                        if($login_check==false){
+                                            header('Location:index.php');
+                                        }
+                                        $id = Session::get('customerId');
+                                        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
+                                            $UpdateCustomers = $customerClass->updateCustomers($_POST, $id);
+                                        }
+                                        if(isset($UpdateCustomers)){
+                                            echo '<tr><td colspan="3">'.$UpdateCustomers.'</td></tr>';
+                                        }
+                                    ?>
+                                    <?php
+                                        $id = Session::get('customerId');
+                                        $get_customers = $customerClass->showCustomer($id);
+                                        if($get_customers){
+                                            while($result = $get_customers->fetch_assoc()){
+                                    ?>
+                                    <tr>
+                                        <td class="tb__title">Tên đăng nhập</td>
+                                        <td class="tb__infor"><?php echo Session::get('customerName'); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tb__title">Tên khách hàng</td>
+                                        <td class="tb__infor"><input type="text" name="name" value="<?php echo $result['TenKhachHang'] ?>"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tb__title">Số điện thoại</td>
+                                        <td class="tb__infor"><input type="text" name="phone" value="<?php echo $result['DienThoai'] ?>"></td>
+                                    
+                                    </tr>
+                                    <tr>
+                                        <td class="tb__title">Zipcode</td>
+                                        <td class="tb__infor"><input type="text" name="zipcode" value="<?php echo $result['zipcode'] ?>"></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td class="tb__title">Email</td>
+                                        <td class="tb__infor"><input type="text" name="email" value="<?php echo $result['Email'] ?>"></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td class="tb__title">Địa chỉ</td>
+                                        <td class="tb__infor"><input type="text" name="address" value="<?php echo $result['DiaChi'] ?>"></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td class="tb__title" colspan="3"><input type="submit" name="save" value="Save" class="btn btn--primary"></td>               
+                                    </tr> 
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <form action="" method="post">
-                    <table class="tblone">
-                        <tr> 
-                            <?php
-                                $login_check = Session::get('customerLogin'); 
-                                if($login_check==false){
-                                    header('Location:index.php');
-                                }
-                                $id = Session::get('customerId');
-                                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
-                                    $UpdateCustomers = $customerClass->updateCustomers($_POST, $id);
-                                }
-                                if(isset($UpdateCustomers)){
-                                    echo '<td colspan="3">'.$UpdateCustomers.'</td>';
-                                }
-                            ?>
-                        </tr>
-                        <?php
-                            $id = Session::get('customerId');
-                            $get_customers = $customerClass->showCustomer($id);
-                            if($get_customers){
-                                while($result = $get_customers->fetch_assoc()){
-                        ?>
-                        <tr>
-                            <td>Tên khách hàng</td>
-                            <td>:</td>
-                            <td><input type="text" name="name" value="<?php echo $result['TenKhachHang'] ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>Số điện thoại</td>
-                            <td>:</td>
-                            <td><input type="text" name="phone" value="<?php echo $result['DienThoai'] ?>"></td>
-                        
-                        </tr>
-                        <tr>
-                            <td>Zipcode</td>
-                            <td>:</td>
-                            <td><input type="text" name="zipcode" value="<?php echo $result['zipcode'] ?>"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td><input type="text" name="email" value="<?php echo $result['Email'] ?>"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>Địa chỉ</td>
-                            <td>:</td>
-                            <td><input type="text" name="address" value="<?php echo $result['DiaChi'] ?>"></td>
-                            
-                        </tr>
-                        <tr>
-                            <td colspan="3"><input type="submit" name="save" value="Save"></td>
-                            
-                        </tr> 
-                        <?php
-                            }
-                        }
-                        ?>
-                    </table>
-			    </form>
             </div>
         </div>
         <?php include('./inc/footer.php'); ?>

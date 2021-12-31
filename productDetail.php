@@ -411,9 +411,8 @@
                                         if($ratings){
                                         while ($ratingRow = $ratings->fetch_assoc()){
                                             $star = $ratingRow['Rating'];
-                                            for($i = 0; $i < $star/2; $i++){       
-                                ?>
-                                        
+                                            for($i = 0; $i < $star; $i++){       
+                                ?>       
                                         <i class="fas fa-star"></i>
                                 
                                 <?php             }
