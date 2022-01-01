@@ -11,6 +11,12 @@
     <div class="slider__bar">           
         <ul class="slider__menu">
             <li class="silder__item">
+                <a href="./homepage.php" class="slider__item-link" id="attach_box">
+                    <i class="fas fa-stream"></i>
+                    Tổng quan
+                </a>
+            </li>
+            <li class="silder__item">
                 <a href="./listCategory.php" class="slider__item-link" id="attach_box">
                     <i class="far fa-server"></i>
                     Quản lý danh mục
@@ -37,7 +43,19 @@
             <li class="silder__item">
                 <a href="./listCustomer.php" class="slider__item-link">
                     <i class="fas fa-user"></i>
-                    Quản lý tài khoản 
+                    Tài khoản khách hàng
+                </a>
+            </li>
+            <li class="silder__item">
+                <a href="./listComments.php" class="slider__item-link">
+                    <i class="far fa-comment"></i>
+                    Bình luận sản phẩm
+                </a>
+            </li>
+            <li class="silder__item">
+                <a href="./chatnet.php" class="slider__item-link">
+                    <i class="fas fa-sms"></i>
+                    Tư vấn khách hàng
                 </a>
             </li>
         </ul>

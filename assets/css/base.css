@@ -31,6 +31,10 @@ body {
     font-weight: 400 !important;
 }
 
+.text-primary {
+    color: var(--primary-color);
+}
+
 .text-white {
     color: #fff;
 }

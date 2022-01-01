@@ -1,3 +1,10 @@
+.header__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: black;
+    border-bottom: 0.5px solid rgb(231, 231, 231);
+    padding-bottom: 20px;
+}
 /* Input Category */
 .addcat {
     display: flex;
@@ -8,6 +15,7 @@
     display:inline-block;
     color: var(--text-color);
     margin-right: 10px;
+    font-size: 1.3rem;
 }
 
 .addcat__input {
@@ -40,27 +48,112 @@ table {
 }
 
 thead {
-    background-color: #96D4D4;
+    background-color: #000;
     font-weight: 500;
 }
 
 td {
-    padding:5px 10px;
+    padding: 10px;
     font-size: 1.4rem;
     color: var(--text-color);
     
 }
 
+.cat__table {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cat__body {
+    background-color: var(--white-color);
+}
+
 .cat__link {
     color: var(--text-color);
+    text-decoration: none;
+}
+
+.cat__link:hover {
+    font-weight: bold;
+}
+
+.cat__item {
+    font-size: 1.3rem;
+}
+
+.cat_header-item {
+    font-weight: 500;
+    color: white;
 }
 
 .add__btn {
     text-decoration: none;
     color: var(--text-color);
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 0 3px 0 #dee2e6;
     padding: 10px 20px;
     font-size:1.4rem;
+    display: block;
+    text-align: center;
+}
+
+/* Home page */
+.overvirew__item {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+.overvirew__infor {
+    display: flex;
+    padding: 15px 10px;
+}
+
+.overvirew__infor i{
+    font-size: 3rem;
+    padding: 10px;
+}
+
+.overview__right {
+    margin-left: 15px;
+}
+
+.overvirew__infor-name {
+    font-size: 1.4rem;
+    line-height: 2;
+    font-weight: 500;
+}
+
+.overvirew__infor-number {
+    color: var(--black-color);
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height:2;
+}
+
+.overview__item-more {
+    background-color: rgb(240, 240, 240);
+    padding: 8px 10px;    
+}
+
+.overview__item-more a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 1.2rem;
+
+}
+
+
+.tb__title {
+    font-size: 1.6rem;
+    width: 30%;
+    background-color: rgb(187, 187, 187);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    padding: 10px;
+    box-shadow: 0 0 3px 0 #dee2e6;
 }

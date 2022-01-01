@@ -34,7 +34,10 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
-                <div class="cat-list mt-32">
+                <div class="header__title">
+                    Quản lý thông tin khách hàng
+                </div>
+                <div class="cat-list mt-16">
                     <table class="cat__table">
                         <thead class="cat__header">
                             <tr >

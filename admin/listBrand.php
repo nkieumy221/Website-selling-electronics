@@ -40,7 +40,10 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
-                <form method="post" action="listBrand.php" class="addcat-input">
+                <div class="header__title">
+                    Quản lý thương hiệu sản phẩm
+                </div>
+                <form method="post" action="listBrand.php" class="addcat-input mt-16">
                     <h2 class="addcat__title">Thêm thương hiệu</h2>
                     <input type="text" name="brandName" placeholder="Nhập tên thương hiệu..." id="reset" class="addcat__input">
                     <input type="submit" name="submit" value="Thêm" class="addcat__btn">
@@ -55,15 +58,15 @@
                         echo $deleteBrand;
                     }
                 ?>
-                <div class="cat-list mt-32">
+                <div class="cat-list">
                     <table class="cat__table">
                         <thead class="cat__header">
                             <tr >
                                 <td class="cat_header-item">ID</td>
                                 <td class="cat_header-item">Tên thương hiệu</td>
                                 <td class="cat_header-item">Danh mục</td>
-                                <td class="cat_header-item"></td>
-                                <td class="cat_header-item"></td>
+                                <td class="cat_header-item">Chỉnh sửa</td>
+                                <td class="cat_header-item">Xóa</td>
                             </tr>
                         </thead>
                         <tbody class="cat__body">

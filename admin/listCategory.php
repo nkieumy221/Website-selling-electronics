@@ -39,8 +39,11 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
-                <form method="post" action="listCategory.php" class="addcat-input">
-                    <h2 class="addcat__title">Thêm danh mục</h2>
+                <div class="header__title">
+                    Quản lý danh mục sản phẩm
+                </div>
+                <form method="post" action="listCategory.php" class="addcat-input mt-16">
+                    <div class="addcat__title">Thêm danh mục</div>
                     <input type="text" name="catName" placeholder="Nhập tên danh mục..." id="reset" class="addcat__input">
                     <script>
                         document.getElementById("reset").reset();
@@ -57,14 +60,14 @@
                         echo $deleteCat;
                     }
                 ?>
-                <div class="cat-list mt-32">
+                <div class="cat-list mt-16">
                     <table class="cat__table">
                         <thead class="cat__header">
                             <tr >
                                 <td class="cat_header-item">ID</td>
                                 <td class="cat_header-item">Tên danh mục</td>
-                                <td class="cat_header-item"></td>
-                                <td class="cat_header-item"></td>
+                                <td class="cat_header-item">Chỉnh sửa</td>
+                                <td class="cat_header-item">Xóa</td>
                             </tr>
                         </thead>
                         <tbody class="cat__body">

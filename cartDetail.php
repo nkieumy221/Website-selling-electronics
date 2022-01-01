@@ -79,7 +79,7 @@
                                 <form action="" method="post" class="form-quantity">
                                     <input type="hidden" name="cartId" value="<?php echo $row['IDCart'] ?>" class="form-quantity__input"/>
                                     <input type="number" name="quantity" min="0"  value="<?php echo $row['SoLuong'] ?>" class="form-quantity__input"/>
-                                    <input type="submit" name="submit" value="Update"/>
+                                    <input type="submit" name="submit" value="Cập nhật" class="btn btn--default"/>
 								</form>
                             </li>
                             <li class="col c-2 product__total">
@@ -106,7 +106,7 @@
                         if($checkCart){
                     ?>
                         <ul class="row cart__foot">
-                            <li class="col c-2 btn btn--warning"><a href="">Tiếp tục mua hàng</a></li>
+                            <li class="col c-2 btn btn--warning"><a href="index.php">Tiếp tục mua hàng</a></li>
                             <li class="col c-4"></li>
                             <li class="col c-2 total"><b>Tổng</b></li>
                             <li class="col c-2 product__total">
@@ -116,9 +116,18 @@
                             </li>
                             <li class="col c-2 btn btn--primary"><a href="payment.php">Thanh toán</a></li>
                         </ul>
+                        
                     <?php 
                         } else {
-                            echo '<div>Giỏ hàng trống</div>';
+                            echo 
+                            '<div class="empty_cart">
+                                <img src="./assets/img/empty_cart.png" alt="">
+                            </div>
+                            <ul class="row cart__foot">
+                                <li class="col c-5"></li>
+                                <li class="col c-2 btn btn--warning"><a href="index.php">Tiếp tục mua hàng</a></li>
+                            </ul>
+                            ';
                         }
                     ?>
                 </div>

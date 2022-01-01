@@ -204,6 +204,13 @@
             return $result;
         }
 
+        /* Show product details by IDProduct */
+        public function showProductbyID($id) {
+            $product = "SELECT * FROM hanghoa WHERE ID ='$id'";
+			$result = $this->db->select($product);
+            return $result;
+        }
+
         /* insert compare product */
         public function insertCompare($productId, $customerId) {
 			$productId = mysqli_real_escape_string($this->db->link, $productId);

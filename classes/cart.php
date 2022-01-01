@@ -108,6 +108,8 @@
 				$queryInsert = "INSERT INTO dathang(IDSanPham, TenSanPham, IDKhachHang, SoLuong, Gia, HinhAnh) VALUES ('$productId','$productName','$customerId','$quantity','$price','$img')";
 				$insertOrder = $this->db->insert($queryInsert);
 				if($insertOrder){
+					$queryQty = "UPDATE hanghoa SET SoLuong = SoLuong - 1 WHERE ID = '$productId' AND SoLuong > 0 ";
+					$resultQty = $this->db->update($queryQty);
 					header("Location:success.php");
 				}
 			}
@@ -139,9 +141,10 @@
 			$id = mysqli_real_escape_string($this->db->link, $id);
 			$time = mysqli_real_escape_string($this->db->link, $time);
 			$price = mysqli_real_escape_string($this->db->link, $price);
-
-			$query = "UPDATE dathang SET status = 1 WHERE ID = '$id' AND Gia ='$price' AND ThoiGian = '$time' ";
+			
+			$query = "UPDATE dathang SET status = 1 WHERE ID = '$id' AND Gia ='$price' AND ThoiGian = '$time' ";			
 			$result = $this->db->update($query);
+			
 		}
 
 		/* Xóa đơn hàng */

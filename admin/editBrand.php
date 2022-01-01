@@ -38,6 +38,9 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
+                <div class="header__title">
+                    Chỉnh sửa thông tin thương hiệu sản phẩm
+                </div>
                 <?php 
                     $getBrandName = $brandClass->getBrandById($id);
                     if($getBrandName) {

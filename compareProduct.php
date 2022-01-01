@@ -32,7 +32,6 @@
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="./assets/js/productDetails.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
@@ -50,54 +49,73 @@
                         echo $updateQuantity;
                     }
                 ?>
-                <div class="products__list mt-32">
-                    <ul class="row sm-gutter cart__header">
-                        <li class="col c-2 cart__header-name">ID</li>
-                        <li class="col c-2 cart__header-name">Hình ảnh </li>
-                        <li class="col c-2 cart__header-name">Tên sản phẩm</li>
-                        <li class="col c-2 cart__header-name">Giá </li>
-                        <li class="col c-2 cart__header-name"></li>
-                        <li class="col c-2 cart__header-name"></li>
-                    </ul>
-                    <div class="cart__body">
-                        <?php
-                            $customerId = Session::get('customerId');
-                            $productCompare = $productClass->showProductCompare($customerId);
-                            if($productCompare) {
-                                $i = 0;
-                                while($row = $productCompare->fetch_assoc()){
-                                    $i++;  
-                        ?>
-                        <ul class="row product__infor ">
-                            <li class="col c-2 product__img">
-                                <?php echo $i ?>
-                            </li>
-                            <li class="col c-2 product__img">
-                                <img src="<?= $row['image'] ?>" alt="">
-                            </li>
-                            <li class="col c-2 product__name">
-                                <?= $row['productName'] ?>
-                            </li>
-                            <li class="col c-2 product__price">
-                                <?= number_format($row['price']) ?> đ
-                            </li>
-                            <li class="col c-2 delete-btn">
-                                <a href="productDetail.php?productId=<?= $row['ID'] ?>">Xem chi tiết</a>
-                            </li>
-                            <li class="col c-2 delete-btn">
-                                <a href="?compareID=<?php echo $row['ID'] ?>">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <?php 
-                                }   
-                            }
-                        ?>
-                    </div>
-                    
-                </div>
-                
+                <div class="cat-list mt-32">
+                    <table class="cat__table">
+                        <thead class="cat__header">
+                            <tr>
+                                <td class="cat_header-item">ID</td>
+                                <td class="cat_header-item">Hình ảnh</td>
+                                <td class="cat_header-item">Tên sản phẩm</td>
+                                <td class="cat_header-item">Giá gốc</td>
+                                <td class="cat_header-item">Giá khuyến mãi</td>
+                                <td class="cat_header-item">Thông số kĩ thuật</td>
+                                <td class="cat_header-item">Chi tiết</td>
+                                <td class="cat_header-item">Xóa</td>
+                            </tr>
+                        </thead>
+                        <tbody class="cat__body">
+                            <?php 
+                                $customerId = Session::get('customerId');
+                                $productCompare = $productClass->showProductCompare($customerId);
+                                if($productCompare) {
+                                    $i = 0;
+                                    while($row = $productCompare->fetch_assoc()){
+                                        $i++;  
+                                        $idProduct = $row['IDProduct'];
+                                        $idCompare = $row['ID'];
+                                        $productDetail = $productClass->showProductbyID($idProduct);
+                                        while($result = $productDetail->fetch_assoc()){ 
+                                    
+                            ?>
+                            <tr class="cat__row">
+                                <td class="cat__item">
+                                    <?php echo $i ?>
+                                </td>
+                                <td class="cat__item" >
+                                    <img src="<?php echo $result['HinhAnh'] ?>" alt="" style="width:100px;">
+                                </td>
+                                <td class="cat__item">
+                                    <?php echo $result['TenSanPham'] ?>
+                                </td>
+                                <td class="cat__item">
+                                    <?php echo number_format($result['GiaGoc']) ?> đ
+                                </td>
+                                <td class="cat__item">
+                                    <?php echo number_format($result['GiaKM']) ?> đ
+                                </td>
+                                <td class="cat__item">
+                                    Ram: <?php echo $result['RAM'] ?> <br>
+                                    CPU: <?php echo $result['CPU'] ?> <br>
+                                    Bộ nhớ: <?php echo $result['BoNho'] ?> <br>
+                                    Màn hình: <?php echo $result['ManHinh'] ?> <br>
+                                </td>
+                                <td class="cat__item">
+                                    <a href="productDetail.php?productId=<?= $result['ID'] ?>" class ="cat__link">Xem chi tiết</a>
+                                </td>
+                                <td class="cat__item">
+                                    <a href="?compareID=<?php echo $idCompare ?>"  class ="cat__link">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php
+                                        } 
+                                    }
+                                }
+                                ?>
+                        </tbody>
+                    </table>
+                </div>    
             </div>
         </div>
         <?php include('./inc/footer.php'); ?>

@@ -69,7 +69,6 @@
                         }
                     ?>
                     <div class="notify__infor">
-                        Tổng số tiền đã mua là : <?= number_format($amount) ?> đ
                         <p>Chúng tôi sẽ liên hệ với bạn sớm nhất có thể</p>
                         <p>Kiểm tra đơn hàng <a href="orderDetails.php">tại đây</a></p>
                     </div>

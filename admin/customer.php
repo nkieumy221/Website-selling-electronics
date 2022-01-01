@@ -33,6 +33,9 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
+                <div class="header__title">
+                    Thông tin khách hàng
+                </div>
                 <?php 
                     $getCustomer = $class->showCustomer($id);
                     if($getCustomer) {

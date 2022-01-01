@@ -42,6 +42,9 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
+                <div class="header__title">
+                    Quản lý đơn hàng
+                </div>
                 <?php 
                     if(isset($shifted)){
                         echo $shifted;
@@ -98,7 +101,7 @@
                                 <?php 
                                     if($result['status']==0){
                                 ?>
-                                    <a href="?shiftid=<?php echo $result['ID'] ?>&price=<?php echo $result['Gia'] ?>&time=<?php echo $result['ThoiGian'] ?>" class="cat__link">Chờ xử lý</a>
+                                    <a href="?shiftid=<?php echo $result['ID'] ?>&price=<?php echo $result['Gia'] ?>&time=<?php echo $result['ThoiGian']?>" class="cat__link">Xác nhận</a>
 
                                 <?php
                                     }elseif($result['status']==1){

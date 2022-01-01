@@ -39,13 +39,16 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
-                <a href="addProduct.php" class="add__btn">Thêm sản phẩm</a>
+                <div class="header__title">
+                    Quản lý hàng hóa
+                </div>
+                <a href="addProduct.php" class="add__btn mt-32">Thêm sản phẩm</a>
                 <?php
                     if(isset($deleteProduct)){
                         echo $deleteProduct;
                     }
                 ?>
-                <div class="cat-list mt-32">
+                <div class="cat-list mt-16">
                     <table class="cat__table">
                         <thead class="cat__header">
                             <tr >
@@ -57,10 +60,9 @@
                                 <td class="cat_header-item">Số lượng</td>
                                 <td class="cat_header-item">Giá gốc</td>
                                 <td class="cat_header-item">Giá khuyến mãi</td>
-                                <td class="cat_header-item">Mô tả</td>
                                 <td class="cat_header-item">Thông số kĩ thuật</td>
-                                <td class="cat_header-item"></td>
-                                <td class="cat_header-item"></td>
+                                <td class="cat_header-item">Sửa</td>
+                                <td class="cat_header-item">Xóa</td>
                             </tr>
                         </thead>
                         <tbody class="cat__body">
@@ -91,13 +93,10 @@
                                     <?php echo $result['SoLuong'] ?>
                                 </td>
                                 <td class="cat__item">
-                                    <?php echo $result['GiaGoc'] ?>
+                                    <?php echo number_format($result['GiaGoc']) ?> đ
                                 </td>
                                 <td class="cat__item">
-                                    <?php echo $result['GiaKM'] ?>
-                                </td>
-                                <td class="cat__item">
-                                    <?php echo $format->textShorten($result['MoTa'],50) ?>
+                                    <?php echo number_format($result['GiaKM']) ?> đ
                                 </td>
                                 <td class="cat__item">
                                     Ram: <?php echo $result['RAM'] ?> <br>

@@ -46,6 +46,9 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
+                <div class="header__title">
+                    Chỉnh sửa thông tin sản phẩm
+                </div>
                 <?php 
                     if(isset($updateProduct)) {
                         echo $updateProduct;
