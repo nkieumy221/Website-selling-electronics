@@ -157,3 +157,37 @@ td {
     padding: 10px;
     box-shadow: 0 0 3px 0 #dee2e6;
 }
+
+.chart-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.line__item {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.line__color {
+    width: 40px;
+    height: 2px;
+    margin-top: 3px;
+}
+
+.line__color--red {
+    background-color:red;
+}
+
+.line__color--green {
+    background-color:green;
+}
+
+.line__color--blue {
+    background-color:blue;
+}
+
+.line__name {
+    font-size: 1.4rem;
+    margin-left: 10px;
+}

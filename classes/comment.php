@@ -57,6 +57,68 @@
             return $result;
         }
 
-        
+        /* Show allComments */
+        public function showAllComments() {
+            $query = "SELECT * FROM binhluan";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        function getUsernameById($id)
+        {
+            $query = "SELECT TenKhachHang FROM khachhang WHERE ID=" . $id . " LIMIT 1";
+            $result = $this->db->select($query);
+            while($row = $result->fetch_assoc()){
+                $name = $row['TenKhachHang'];
+            }
+            return $name; ;
+        }
+
+        function getProductnameById($id)
+        {
+            $query = "SELECT TenSanPham FROM hanghoa WHERE ID=" . $id . " LIMIT 1";
+            $result = $this->db->select($query);
+            while($row = $result->fetch_assoc()){
+                $name = $row['TenSanPham'];
+            }
+            return $name; ;
+        }
+
+        public function showCommentById($id){
+            $query = "SELECT * FROM binhluan WHERE ID = $id";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        /* Reply comments by admin */ 
+        public function insertReply($username,$content,$productId) {
+            if($username=="" || $productId=="" || $productId=="") {
+                $alert = "<span class='success'>Không được để trống</span>  ";
+                return $alert;
+            }else{
+                $check = "SELECT * FROM replycomment WHERE IDComment='$productId' AND TenNguoiDung='$username' AND Body='$content'";
+                $result_check = $this->db->select($check);
+                if($result_check){
+                    $msg = "<span class='error'>Sản phẩm đã được thêm vào</span>";
+				    return $msg;
+                } else {
+                    $query ="INSERT INTO replycomment(IDComment, TenNguoiDung, Body, Rule) VALUES ('$productId','$username','$content', 1)";
+                    $result = $this->db->insert($query);
+                    if ($result){
+                        header("Location:listComments.php");
+                    } else {
+                        $alert = "<span class='error'>Thêm không thành công";
+                        return $alert;
+                    }
+                }
+
+            }
+        }
+
+        public function deleteComment($id){
+            $query = "DELETE FROM binhluan WHERE ID = $id";
+            $result = $this->db->delete($query);
+            return "Xóa Thành Công";
+        }
     }   
 ?>

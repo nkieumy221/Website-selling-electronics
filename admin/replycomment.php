@@ -1,14 +1,25 @@
 <?php include('../classes/comment.php');?>
 <?php
-    $commentClass = new comment();
     /* Show list brand */
-    $showComments = $commentClass->showAllComments();
+    $commentClass = new comment();
+    if (!isset($_GET['commentID']) || $_GET['commentID'] == NULL) {
+
+    } else {
+        $id = $_GET['commentID'];
+        $showComments = $commentClass->showCommentById($id);
+    }  
+    /* insert brand */
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $username = $_POST['username'];
+        $content = $_POST['content'];
+        $idComment = $_POST['idProduct'];
+        $insertReply = $commentClass->insertReply($username,$content,$idComment);
+    }
     /* Delete brand*/
     if (isset($_GET['deleteCommentId'])) {
         $id = $_GET['deleteCommentId'];
         $deleteComment = $commentClass->deleteComment($id);
     }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +48,11 @@
                 <div class="header__title">
                     Bình luận
                 </div>
+                <?php
+                    if(isset($deleteBrand)){
+                        echo $deleteBrand;
+                    }
+                ?>
                 <div class="cat-list">
                     <table class="cat__table">
                         <thead class="cat__header">
@@ -46,7 +62,6 @@
                                 <td class="cat_header-item">ID Người dùng</td>
                                 <td class="cat_header-item">Nội dung bình luận</td>
                                 <td class="cat_header-item">Xem chi tiết</td>
-                                <td class="cat_header-item">Trả lời</td>
                                 <td class="cat_header-item">Xóa</td>
                             </tr>
                         </thead>
@@ -77,11 +92,6 @@
                                     </a>
                                 </td>
                                 <td class="cat__item">
-                                    <a href="replycomment.php?commentID=<?php echo $comment['ID'] ?>" class ="cat__link">
-                                        Trả lời
-                                    </a>
-                                </td>
-                                <td class="cat__item">
                                     <a href="?deleteCommentId=<?php echo $comment['ID']; ?>" onclick="return confirm('Bạn có muốn xóa danh mục này?')" class ="cat__link">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
@@ -94,6 +104,19 @@
                         </tbody>
                     </table>
                 </div>
+
+                <form method="post" action="replycomment.php" class="addcat-input mt-16">
+                    <h2 class="addcat__title">Trả lời bình luận</h2>
+                    <input type="hidden" name="idProduct" value="<?php echo $id ?>">
+                    <input type="text" name="username" placeholder="Nhập tên ..." id="reset" class="addcat__input">
+                    <input type="textarea" name="content" placeholder="Nhập nội dung trả lời..." id="reset" class="addcat__input">
+                    <input type="submit" name="submit" value="Thêm" class="addcat__btn">
+                    <?php
+                        if(isset($insertReply)){
+                            echo $insertReply;
+                        }
+                    ?>
+                </form>
             </div>
         </div>
 

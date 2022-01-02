@@ -176,4 +176,5 @@ body {
     padding: calc(70px + 24px) calc(24px / 2) 60px calc(24px / 2);
     height: 100%;
     background-color: #F8F8FB;
+    overflow-y: auto;
 }
