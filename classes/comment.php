@@ -120,5 +120,29 @@
             $result = $this->db->delete($query);
             return "Xóa Thành Công";
         }
+
+        public function checkReplyCmt($idCmt){
+            $query = "SELECT replycomment.IDComment FROM replycomment WHERE IDComment = $idCmt AND Rule =1";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        /* Support client */
+        public function insertTextSample($query,$reply){
+            $query ="INSERT INTO chatbot(queries,replies) VALUES ('$query','$reply')";
+            $result = $this->db->insert($query);
+        }
+
+        public function showText(){
+            $query = "SELECT * FROM chatbot";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        public function deleteText($id){
+            $query = "DELETE FROM chatbot WHERE id = $id";
+            $result = $this->db->delete($query);
+            return "Xóa Thành Công";
+        }
     }   
 ?>

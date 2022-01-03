@@ -380,6 +380,5 @@
             return $result;
         }
 
-        
     }   
 ?>

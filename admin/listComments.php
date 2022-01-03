@@ -46,6 +46,7 @@
                                 <td class="cat_header-item">ID Người dùng</td>
                                 <td class="cat_header-item">Nội dung bình luận</td>
                                 <td class="cat_header-item">Xem chi tiết</td>
+                                <td class="cat_header-item">Tình trạng</td>
                                 <td class="cat_header-item">Trả lời</td>
                                 <td class="cat_header-item">Xóa</td>
                             </tr>
@@ -75,6 +76,15 @@
                                     <a href="../productDetail.php?productId=<?= $comment['IDSanPham'] ?>" class ="cat__link">
                                         Xem chi tiết
                                     </a>
+                                </td>
+                                <td class="cat__item">
+                                    <?php 
+                                        if($commentClass->checkReplyCmt($comment['ID'])){
+                                            echo "Đã trả lời";
+                                        } else {
+                                            echo "Chưa trả lời";
+                                        }
+                                    ?>
                                 </td>
                                 <td class="cat__item">
                                     <a href="replycomment.php?commentID=<?php echo $comment['ID'] ?>" class ="cat__link">

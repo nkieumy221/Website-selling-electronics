@@ -1,19 +1,10 @@
-<?php include('../classes/cart.php');?>
+<?php 
+    include('../classes/overview.php');
+    include('../classes/cart.php');
+?>
 <?php
+    $overview = new overview();
     $cartClass = new cart();
-    if(isset($_GET['shiftid'])){
-        $id = $_GET['shiftid'];
-        $time = $_GET['time'];
-        $price = $_GET['price'];
-        $shifted = $cartClass->shifted($id,$time,$price);
-   }
-
-   if(isset($_GET['delid'])){
-    $id = $_GET['delid'];
-    $time = $_GET['time'];
-    $price = $_GET['price'];
-    $del_shifted = $cartClass->deShifted($id,$time,$price);
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +41,9 @@
                                 <i class="fas fa-money-check-alt"></i>
                                 <div class="overview__right">
                                     <div class="overvirew__infor-name">Doanh thu tháng</div>
-                                    <div class="overvirew__infor-number">143.546.000đ</div>
+                                    <div class="overvirew__infor-number">
+                                        <?php echo number_format($overview->revenueMonth()); ?>    đ
+                                    </div>
                                 </div>
                             </div>
                             <div class="overview__item-more">
@@ -63,8 +56,10 @@
                             <div class="overvirew__infor">
                                 <i class="fas fa-globe-europe"></i>
                                 <div class="overview__right">
-                                    <div class="overvirew__infor-name">Doanh thu tổng quát</div>
-                                    <div class="overvirew__infor-number">143.546.000đ</div>
+                                    <div class="overvirew__infor-name">Doanh thu năm</div>
+                                    <div class="overvirew__infor-number">
+                                        <?php echo number_format($overview->revenueOverview()); ?>đ
+                                    </div>
                                 </div>
                             </div>
                             <div class="overview__item-more">
@@ -78,7 +73,9 @@
                                 <i class="fas fa-shipping-fast"></i>
                                 <div class="overview__right">
                                     <div class="overvirew__infor-name">Đơn hàng</div>
-                                    <div class="overvirew__infor-number">143.546.000đ</div>
+                                    <div class="overvirew__infor-number">
+                                        <?php echo $overview->numberOrder() ?>
+                                    </div>
                                 </div>
                             </div>
                             <div class="overview__item-more">
