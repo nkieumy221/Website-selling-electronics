@@ -456,6 +456,11 @@ body {
     line-height: 3.4rem;
 }
 
+.header_menu-item-link:hover {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
 .header_menu-item-img img{
     padding: 10px 0;
     width: 230px;

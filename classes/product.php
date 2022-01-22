@@ -178,8 +178,8 @@
         /* END BACKEND */
 
         /* Show product sale*/
-        public function showProductSales() {
-            $query = "SELECT * FROM hanghoa WHERE GiaKM < GiaGoc LIMIT 4";
+        public function showProductSales($number) {
+            $query = "SELECT * FROM hanghoa WHERE GiaKM < GiaGoc LIMIT $number";
             $result = $this->db->select($query);
             return $result;
         }
@@ -188,6 +188,14 @@
 
         public function showProductByCategory($categoryID,$limit) {
             $query = "SELECT * FROM hanghoa WHERE IDDanhMucLon = '$categoryID' LIMIT $limit";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+        /* Show product sale by Brand */
+
+        public function showProductByBrand($brandID,$limit) {
+            $query = "SELECT * FROM hanghoa WHERE IDDanhMucCon = '$brandID' LIMIT $limit";
             $result = $this->db->select($query);
             return $result;
         }

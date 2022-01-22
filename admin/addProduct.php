@@ -39,11 +39,6 @@
         <div class="main__content">
             <?php include('./inc/sliderbar.php'); ?>
             <div class="page_content">
-                <?php 
-                    if(isset($insertProduct)) {
-                        echo $insertProduct;
-                    }
-                ?>
                 <form action="addProduct.php" method="POST" enctype="multipart/form-data">
                     <table class="form">
                         <tr>

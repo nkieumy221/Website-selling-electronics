@@ -257,6 +257,7 @@
                     if($customer){
 
                 ?>
+                <!-- Product Recommentdation -->
                 <div class="local mt-32">
                     <h2 class="sale__title">
                         <i class="fab fa-hotjar"></i>
@@ -273,7 +274,7 @@
                             }
                             $recommen = array();
                             $userActive = Session::get('customerName');
-                            $recommen = getRecommendation($matrix,$userActive); 
+                            $recommen = getRecommendation($matrix,$userActive, 8); 
                             foreach($recommen as $movie => $rating){
                                 $product = $recommendation->getProductByName($movie);
                             if($product){
@@ -349,7 +350,7 @@
                     </h2>
                     <div class="sale__list row">
                         <?php
-                            $productSale = $productClass->showProductSales();
+                            $productSale = $productClass->showProductSales(4);
                             if($productSale){
                             while($row = $productSale->fetch_assoc())
                             {

@@ -71,9 +71,11 @@
                 <?php 
                     $getProductDetail = $productClass->getProductDetails($id);
                     $mota = '';
+                    $brandId = '';
                     if($getProductDetail){
                         while($row = $getProductDetail->fetch_assoc()){
                             $mota = $row['MoTa'];
+                            $brandId = $row['IDDanhMucCon'];
                             
                 ?>
                 <div class="row sm-gutter app__content mt-32">
@@ -254,11 +256,26 @@
                                 Mô tả sản phẩm
                             <div class="product__description-content">
                                 <?php   
-                                    $story_desc = substr($mota,0,8000);  
+                                    /* $story_desc = substr($mota,0,5000);  
                                     $story_desc = substr($story_desc,0,strrpos($story_desc,' '));  
-                                    echo $story_desc."<a href='#'>Xem thêm...</a>";                                    
+                                    echo $story_desc."<a href='#'>Xem thêm...</a>";  */   
+                                    echo $mota;                                
                                 ?>
+                                
                             </div>
+                            <button class="readmore" onclick="readMore()">Xem thêm</button> 
+                            <script> 
+                                $status = false;
+                                $desContent = document.querySelector('.product__description-content');
+                                $readMoreBtn = document.querySelector('.readmore')
+                                function readMore() {
+
+                                    $desContent.style.height = $status ? '328px' : '100%';
+                                    $readMoreBtn.innerText = $status ? 'Xem thêm' : 'Rút gọn';
+                                    $status = !$status;
+
+                                }
+                            </script>
                         </div>
                     </div>
                     
@@ -316,6 +333,8 @@
                                         $avgRating = $productClass->avgRating($id);
                                         if($avgRating){
                                             echo $avgRating;
+                                        }else {
+                                            echo '0';
                                         }
                                     ?>
                                     /5
@@ -332,6 +351,8 @@
                                         $numberRating = $productClass->numberRating($id);
                                         if($numberRating){
                                             echo $numberRating;
+                                        } else {
+                                            echo '0';
                                         }
                                     ?>
                                     đánh giá &
@@ -339,6 +360,8 @@
                                         $numberCmt = $productClass->numberCmt($id);
                                         if($numberCmt){
                                             echo $numberCmt;
+                                        } else {
+                                            echo '0';
                                         }
                                     ?> 
                                     nhận xét
@@ -349,9 +372,8 @@
                         <div class="col l-4 m-4 c-0">
                             <div class="rate__process">
                                 <?php 
-                                    for($i=5; $i>0; $i--){
-
-                                    
+                                    if($numberRating){
+                                        for($i=5; $i>0; $i--){
                                 ?>
                                 <div class="rate__process-item">
                                     <div class="rate__process-lable">
@@ -367,14 +389,13 @@
                                                     echo '0';
                                                 }
                                             ?>%">
-
                                         </div>
                                     </div>
                                     <div class="rate__process-quatity">
                                         <?php 
                                             $numberByRating = $productClass->numberByRating($id,$i);
                                             if($numberByRating){
-                                                echo $numberByRating;
+                                                echo $numberByRating; 
                                             } else {
                                                 echo '0';
                                             }
@@ -383,6 +404,25 @@
                                 </div>
                                 <?php 
                                     }
+                                } else {
+                                    for($i=5; $i>0; $i--){
+                                ?>
+                                    <div class="rate__process-item">
+                                        <div class="rate__process-lable">
+                                            <?= $i ?> <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="rate__process-bar ">
+                                            <div class="rate__process-length" 
+                                                style="width:0%">
+                                            </div>
+                                        </div>
+                                        <div class="rate__process-quatity">
+                                            0
+                                        </div>
+                                    </div>
+                                <?php 
+                                    }   
+                                }
                                 ?>
                             </div>
                         </div>
@@ -442,7 +482,7 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- // all comments -->
                 <div class="mt-32 product__description">
                     <h2 class="product__recomment-title">
                         Bình luận 
@@ -509,13 +549,178 @@
                         <h2>Be the first to comment on this post</h2>
                     <?php endif ?>
                     </div><!-- comments wrapper -->
-                </div><!-- // all comments -->
-                
+                </div>
+                <!-- Slider bar product recomment-->
+                <div class="mt-16"></div>
+                <?php 
+                    $customer = Session::get('customerName');
+                    if($customer){
+
+                ?>
+                <div class="local">
+                    <h2 class="sale__title">
+                        Đề xuất cho bạn
+                    </h2>
+                    <div class="slider" id="slider">
+                        <div class="slide" id="slide">
+                            <?php
+                                $products = $recommendation->ratingProductQuery();
+                                $matrix = array();
+                                while($row = $products->fetch_assoc()){
+                                    $userName = $recommendation->getUserName($row['IDUser']);
+                                    $productName = $recommendation->getProductName($row['IDProduct']);
+                                    $matrix[$userName][$productName] = $row['Rating'];
+                                }
+                                $recommen = array();
+                                $userActive = Session::get('customerName');
+                                $recommen = getRecommendation($matrix,$userActive, 15); 
+                                foreach($recommen as $movie => $rating){
+                                    $product = $recommendation->getProductByName($movie);
+                                    if($product){
+                                    while($row = $product->fetch_assoc())
+                                    {
+                            ?>
+                            <div class="item">
+                                <div class=" sale__item-link">
+                                    <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="">
+                                        <div class="sale__item-img">
+                                            <img src="<?= $row['HinhAnh'] ?>" alt="" >
+                                        </div>
+                                        <div class="sale__item-name">
+                                            <?= $row['TenSanPham'] ?>
+                                        </div>
+                                        <div class="sale__item-price">
+                                            <div class="sale__item-price-sale">
+                                                <?= number_format($row['GiaKM']) ?> đ
+                                            </div>
+                                            <div class="sale__item-price-origin">
+                                                <?= number_format($row['GiaGoc']) ?> đ
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <?php       }
+                                    } 
+                                }
+                            ?>
+                        </div>
+                        <button class="ctrl-btn pro-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="ctrl-btn pro-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <?php 
+                    }
+                ?>
+                <!-- Similar product -->
+                <div class="mt-32">
+                    <h2 class="sale__title">
+                        Sản phẩm tương tự
+                    </h2>
+                    <div class="row">
+                        <?php
+                            $productSale = $productClass->showProductByBrand($brandId,10);
+                            if($productSale){
+                            while($row = $productSale->fetch_assoc())
+                            {
+                            
+                        ?>
+                        <div class="col l-2-4 c-3 m-4 sale__item">
+                            <div class=" sale__item-link">
+                                <a href="productDetail.php?productId=<?= $row['ID'] ?>" class="">
+                                    <div class="sale__item-img">
+                                        <img src="<?= $row['HinhAnh'] ?>" alt="" >
+                                    </div>
+                                    <div class="sale__item-name">
+                                        <?= $row['TenSanPham'] ?>
+                                    </div>
+                                    <div class="sale__item-price">
+                                        <div class="sale__item-price-sale">
+                                            <?= number_format($row['GiaKM']) ?> đ
+                                        </div>
+                                        <div class="sale__item-price-origin">
+                                            <?= number_format($row['GiaGoc']) ?> đ
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <?php } 
+                            }
+                        ?>
+                    </div>
+                </div>
+
             </div>
         </div>
         <?php include('./inc/footer.php'); ?>
     </div>  
 
+    <script>
+        productScroll();
+
+        function productScroll() {
+        let slider = document.getElementById("slider");
+        let next = document.getElementsByClassName("pro-next");
+        let prev = document.getElementsByClassName("pro-prev");
+        let slide = document.getElementById("slide");
+        let item = document.getElementById("slide");
+
+        for (let i = 0; i < next.length; i++) {
+            //refer elements by class name
+
+            let position = 0; //slider postion
+
+            prev[i].addEventListener("click", function() {
+            //click previos button
+            if (position > 0) {
+                //avoid slide left beyond the first item
+                position -= 1;
+                translateX(position); //translate items
+            }
+            });
+
+            next[i].addEventListener("click", function() {
+            if (position >= 0 && position < hiddenItems()) {
+                //avoid slide right beyond the last item
+                position += 1;
+                translateX(position); //translate items
+            }
+            });
+        }
+
+        function hiddenItems() {
+            //get hidden items
+            let items = getCount(item, false);
+            let visibleItems = slider.offsetWidth / 210;
+            return items - Math.ceil(visibleItems);
+        }
+        }
+
+        function translateX(position) {
+        //translate items
+        slide.style.left = position * -210 + "px";
+        }
+
+        function getCount(parent, getChildrensChildren) {
+        //count no of items
+        let relevantChildren = 0;
+        let children = parent.childNodes.length;
+        for (let i = 0; i < children; i++) {
+            if (parent.childNodes[i].nodeType != 3) {
+            if (getChildrensChildren)
+                relevantChildren += getCount(parent.childNodes[i], true);
+            relevantChildren++;
+            }
+        }
+        return relevantChildren;
+        }
+
+    </script>
     <!-- Javascripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap Javascript -->

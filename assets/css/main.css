@@ -227,6 +227,10 @@
     transform: scale(1.2);
 }
 
+.sale__item-link:hover .sale__item-name {
+    color: black;
+}
+
 /*   */
 
 .sale__item-img {
@@ -396,7 +400,7 @@
 
 .program_sale {
     background: url("../img/bg-banner.png")  0 0 / cover no-repeat;
-    height: 650px;
+    height: 680px;
    
 }
 
@@ -426,7 +430,7 @@
     box-shadow: 0 1px 5px rgb(155 154 154);
     padding: 20px 10px;
     text-decoration: none;
-
+    cursor: pointer;
 }
 
 .sale__content-img img{

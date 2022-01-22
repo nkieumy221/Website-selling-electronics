@@ -1,6 +1,12 @@
 <?php 
     include('./lib/handle.php'); 
 ?>
+<?php 
+    $products = $recommendation->ratingProductQuery();
+    $matrix = array();                                                        
+    $userActive = Session::get('customerName');
+    $userID= Session::get('customerId');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,38 +32,8 @@
                     <h3 class="title-direct">Hệ thống gợi ý sản phẩm</h3>
                 </div>
                 <div class="row sm-gutter body">
-                    <div class="col c-6">
-                        <h4 class="title">Danh sách sản phẩm gợi ý</h4>
-                        <table class="table">
-                            <tr>
-                                <th>Tên sản phẩm</th>
-                                <th>Rating dự đoán</th>
-                            </tr>
-                        <?php
-                            $products = $recommendation->ratingProductQuery();
-                            $matrix = array();
-                            $userID= Session::get('customerId');
-                            $userActive = Session::get('customerName');
-                            while($row = $products->fetch_assoc()){
-                                $userName = $recommendation->getUserName($row['IDUser']);
-                                $productName = $recommendation->getProductName($row['IDProduct']);
-                                $matrix[$userName][$productName] = $row['Rating'];
-                            }
-                            $recommen = array();
-                            $recommen = getRecommendation($matrix,$userActive);
-                            foreach($recommen as $movie=>$rating){
-        
-                           
-                        ?>
-                            <tr>
-                                <td class="product_name"><?= $movie ?></td>
-                                <td><?= $rating ?></td>
-                            </tr>
-                            <?php  } ?>
-                        </table>
-                    </div>
-                    <div class="col c-6">
-                        <h4 class="title">Danh sách sản phẩm người dùng đã đánh giá</h4>
+                    <div class="col c-4">
+                        <h4 class="title">Danh sách sản phẩm người dùng <span style="color:red"><?= $userActive ?></span> đã đánh giá</h4>
                         <table class="table">
                             <tr>
                                 <th>Tên sản phẩm</th>
@@ -84,6 +60,53 @@
                         ?>
                         </table>
                     </div>
+                    <div class="col l-4">
+                        <h4 class="title">Danh sách người dùng tương tự</h4>
+                        <table class="table">
+                            <tr>
+                                <th>Tên người dùng</th>
+                                <th>Độ tương tự</th>
+                            </tr>
+                            
+                                <?php
+                                    while($row = $products->fetch_assoc()){
+                                        $userName = $recommendation->getUserName($row['IDUser']);
+                                        $productName = $recommendation->getProductName($row['IDProduct']);
+                                        $matrix[$userName][$productName] = $row['Rating'];
+                                    }
+                                    getSimilarity($matrix,$userActive);
+                                ?>
+                            
+                        </table>
+                    </div>
+                    <div class="col c-4">
+                        <h4 class="title">Danh sách sản phẩm gợi ý</h4>
+                        <table class="table">
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <th>Rating dự đoán</th>
+                            </tr>
+                        <?php
+                            while($row = $products->fetch_assoc()){
+                                $userName = $recommendation->getUserName($row['IDUser']);
+                                $productName = $recommendation->getProductName($row['IDProduct']);
+                                $matrix[$userName][$productName] = $row['Rating'];
+                            }
+                            $recommen = array();
+                            $recommen = getRecommendation($matrix,$userActive,10);
+                            foreach($recommen as $movie=>$rating){
+        
+                           
+                        ?>
+                            <tr>
+                                <td class="product_name"><?= $movie ?></td>
+                                <td><?= $rating ?></td>
+                            </tr>
+                            <?php  } ?>
+                        </table>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>

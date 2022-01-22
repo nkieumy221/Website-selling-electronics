@@ -39,37 +39,37 @@
                                 <ul class="header__notify-list">
                                     <li class="header__notify-item">
                                         <a href="" class="header__notify-link">
-                                            <img src="https://cf.shopee.vn/file/251cf08c2edcb21fcd43578360e7fbab_tn" alt="" class="header__notify-img">
+                                            <img src="https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2021/9/15/637673217820889289_iphone-13-pro-max-vang-1.jpg" alt="" class="header__notify-img">
                                             <div class="header__notify-infor">
-                                                <span class="header__notify-name">Mỹ phẩm Ohiu chính hãng</span>
-                                                <span class="header__notify-desc">Mô tả mỹ phẩm ohiu chính hãng</span>
+                                                <span class="header__notify-name">Iphone 13 chính hãng</span>
+                                                <span class="header__notify-desc">Mô tả Iphone 13 chính hãng</span>
                                             </div> 
                                         </a>
                                     </li>
                                     <li class="header__notify-item header__notify-item--viewed">
                                         <a href="" class="header__notify-link">
-                                            <img src="https://luatviettin.com/wp-content/uploads/2019/06/image00214.png" alt="" class="header__notify-img">
+                                            <img src="https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2021/9/15/637673217820889289_iphone-13-pro-max-vang-1.jpg" alt="" class="header__notify-img">
                                             <div class="header__notify-infor">
-                                                <span class="header__notify-name">Mỹ phẩm Ohiu chính hãng</span>
-                                                <span class="header__notify-desc">Mô tả mỹ phẩm ohiu chính hãng</span>
+                                                <span class="header__notify-name">Iphone 13 chính hãng</span>
+                                                <span class="header__notify-desc">Mô tả Iphone 13 chính hãng</span>
                                             </div> 
                                         </a>
                                     </li>
                                     <li class="header__notify-item">
                                         <a href="" class="header__notify-link">
-                                            <img src="https://cf.shopee.vn/file/e0d7e541539bc8ae879b51a7743c4b67" alt="" class="header__notify-img">
+                                            <img src="https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2021/9/15/637673217820889289_iphone-13-pro-max-vang-1.jpg" alt="" class="header__notify-img">
                                             <div class="header__notify-infor">
-                                                <span class="header__notify-name">Mỹ phẩm Ohiu chính hãng</span>
-                                                <span class="header__notify-desc">Mô tả mỹ phẩm ohiu chính hãng</span>
+                                                <span class="header__notify-name">Iphone 13 chính hãng</span>
+                                                <span class="header__notify-desc">Mô tả Iphone 13 chính hãng</span>
                                             </div> 
                                         </a>
                                     </li>
                                     <li class="header__notify-item">
                                         <a href="" class="header__notify-link">
-                                            <img src="https://img.kam.vn/images/414x0/b7f846f9529c4929a52e5f3e8efa0d52/shopee-my-pham-sale-tu-9k-code-giam-15-mua-1-tang-1.jpg" alt="" class="header__notify-img">
+                                            <img src="https://images.fpt.shop/unsafe/fit-in/800x800/filters:quality(90):fill(white):upscale()/fptshop.com.vn/Uploads/Originals/2021/9/15/637673217820889289_iphone-13-pro-max-vang-1.jpg" alt="" class="header__notify-img">
                                             <div class="header__notify-infor">
-                                                <span class="header__notify-name">Mỹ phẩm Ohiu chính hãng</span>
-                                                <span class="header__notify-desc">Mô tả mỹ phẩm ohiu chính hãng</span>
+                                                <span class="header__notify-name">Iphone 13 chính hãng</span>
+                                                <span class="header__notify-desc">Mô tả Iphone 13 chính hãng</span>
                                             </div> 
                                         </a>
                                     </li>

@@ -76,7 +76,25 @@
         }
     }
 
-    function getRecommendation($matrix,$person){
+    function getSimilarity($matrix,$person){
+        foreach($matrix as $otherPerson=>$value) {
+            if($otherPerson != $person){
+                $sim = similarityDistance($matrix,$person,$otherPerson);
+                echo "
+                    <tr>
+                        <td class='product_name'>" 
+                        .$otherPerson." 
+                        </td>
+                        <td> " 
+                        .$sim .
+                        "</td>
+                    </tr>";
+            }
+        }
+
+    }
+
+    function getRecommendation($matrix,$person,$k){
         $total = array();
         $simsums = array();
         $ranks = array();
@@ -102,7 +120,7 @@
             $ranks[$key] = $value / $simsums[$key];
         }
         array_multisort($ranks, SORT_DESC);
-        $ouput = array_slice($ranks,0, 8);
+        $ouput = array_slice($ranks,0, $k);
         return $ouput;
     }
 
