@@ -31,6 +31,7 @@ Where d(x,y) is the similarity value between user x and user y; xi is user x's r
 
 2. Select a subset of neighbor users (neighborhoods) similar to active users, then predict using that based on ratings of neighbor users
 
-![KNNAth](./ImgDescripton/Kn.png)
+![KNNAth](https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.15752-9/280649779_723917295613566_789628697902782106_n.png?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=u34hnOrC1NgAX_MqEi_&_nc_ht=scontent.fsgn2-4.fna&oh=03_AVLC76wcA9u7rX1U0YJuzo-zgkap09oN5eHPjuT3ey76_A&oe=62B59FAC)
 
-[Project link demo](https://www.youtube.com/watch?v=20o8wvX0VQw) https://www.youtube.com/watch?v=20o8wvX0VQw
+## [Project link demo](https://www.youtube.com/watch?v=20o8wvX0VQw) 
+https://www.youtube.com/watch?v=20o8wvX0VQw
